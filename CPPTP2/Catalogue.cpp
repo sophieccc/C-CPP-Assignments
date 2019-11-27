@@ -16,7 +16,6 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "Catalogue.h"
-#include <typeinfo>
 
 //------------------------------------------------------------- Constantes
 
@@ -62,7 +61,9 @@ Catalogue::Catalogue ( )
 Catalogue::Catalogue(Trajet** content, int nombre) {
     nombreDeTrajets = nombre;
     trajets= new Trajet*[nombreDeTrajets];
-    trajets = content;
+    for(int i=0; i < nombreDeTrajets; i++) {
+        trajets[i] = content[i];
+    }
 }
 
 void Catalogue::Ajouter(Trajet* newTrajet) {
@@ -76,18 +77,27 @@ void Catalogue::Ajouter(Trajet* newTrajet) {
 }
 
 void Catalogue::Afficher() {
-    Trajet *current = trajets[0];
     for(int i=0; i < nombreDeTrajets;i++) {
-        cout << "Departing City:" << *current->DEPART << "\n";
-        cout << "Arrival City:" << *current->ARRIVE << "\n";
-        cout << "Type of Trajet :" << typeid(*current).name() << "\n";
+        int strLength = strlen(trajets[i]->depart);
+        char depart[strLength];
+        strLength = strlen(trajets[i]->arrive);
+        char arrive[strLength];
+        strcpy(depart,trajets[i]->depart);
+        strcpy(arrive,trajets[i]->arrive);
+        cout << "Departing City:" << depart << "\n";
+        cout << "Arrival City:" << arrive << "\n";
+        if(trajets[i]->isComplex) {
+                    cout << "Type of Trajet :" << "Complexe" << "\n";
+        }
+        else {
+            cout << "Type of Trajet :" << "Simple" << "\n";
+        }
     }
 }
 
 void Catalogue::Rechercher(char* depart, char* arrive) {
-    Trajet *current = trajets[0];
     for(int i=0; i < nombreDeTrajets;i++) {
-        if(current->DEPART==depart && current->ARRIVE == arrive)
+        if(strcmp(trajets[i]->depart,depart)==0 && strcmp(trajets[i]->arrive,arrive)==0)
         cout << i << "\n";
     }
 }

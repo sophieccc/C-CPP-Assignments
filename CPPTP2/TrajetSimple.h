@@ -55,7 +55,7 @@ public:
 
     TrajetSimple ( );
     
-    TrajetSimple (char* depart, char* arrive, char* transport);
+    TrajetSimple (char* depart, char* arrive, char* transport, bool complex);
     // Mode d'emploi :
     //
     // Contrat :

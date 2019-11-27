@@ -57,15 +57,13 @@ TrajetSimple::TrajetSimple ( )
 #endif
 } //----- Fin de TrajetSimple
 
-TrajetSimple::TrajetSimple (char* departInput, char* arriveInput, char* transportInput)
+TrajetSimple::TrajetSimple (char* departInput, char* arriveInput, char* transportInput, bool complex) : Trajet(departInput, arriveInput, complex)
 // Algorithme :
 //
 {
 #ifdef MAP
     cout << "Appel au constructeur 2 de <TrajetSimple>" << endl;
 #endif
-    ARRIVE = arriveInput;
-    DEPART = departInput;
     TRANSPORT = transportInput;
 } //----- Fin de TrajetSimple
 

@@ -57,15 +57,18 @@ Trajet::Trajet ( )
 #endif
 } //----- Fin de Trajet
 
-Trajet::Trajet (char* departInput, char* arriveInput)
+Trajet::Trajet (char* departInput, char* arriveInput, bool complex)
 // Algorithme :
 //
 {
 #ifdef MAP
     cout << "Appel au constructeur 2 de <Trajet>" << endl;
 #endif
-    ARRIVE = arriveInput;
-    DEPART = departInput;
+    arrive = new char[strlen(arriveInput)];
+    strcpy(arrive, arriveInput);
+    depart = new char[strlen(departInput)];
+    strcpy(depart, departInput);
+    isComplex = complex;
 } //----- Fin de Trajet
 
 //Trajet::~Trajet ( )
@@ -81,8 +84,4 @@ Trajet::Trajet (char* departInput, char* arriveInput)
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
-
-int main() {
-    return 0;
-}
 

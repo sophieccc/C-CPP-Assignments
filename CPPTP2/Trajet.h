@@ -27,8 +27,9 @@ class Trajet
 //----------------------------------------------------------------- PUBLIC
 
 public:
-    const char *DEPART;
-    const char *ARRIVE;
+    char *depart;
+    char *arrive;
+    bool isComplex;
 //----------------------------------------------------- Méthodes publiques
     // type Méthode ( liste des paramètres );
     // Mode d'emploi :
@@ -54,7 +55,7 @@ public:
 
     Trajet ( );
     
-    Trajet (char* depart, char* arrive);
+    Trajet (char* depart, char* arrive, bool complex);
     // Mode d'emploi :
     //
     // Contrat :

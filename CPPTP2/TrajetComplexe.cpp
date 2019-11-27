@@ -57,18 +57,19 @@ TrajetComplexe::TrajetComplexe ( )
 #endif
 } //----- Fin de TrajetComplexe
 
-TrajetComplexe::TrajetComplexe (TrajetSimple **elementInput, int nombre)
+TrajetComplexe::TrajetComplexe (TrajetSimple **elementInput, int nombre, bool complex)
 // Algorithme :
 //
 {
 #ifdef MAP
     cout << "Appel au constructeur 2 de <TrajetComplexe>" << endl;
 #endif
+    isComplex = complex;
     nombreDeTrajets = nombre;
     elements= new TrajetSimple*[nombreDeTrajets];
     elements = elementInput;
-    DEPART = elements[0]->DEPART;
-    ARRIVE = elements[nombreDeTrajets-1]->ARRIVE;
+    depart = elements[0]->depart;
+    arrive = elements[nombreDeTrajets-1]->arrive;
 
     TRANSPORT = new const char*[nombreDeTrajets];
     for(int i=0; i < nombreDeTrajets; i++) {

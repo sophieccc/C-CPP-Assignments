@@ -58,7 +58,7 @@ TrajetComplexe::TrajetComplexe ( )
 #endif
 } //----- Fin de TrajetComplexe
 
-TrajetComplexe::TrajetComplexe (Catalogue elementInput, int nombreDeTrajets)
+TrajetComplexe::TrajetComplexe (TrajetSimple **elementInput, int nombreDeTrajets)
 // Algorithme :
 //
 {
@@ -66,10 +66,15 @@ TrajetComplexe::TrajetComplexe (Catalogue elementInput, int nombreDeTrajets)
     cout << "Appel au constructeur 2 de <TrajetComplexe>" << endl;
 #endif
     nombreDeTrajets = nombreDeTrajets;
-    elements=elementInput;
-    DEPART = elements.trajets[0]->DEPART;
-    ARRIVE = elements.trajets[nombreDeTrajets-1]->ARRIVE;
+    elements= new TrajetSimple*[nombreDeTrajets];
+    elements = elementInput;
+    DEPART = elements[0]->DEPART;
+    ARRIVE = elements[nombreDeTrajets-1]->ARRIVE;
 
+    TRANSPORT = new const char*[nombreDeTrajets];
+    for(int i=0; i < nombreDeTrajets; i++) {
+        TRANSPORT[i] = elementInput[i]->TRANSPORT;
+    }
 } //----- Fin de TrajetComplexe
 
 

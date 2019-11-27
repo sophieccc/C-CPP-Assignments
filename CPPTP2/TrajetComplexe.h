@@ -11,6 +11,7 @@
 #define TRAJETCOMPLEXE_H
 
 #include "Trajet.h"
+#include "TrajetSimple.h"
 #include "Catalogue.h"
 
 //--------------------------------------------------- Interfaces utilisées
@@ -31,7 +32,7 @@ class TrajetComplexe : public Trajet
 
 public:
     const char **TRANSPORT;
-    Catalogue elements;
+    TrajetSimple **elements;
     int nombreDeTrajets;
 //----------------------------------------------------- Méthodes publiques
     // type Méthode ( liste des paramètres );
@@ -58,7 +59,7 @@ public:
 
     TrajetComplexe ( );
 
-    TrajetComplexe (Catalogue elements, int nombreDeTrajets);
+    TrajetComplexe (TrajetSimple** elements, int nombreDeTrajets);
     // Mode d'emploi :
     //
     // Contrat :

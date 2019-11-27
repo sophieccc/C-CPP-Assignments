@@ -71,7 +71,7 @@ public:
 
     void Ajouter(Trajet*newTrajet);
 
-    void Afficher();
+    void Afficher(int start, int end);
 
     void Rechercher(char* depart, char* arrive); // just void for now, maybe bool or **Trajet later
     

@@ -69,6 +69,12 @@ public:
 
     Catalogue::Catalogue(Trajet** content, int nombre);
 
+    void Catalogue::Ajouter(Trajet** content, int nombre);
+
+    void Catalogue::Afficher(Trajet** content, int nombre);
+
+    void Catalogue::Rechercher(Trajet** content, int nombre); // just void for now, maybe bool or **Trajet later
+
 //------------------------------------------------------------------ PRIVE
 
 protected:

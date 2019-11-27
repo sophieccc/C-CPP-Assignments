@@ -40,7 +40,7 @@ public:
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-     //Catalogue & operator = ( const Catalogue & unCatalogue );
+    Catalogue & operator = ( const Catalogue & unCatalogue );
     // Mode d'emploi :
     //
     // Contrat :

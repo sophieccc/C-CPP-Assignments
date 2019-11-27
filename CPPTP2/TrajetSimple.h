@@ -39,7 +39,7 @@ public:
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-     //TrajetSimple & operator = ( const TrajetSimple & unTrajetSimple );
+     TrajetSimple & operator = ( const TrajetSimple & unTrajetSimple );
     // Mode d'emploi :
     //
     // Contrat :

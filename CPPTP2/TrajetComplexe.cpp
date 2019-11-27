@@ -31,11 +31,11 @@ using namespace std;
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-//TrajetComplexe & TrajetComplexe::operator = ( const TrajetComplexe & unTrajetComplexe )
+TrajetComplexe & TrajetComplexe::operator = ( const TrajetComplexe & unTrajetComplexe )
 // Algorithme :
 //
-//{
-//} //----- Fin de operator =
+{
+} //----- Fin de operator
 
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -73,14 +73,15 @@ TrajetComplexe::TrajetComplexe (Catalogue elementInput, int nombreDeTrajets)
 } //----- Fin de TrajetComplexe
 
 
-//TrajetComplexe::~TrajetComplexe ( )
+/*TrajetComplexe::~TrajetComplexe ( )
 // Algorithme :
 //
-//{
-//#ifdef MAP
-//    cout << "Appel au destructeur de <TrajetComplexe>" << endl;
-//#endif
-//} //----- Fin de ~TrajetComplexe
+{
+#ifdef MAP
+    cout << "Appel au destructeur de <TrajetComplexe>" << endl;
+#endif
+} //----- Fin de ~TrajetComplexe
+*/
 
 
 //------------------------------------------------------------------ PRIVE

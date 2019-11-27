@@ -30,11 +30,11 @@ using namespace std;
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-//Catalogue & Catalogue::operator = ( const Catalogue & unCatalogue )
+Catalogue & Catalogue::operator = ( const Catalogue & unCatalogue )
 // Algorithme :
 //
-//{
-//} //----- Fin de operator =
+{
+} //----- Fin de operator =
 
 
 //-------------------------------------------- Constructeurs - destructeur

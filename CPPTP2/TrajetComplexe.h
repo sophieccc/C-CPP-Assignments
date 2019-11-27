@@ -42,7 +42,7 @@ public:
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-     //TrajetComplexe & operator = ( const TrajetComplexe & unTrajetComplexe );
+     TrajetComplexe & operator = ( const TrajetComplexe & unTrajetComplexe );
     // Mode d'emploi :
     //
     // Contrat :

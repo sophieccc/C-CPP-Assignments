@@ -38,7 +38,7 @@ public:
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-     //Trajet & operator = ( const Trajet & unTrajet );
+     Trajet & operator = ( const Trajet & unTrajet );
     // Mode d'emploi :
     //
     // Contrat :

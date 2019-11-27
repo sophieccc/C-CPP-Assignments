@@ -30,11 +30,11 @@ using namespace std;
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-//Trajet & Trajet::operator = ( const Trajet & unTrajet )
+Trajet & Trajet::operator = ( const Trajet & unTrajet )
 // Algorithme :
 //
-//{
-//} //----- Fin de operator =
+{
+} //----- Fin de operator =
 
 
 //-------------------------------------------- Constructeurs - destructeur

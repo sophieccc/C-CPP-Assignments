@@ -66,6 +66,9 @@ public:
     // Contrat :
     //
 
+
+    Catalogue::Catalogue(Trajet** content, int nombre);
+
 //------------------------------------------------------------------ PRIVE
 
 protected:

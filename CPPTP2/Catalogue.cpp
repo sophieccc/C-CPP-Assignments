@@ -58,6 +58,12 @@ Catalogue::Catalogue ( )
 #endif
 } //----- Fin de Catalogue
 
+Catalogue::Catalogue(Trajet** content, int nombre) {
+    nombreDeTrajets = nombre;
+    trajets= new Trajet*[nombreDeTrajets];
+    trajets = content;
+}
+
 
 //Catalogue::~Catalogue ( )
 // Algorithme :

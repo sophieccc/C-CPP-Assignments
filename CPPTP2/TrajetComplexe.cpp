@@ -58,14 +58,14 @@ TrajetComplexe::TrajetComplexe ( )
 #endif
 } //----- Fin de TrajetComplexe
 
-TrajetComplexe::TrajetComplexe (TrajetSimple **elementInput, int nombreDeTrajets)
+TrajetComplexe::TrajetComplexe (TrajetSimple **elementInput, int nombre)
 // Algorithme :
 //
 {
 #ifdef MAP
     cout << "Appel au constructeur 2 de <TrajetComplexe>" << endl;
 #endif
-    nombreDeTrajets = nombreDeTrajets;
+    nombreDeTrajets = nombre;
     elements= new TrajetSimple*[nombreDeTrajets];
     elements = elementInput;
     DEPART = elements[0]->DEPART;

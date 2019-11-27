@@ -59,7 +59,7 @@ public:
 
     TrajetComplexe ( );
 
-    TrajetComplexe (TrajetSimple** elements, int nombreDeTrajets);
+    TrajetComplexe (TrajetSimple** elements, int nombre);
     // Mode d'emploi :
     //
     // Contrat :

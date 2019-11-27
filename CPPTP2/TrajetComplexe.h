@@ -12,7 +12,6 @@
 
 #include "Trajet.h"
 #include "TrajetSimple.h"
-#include "Catalogue.h"
 
 //--------------------------------------------------- Interfaces utilisées
 

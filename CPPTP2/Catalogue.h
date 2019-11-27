@@ -67,13 +67,14 @@ public:
     //
 
 
-    Catalogue::Catalogue(Trajet** content, int nombre);
+    Catalogue(Trajet** content, int nombre);
 
-    void Catalogue::Ajouter(Trajet** content, int nombre);
+    void Ajouter(Trajet*newTrajet);
 
-    void Catalogue::Afficher(Trajet** content, int nombre);
+    void Afficher();
 
-    void Catalogue::Rechercher(Trajet** content, int nombre); // just void for now, maybe bool or **Trajet later
+    void Rechercher(char* depart, char* arrive); // just void for now, maybe bool or **Trajet later
+    
 
 //------------------------------------------------------------------ PRIVE
 
@@ -87,4 +88,8 @@ protected:
 //-------------------------------- Autres définitions dépendantes de <Catalogue>
 
 #endif // CATALOGUE_H
+
+int main() {
+
+}
 

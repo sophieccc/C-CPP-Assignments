@@ -120,7 +120,8 @@ void Catalogue::Afficher(int start, int end) {
 void Catalogue::Rechercher(char* depart, char* arrive) {
     int count = 1;
     for(int i=0; i < nombreDeTrajets;i++) {
-        if(strcmp(trajets[i]->depart,depart)==0 && strcmp(trajets[i]->arrive,arrive)==0) {
+        if(strcmp(trajets[i]->depart,depart)==0 
+        && strcmp(trajets[i]->arrive,arrive)==0) {
             cout << "Found Trajet " << count << "--\n";
             Afficher(i, i+1);
             count++;

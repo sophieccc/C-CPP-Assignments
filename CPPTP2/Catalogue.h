@@ -73,7 +73,7 @@ public:
 
     void Afficher(int start, int end);
 
-    void Rechercher(char* depart, char* arrive); // just void for now, maybe bool or **Trajet later
+    void Rechercher(char* depart, char* arrive); 
     
 
 //------------------------------------------------------------------ PRIVE

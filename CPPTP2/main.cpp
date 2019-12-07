@@ -7,22 +7,33 @@ using namespace std;
 #include "TrajetComplexe.h"
 
 int main() {
-    TrajetSimple one = TrajetSimple((char *)"Dublin", (char *)"Lyon", (char *)"avion");
-    TrajetSimple two = TrajetSimple((char *)"Lyon", (char *)"Dublin", (char *)"avion");
-    TrajetSimple three = TrajetSimple((char *)"Dublin", (char *)"Paris", (char *)"bateau");
-    TrajetSimple four = TrajetSimple((char *)"Berlin", (char *)"Munich", (char *)"voiture");
-    TrajetSimple five = TrajetSimple((char *)"Barcelona", (char *)"Munich", (char *)"train");
-
-    Trajet** once = new Trajet*[2];
-    once[0] = &one;
-    once[1] = &two;
-    TrajetComplexe complexOne = TrajetComplexe(once, 2);
-
-    Trajet** twice = new Trajet*[2];
-    twice[0] = &three;
-    twice[1] = &four;
-
-    Catalogue current = Catalogue(twice, 2);
+    Catalogue cat;
+    int choice;
+    bool exit = false;
+    while(!exit) {
+        printf("Enter 1 to add to Catalogue, 2 to display catalogue, 3 to search in catalogue, or 4 to exit\n");
+        scanf("%d", &choice);
+        switch(choice) {
+            case 1: {
+                break;
+            }
+            case 2: {
+                //cat.Afficher();
+                break;
+            }
+            case 3: {
+                break;
+            }
+            case 4: {
+                exit = true;
+                break;
+            }
+            default: {
+                printf("Invalid input\n");
+            }
+        }
+    }
+   /* 
     current.Afficher();
     cout << "adding five" << "\n";
     current.Ajouter(&five);
@@ -30,9 +41,8 @@ int main() {
     current.Afficher(); 
     current.Rechercher((char *)"Berlin", (char *)"Munich");
     current.Rechercher((char *)"Dublin", (char *)"Paris");
-    current.Ajouter(&complexOne);
-    current.Afficher(); 
     current.Rechercher((char *)"Dublin", (char *)"Dublin");
+    */
     return 0;
 
 }

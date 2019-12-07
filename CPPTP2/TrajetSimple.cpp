@@ -30,12 +30,6 @@ using namespace std;
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-TrajetSimple & TrajetSimple::operator = ( const TrajetSimple & unTrajetSimple )
-// Algorithme :
-//
-{
-} //----- Fin de operator =
-
 
 //-------------------------------------------- Constructeurs - destructeur
 TrajetSimple::TrajetSimple ( const TrajetSimple & unTrajetSimple )
@@ -68,14 +62,14 @@ TrajetSimple::TrajetSimple (char* departInput, char* arriveInput, char* transpor
     TRANSPORT = transportInput;
 } //----- Fin de TrajetSimple
 
-//TrajetSimple::~TrajetSimple ( )
+TrajetSimple::~TrajetSimple ( )
 // Algorithme :
 //
-//{
-//#ifdef MAP
-//    cout << "Appel au destructeur de <TrajetSimple>" << endl;
-//#endif
-//} //----- Fin de ~TrajetSimple
+{
+#ifdef MAP
+    cout << "Appel au destructeur de <TrajetSimple>" << endl;
+#endif
+} //----- Fin de ~TrajetSimple
 
 void TrajetSimple::Afficher() const {
     cout << "Departing City:" << depart << "\n";

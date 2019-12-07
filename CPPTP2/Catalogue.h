@@ -38,11 +38,6 @@ public:
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-    Catalogue & operator = ( const Catalogue & unCatalogue );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -58,7 +53,7 @@ public:
     // Contrat :
     //
 
-   // virtual ~Catalogue ( );
+    virtual ~Catalogue ( );
     // Mode d'emploi :
     //
     // Contrat :
@@ -67,7 +62,7 @@ public:
 
     Catalogue(Trajet** content, int nombre);
 
-    void Ajouter(Trajet*newTrajet);
+    void Ajouter(Trajet* newTrajet);
 
     void Afficher() const;
 

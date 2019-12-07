@@ -32,11 +32,6 @@ using namespace std;
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-Catalogue & Catalogue::operator = ( const Catalogue & unCatalogue )
-// Algorithme :
-//
-{
-} //----- Fin de operator =
 
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -57,6 +52,7 @@ Catalogue::Catalogue ( )
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Catalogue>" << endl;
+    nombreDeTrajets = 0;
 #endif
 } //----- Fin de Catalogue
 
@@ -104,14 +100,15 @@ void Catalogue::Rechercher(char* depart, char* arrive) const {
 }
 
 
-//Catalogue::~Catalogue ( )
+Catalogue::~Catalogue ( )
 // Algorithme :
 //
-//{
-//#ifdef MAP
-//    cout << "Appel au destructeur de <Catalogue>" << endl;
-//#endif
-//} //----- Fin de ~Catalogue
+{
+#ifdef MAP
+    cout << "Appel au destructeur de <Catalogue>" << endl;
+#endif
+    delete[] trajets;
+} //----- Fin de ~Catalogue
 
 
 //------------------------------------------------------------------ PRIVE

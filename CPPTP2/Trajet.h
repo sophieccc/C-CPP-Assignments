@@ -36,11 +36,6 @@ public:
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-     Trajet & operator = ( const Trajet & unTrajet );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -58,7 +53,7 @@ public:
     // Contrat :
     //
 
-   // virtual ~Trajet ( );
+    virtual ~Trajet ( );
     // Mode d'emploi :
     //
     // Contrat :

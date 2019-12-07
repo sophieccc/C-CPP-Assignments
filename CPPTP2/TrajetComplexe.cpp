@@ -30,11 +30,6 @@ using namespace std;
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-TrajetComplexe & TrajetComplexe::operator = ( const TrajetComplexe & unTrajetComplexe )
-// Algorithme :
-//
-{
-} //----- Fin de operator
 
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -77,15 +72,16 @@ TrajetComplexe::TrajetComplexe (Trajet **elementInput, int nombre)
 } //----- Fin de TrajetComplexe
 
 
-/*TrajetComplexe::~TrajetComplexe ( )
+TrajetComplexe::~TrajetComplexe ( )
 // Algorithme :
 //
 {
 #ifdef MAP
     cout << "Appel au destructeur de <TrajetComplexe>" << endl;
 #endif
+    delete[] elements;
+    delete[] TRANSPORT;
 } //----- Fin de ~TrajetComplexe
-*/
 
 void TrajetComplexe::Afficher() const {
     cout << "Departing City:" << depart << "\n";

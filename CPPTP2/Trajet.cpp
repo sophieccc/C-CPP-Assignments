@@ -30,11 +30,6 @@ using namespace std;
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-Trajet & Trajet::operator = ( const Trajet & unTrajet )
-// Algorithme :
-//
-{
-} //----- Fin de operator =
 
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -70,14 +65,17 @@ Trajet::Trajet (char* departInput, char* arriveInput)
     strcpy(depart, departInput);
 } //----- Fin de Trajet
 
-//Trajet::~Trajet ( )
+Trajet::~Trajet ( )
 // Algorithme :
 //
-//{
-//#ifdef MAP
-//    cout << "Appel au destructeur de <Trajet>" << endl;
-//#endif
-//} //----- Fin de ~Trajet
+{
+#ifdef MAP
+   cout << "Appel au destructeur de <Trajet>" << endl;
+#endif
+    delete[] depart;
+    delete[] arrive;
+    delete[] TRANSPORT;
+} //----- Fin de ~Trajet
 
     char* Trajet::GetDepart() const {
         return depart;

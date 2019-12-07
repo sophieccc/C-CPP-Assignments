@@ -23,15 +23,15 @@ int main() {
     twice[1] = &four;
 
     Catalogue current = Catalogue(twice, 2);
-    current.Afficher(0, current.nombreDeTrajets);
+    current.Afficher();
     cout << "adding five" << "\n";
     current.Ajouter(&five);
     cout << "added five" << "\n";
-    current.Afficher(0, current.nombreDeTrajets); 
+    current.Afficher(); 
     current.Rechercher((char *)"Berlin", (char *)"Munich");
     current.Rechercher((char *)"Dublin", (char *)"Paris");
     current.Ajouter(&complexOne);
-    current.Afficher(0, current.nombreDeTrajets); 
+    current.Afficher(); 
     current.Rechercher((char *)"Dublin", (char *)"Dublin");
     return 0;
 

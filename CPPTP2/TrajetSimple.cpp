@@ -77,7 +77,7 @@ TrajetSimple::TrajetSimple (char* departInput, char* arriveInput, char* transpor
 //#endif
 //} //----- Fin de ~TrajetSimple
 
-void TrajetSimple::Afficher() {
+void TrajetSimple::Afficher() const {
     cout << "Departing City:" << depart << "\n";
     cout << "Arrival City:" << arrive << "\n";
     cout << "Type of Trajet :" << "Simple" << "\n";

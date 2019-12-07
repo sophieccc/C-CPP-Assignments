@@ -78,8 +78,8 @@ void Catalogue::Ajouter(Trajet* newTrajet) {
     nombreDeTrajets++;
 }
 
-void Catalogue::Afficher(int start, int end) {
-    for(int i=start; i < end;i++) {
+void Catalogue::Afficher() const {
+    for(int i=0; i < nombreDeTrajets;i++) {
         int strLength = strlen(trajets[i]->GetDepart());
         char depart[strLength];
         strLength = strlen(trajets[i]->GetArrive());
@@ -91,7 +91,7 @@ void Catalogue::Afficher(int start, int end) {
     }
 }
 
-void Catalogue::Rechercher(char* depart, char* arrive) {
+void Catalogue::Rechercher(char* depart, char* arrive) const {
     int count = 1;
     for(int i=0; i < nombreDeTrajets;i++) {
         if(strcmp(trajets[i]->GetDepart(),depart)==0 

@@ -87,7 +87,7 @@ TrajetComplexe::TrajetComplexe (Trajet **elementInput, int nombre)
 } //----- Fin de ~TrajetComplexe
 */
 
-void TrajetComplexe::Afficher() {
+void TrajetComplexe::Afficher() const {
     cout << "Departing City:" << depart << "\n";
     cout << "Arrival City:" << arrive << "\n";
     cout << "Type of Trajet :" << "Complexe" << "\n";

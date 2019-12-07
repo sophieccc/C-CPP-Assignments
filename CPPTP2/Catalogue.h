@@ -29,8 +29,6 @@ class Catalogue
 //----------------------------------------------------------------- PUBLIC
 
 public:
-    Trajet **trajets;
-    int nombreDeTrajets;
 //----------------------------------------------------- Méthodes publiques
     // type Méthode ( liste des paramètres );
     // Mode d'emploi :
@@ -71,9 +69,9 @@ public:
 
     void Ajouter(Trajet*newTrajet);
 
-    void Afficher(int start, int end);
+    void Afficher() const;
 
-    void Rechercher(char* depart, char* arrive); 
+    void Rechercher(char* depart, char* arrive) const; 
     
 
 //------------------------------------------------------------------ PRIVE
@@ -82,7 +80,8 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-
+    Trajet **trajets;
+    int nombreDeTrajets;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Catalogue>

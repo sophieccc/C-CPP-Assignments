@@ -79,15 +79,15 @@ Trajet::Trajet (char* departInput, char* arriveInput)
 //#endif
 //} //----- Fin de ~Trajet
 
-    char* Trajet::GetDepart() {
+    char* Trajet::GetDepart() const {
         return depart;
     }
 
-    char* Trajet::GetArrive() {
+    char* Trajet::GetArrive() const {
         return arrive;
     }
 
-    const char* Trajet::GetTransport() {
+    const char* Trajet::GetTransport() const {
         return TRANSPORT;
     }
 

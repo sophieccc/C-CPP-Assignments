@@ -66,7 +66,7 @@ public:
     // Contrat :
     //
 
-    void Afficher();
+    void Afficher() const;
 
 //------------------------------------------------------------------ PRIVE
 

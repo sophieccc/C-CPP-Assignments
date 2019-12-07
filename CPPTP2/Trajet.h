@@ -64,13 +64,13 @@ public:
     // Contrat :
     //
 
-    char* GetDepart();
+    char* GetDepart() const;
 
-    char* GetArrive();
+    char* GetArrive() const;
 
-    const char* GetTransport();
+    const char* GetTransport() const;
 
-    virtual void Afficher() {};
+    virtual void Afficher() const {} ;
 
 //------------------------------------------------------------------ PRIVE
 

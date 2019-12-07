@@ -57,7 +57,7 @@ Trajet::Trajet ( )
 #endif
 } //----- Fin de Trajet
 
-Trajet::Trajet (char* departInput, char* arriveInput, bool complex)
+Trajet::Trajet (char* departInput, char* arriveInput)
 // Algorithme :
 //
 {
@@ -68,7 +68,6 @@ Trajet::Trajet (char* departInput, char* arriveInput, bool complex)
     strcpy(arrive, arriveInput);
     depart = new char[strlen(departInput)];
     strcpy(depart, departInput);
-    isComplex = complex;
 } //----- Fin de Trajet
 
 //Trajet::~Trajet ( )
@@ -79,6 +78,18 @@ Trajet::Trajet (char* departInput, char* arriveInput, bool complex)
 //    cout << "Appel au destructeur de <Trajet>" << endl;
 //#endif
 //} //----- Fin de ~Trajet
+
+    char* Trajet::GetDepart() {
+        return depart;
+    }
+
+    char* Trajet::GetArrive() {
+        return arrive;
+    }
+
+    const char* Trajet::GetTransport() {
+        return TRANSPORT;
+    }
 
 
 //------------------------------------------------------------------ PRIVE

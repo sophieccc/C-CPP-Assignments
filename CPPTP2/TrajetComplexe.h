@@ -11,7 +11,6 @@
 #define TRAJETCOMPLEXE_H
 
 #include "Trajet.h"
-#include "TrajetSimple.h"
 
 //--------------------------------------------------- Interfaces utilisées
 
@@ -30,9 +29,6 @@ class TrajetComplexe : public Trajet
 //----------------------------------------------------------------- PUBLIC
 
 public:
-    const char **TRANSPORT;
-    TrajetSimple **elements;
-    int nombreDeTrajets;
 //----------------------------------------------------- Méthodes publiques
     // type Méthode ( liste des paramètres );
     // Mode d'emploi :
@@ -58,7 +54,7 @@ public:
 
     TrajetComplexe ( );
 
-    TrajetComplexe (TrajetSimple** elements, int nombre, bool complex);
+    TrajetComplexe (Trajet** elements, int nombre);
     // Mode d'emploi :
     //
     // Contrat :
@@ -70,13 +66,18 @@ public:
     // Contrat :
     //
 
+    void Afficher();
+
 //------------------------------------------------------------------ PRIVE
 
 protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-
+    //const char **TRANSPORT;
+    Trajet **elements;
+    int nombreDeTrajets;
+    const char **TRANSPORT;
 };
 
 //-------------------------------- Autres définitions dépendantes de <TrajetComplexe>

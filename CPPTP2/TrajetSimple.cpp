@@ -57,8 +57,8 @@ TrajetSimple::TrajetSimple ( )
 #endif
 } //----- Fin de TrajetSimple
 
-TrajetSimple::TrajetSimple (char* departInput, char* arriveInput, char* transportInput, bool complex) 
-: Trajet(departInput, arriveInput, complex)
+TrajetSimple::TrajetSimple (char* departInput, char* arriveInput, char* transportInput) 
+: Trajet(departInput, arriveInput)
 // Algorithme :
 //
 {
@@ -76,6 +76,17 @@ TrajetSimple::TrajetSimple (char* departInput, char* arriveInput, char* transpor
 //    cout << "Appel au destructeur de <TrajetSimple>" << endl;
 //#endif
 //} //----- Fin de ~TrajetSimple
+
+void TrajetSimple::Afficher() {
+    cout << "Departing City:" << depart << "\n";
+    cout << "Arrival City:" << arrive << "\n";
+    cout << "Type of Trajet :" << "Simple" << "\n";
+    int strLength = strlen(TRANSPORT);
+    char transport[strLength];
+    strcpy(transport,TRANSPORT);
+    cout << "Transportation :" << transport << "\n";
+    cout << "\n";
+}
 
 
 //------------------------------------------------------------------ PRIVE

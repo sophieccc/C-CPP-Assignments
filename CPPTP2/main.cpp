@@ -7,16 +7,16 @@ using namespace std;
 #include "TrajetComplexe.h"
 
 int main() {
-    TrajetSimple one = TrajetSimple((char *)"Dublin", (char *)"Lyon", (char *)"avion", false);
-    TrajetSimple two = TrajetSimple((char *)"Lyon", (char *)"Dublin", (char *)"avion", false);
-    TrajetSimple three = TrajetSimple((char *)"Dublin", (char *)"Paris", (char *)"bateau", false);
-    TrajetSimple four = TrajetSimple((char *)"Berlin", (char *)"Munich", (char *)"voiture", false);
-    TrajetSimple five = TrajetSimple((char *)"Barcelona", (char *)"Munich", (char *)"train", false);
+    TrajetSimple one = TrajetSimple((char *)"Dublin", (char *)"Lyon", (char *)"avion");
+    TrajetSimple two = TrajetSimple((char *)"Lyon", (char *)"Dublin", (char *)"avion");
+    TrajetSimple three = TrajetSimple((char *)"Dublin", (char *)"Paris", (char *)"bateau");
+    TrajetSimple four = TrajetSimple((char *)"Berlin", (char *)"Munich", (char *)"voiture");
+    TrajetSimple five = TrajetSimple((char *)"Barcelona", (char *)"Munich", (char *)"train");
 
-    TrajetSimple** once = new TrajetSimple*[2];
+    Trajet** once = new Trajet*[2];
     once[0] = &one;
     once[1] = &two;
-    TrajetComplexe complexOne = TrajetComplexe(once, 2, true);
+    TrajetComplexe complexOne = TrajetComplexe(once, 2);
 
     Trajet** twice = new Trajet*[2];
     twice[0] = &three;

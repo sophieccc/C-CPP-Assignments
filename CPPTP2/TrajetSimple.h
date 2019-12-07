@@ -29,7 +29,6 @@ class TrajetSimple : public Trajet
 //----------------------------------------------------------------- PUBLIC
 
 public:
-    const char *TRANSPORT;
 //----------------------------------------------------- Méthodes publiques
     // type Méthode ( liste des paramètres );
     // Mode d'emploi :
@@ -55,7 +54,7 @@ public:
 
     TrajetSimple ( );
     
-    TrajetSimple (char* depart, char* arrive, char* transport, bool complex);
+    TrajetSimple (char* depart, char* arrive, char* transport);
     // Mode d'emploi :
     //
     // Contrat :
@@ -67,13 +66,14 @@ public:
     // Contrat :
     //
 
+    void Afficher();
+
 //------------------------------------------------------------------ PRIVE
 
 protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-
 };
 
 //-------------------------------- Autres définitions dépendantes de <TrajetSimple>

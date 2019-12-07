@@ -57,23 +57,22 @@ TrajetComplexe::TrajetComplexe ( )
 #endif
 } //----- Fin de TrajetComplexe
 
-TrajetComplexe::TrajetComplexe (TrajetSimple **elementInput, int nombre, bool complex)
+TrajetComplexe::TrajetComplexe (Trajet **elementInput, int nombre)
 // Algorithme :
 //
 {
 #ifdef MAP
     cout << "Appel au constructeur 2 de <TrajetComplexe>" << endl;
 #endif
-    isComplex = complex;
     nombreDeTrajets = nombre;
-    elements= new TrajetSimple*[nombreDeTrajets];
+    elements= new Trajet*[nombreDeTrajets];
     elements = elementInput;
-    depart = elements[0]->depart;
-    arrive = elements[nombreDeTrajets-1]->arrive;
+    depart = elements[0]->GetDepart();
+    arrive = elements[nombreDeTrajets-1]->GetArrive();
 
-    TRANSPORT = new const char*[nombreDeTrajets];
+   TRANSPORT = new const char*[nombreDeTrajets];
     for(int i=0; i < nombreDeTrajets; i++) {
-        TRANSPORT[i] = elementInput[i]->TRANSPORT;
+        TRANSPORT[i] = elementInput[i]->GetTransport();
     }
 } //----- Fin de TrajetComplexe
 
@@ -87,6 +86,26 @@ TrajetComplexe::TrajetComplexe (TrajetSimple **elementInput, int nombre, bool co
 #endif
 } //----- Fin de ~TrajetComplexe
 */
+
+void TrajetComplexe::Afficher() {
+    cout << "Departing City:" << depart << "\n";
+    cout << "Arrival City:" << arrive << "\n";
+    cout << "Type of Trajet :" << "Complexe" << "\n";
+    cout << "Transportation :";
+    for(int i=0; i < nombreDeTrajets; i++) {
+        int strLength = strlen(TRANSPORT[i]);
+        char transport[strLength];
+        strcpy(transport,TRANSPORT[i]);
+        cout << transport;
+        if(i!=nombreDeTrajets-1) {
+            cout << ", ";
+        }
+        else {
+            cout << "\n";
+        }
+    }
+    cout << "\n";
+}
 
 
 //------------------------------------------------------------------ PRIVE

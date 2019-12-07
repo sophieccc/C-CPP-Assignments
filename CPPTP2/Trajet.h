@@ -27,9 +27,6 @@ class Trajet
 //----------------------------------------------------------------- PUBLIC
 
 public:
-    char *depart;
-    char *arrive;
-    bool isComplex;
 //----------------------------------------------------- Méthodes publiques
     // type Méthode ( liste des paramètres );
     // Mode d'emploi :
@@ -55,7 +52,7 @@ public:
 
     Trajet ( );
     
-    Trajet (char* depart, char* arrive, bool complex);
+    Trajet (char* depart, char* arrive);
     // Mode d'emploi :
     //
     // Contrat :
@@ -67,13 +64,23 @@ public:
     // Contrat :
     //
 
+    char* GetDepart();
+
+    char* GetArrive();
+
+    const char* GetTransport();
+
+    virtual void Afficher() {};
+
 //------------------------------------------------------------------ PRIVE
 
 protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-
+    char *depart;
+    char *arrive;
+    const char *TRANSPORT;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Trajet>

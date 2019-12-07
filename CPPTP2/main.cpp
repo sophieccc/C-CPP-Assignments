@@ -23,6 +23,18 @@ int main() {
         if(cin >> choice) {
             switch(choice) {
                 case 1: {
+                    char complexity;
+                    printf("Enter 's' for simple or 'c' for complex trajet type:\n");
+                    cin >> complexity;
+                    if(complexity=='s') {
+
+                    }
+                    else if(complexity=='c') {
+
+                    }
+                    else {
+                        printf("Invalid complexity type\n");
+                    }
                     // ask if simple or complex, then get data and put into trajet
                     // check that complex ones are valid, aka depart/arrive stuff
                     // Ajouter

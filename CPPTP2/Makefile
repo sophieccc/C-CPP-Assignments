@@ -1,7 +1,7 @@
 .PHONY: all, clean
 
 CPP = g++
-CFLAGS = -ansi -pedantic -Wall -Werror
+CFLAGS = -ansi -pedantic -Wall -Werror  –std=c++11
 
 LIBS += -lpthread
 

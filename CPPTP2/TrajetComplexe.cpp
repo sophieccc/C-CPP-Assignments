@@ -2,7 +2,7 @@
                            TrajetComplexe  -  description
                              -------------------
     début                : $20/11/2019$
-    copyright            : (C) $2019$ par $Sophie Crowley$
+    copyright            : (C) $2019$ par $Sophie Crowley, Zakaria Nassreddine, Zihao Hua$
     e-mail               : $sophie.crowley@insa-lyon.fr$
 *************************************************************************/
 
@@ -89,6 +89,7 @@ void TrajetComplexe::Afficher() const {
     cout << "Type of Trajet :" << "Complexe" << "\n";
     cout << "Transportation :";
     for(int i=0; i < nombreDeTrajets; i++) {
+        //should we just call simple afficher and output each entire trajet?
         int strLength = strlen(TRANSPORT[i]);
         char transport[strLength];
         strcpy(transport,TRANSPORT[i]);

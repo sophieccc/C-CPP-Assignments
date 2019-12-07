@@ -2,7 +2,7 @@
                            Catalogue  -  description
                              -------------------
     début                : $20/11/2019$
-    copyright            : (C) $2019$ par $Sophie Crowley$
+    copyright            : (C) $2019$ par $Sophie Crowley, Zakaria Nassreddine, Zihao Hua$
     e-mail               : $sophie.crowley@insa-lyon.fr$
 *************************************************************************/
 

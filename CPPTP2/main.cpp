@@ -1,3 +1,11 @@
+/*************************************************************************
+                           main  -  description
+                             -------------------
+    début                : $20/11/2019$
+    copyright            : (C) $2019$ par $Sophie Crowley, Zakaria Nassreddine, Zihao Hua$
+    e-mail               : $sophie.crowley@insa-lyon.fr$
+*************************************************************************/
+
 #include <iostream>
 using namespace std;
 
@@ -15,6 +23,7 @@ int main() {
         scanf("%d", &choice);
         switch(choice) {
             case 1: {
+                // check that complex ones are valid, aka depart/arrive stuff
                 break;
             }
             case 2: {

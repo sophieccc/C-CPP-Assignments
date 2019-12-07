@@ -76,7 +76,7 @@ void TrajetSimple::Afficher() const {
     cout << "Arrival City:" << arrive << "\n";
     cout << "Type of Trajet :" << "Simple" << "\n";
     int strLength = strlen(TRANSPORT);
-    char transport[strLength];
+    char* transport = new char[strLength];
     strcpy(transport,TRANSPORT);
     cout << "Transportation :" << transport << "\n";
     cout << "\n";

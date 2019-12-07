@@ -91,7 +91,7 @@ void TrajetComplexe::Afficher() const {
     for(int i=0; i < nombreDeTrajets; i++) {
         //should we just call simple afficher and output each entire trajet?
         int strLength = strlen(TRANSPORT[i]);
-        char transport[strLength];
+        char* transport = new char[strLength];
         strcpy(transport,TRANSPORT[i]);
         cout << transport;
         if(i!=nombreDeTrajets-1) {

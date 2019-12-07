@@ -23,7 +23,9 @@ int main() {
         scanf("%d", &choice);
         switch(choice) {
             case 1: {
+                // ask if simple or complex, then get data and put into trajet
                 // check that complex ones are valid, aka depart/arrive stuff
+                // Ajouter
                 break;
             }
             case 2: {
@@ -31,6 +33,7 @@ int main() {
                 break;
             }
             case 3: {
+                // get depart and arrive, Rechercher
                 break;
             }
             case 4: {
@@ -42,16 +45,6 @@ int main() {
             }
         }
     }
-   /* 
-    current.Afficher();
-    cout << "adding five" << "\n";
-    current.Ajouter(&five);
-    cout << "added five" << "\n";
-    current.Afficher(); 
-    current.Rechercher((char *)"Berlin", (char *)"Munich");
-    current.Rechercher((char *)"Dublin", (char *)"Paris");
-    current.Rechercher((char *)"Dublin", (char *)"Dublin");
-    */
     return 0;
 
 }

@@ -1,25 +1,18 @@
 .PHONY: all, clean
 
-CC = gcc
-CFLAGS = -ansi -pedantic –Wall –std=c++11
+CPP = g++
+CFLAGS = -ansi -pedantic -Wall -Werror
 
-Trajet.o	:	Trajet.cpp
-	$(CC) $(CFLAGS) -c Trajet.cpp
+LIBS += -lpthread
 
-TrajetSimple.o: Trajet.cpp TrajetSimple.cpp 
-	$(CC) $(CFLAGS) -c Trajet.cpp TrajetSimple.cpp 
+PROGS = main.o Trajet.o Catalogue.o TrajetSimple.o TrajetComplexe.o	
 
-TrajetComplexe.o: Trajet.cpp TrajetComplexe.cpp
-	$(CC) $(CFLAGS) -c Trajet.cpp TrajetComplexe.cpp
+Final : $(PROGS)
+	$(CPP) -o $@ $^
 
-Trajet	: Trajet.o
-	$(CC) $(CFLAGS) -o Trajet.o
-
-TrajetSimple: TrajetSimple.o Trajet.o
-	$(CC) $(CFLAGS) -o Trajet.o TrajetSimple.o
-
-TrajetComplexe: TrajetComplexe.o Trajet.o
-	$(CC) $(CFLAGS) -o Trajet.o TrajetComplexe.o
+%.o : %.cpp %.h
+	$(CPP) -c $< $(CFLAGS)
 
 clean:
 	rm -f $(PROGS) *.o
+	

@@ -77,9 +77,9 @@ void Catalogue::Ajouter(Trajet* newTrajet) {
 void Catalogue::Afficher() const {
     for(int i=0; i < nombreDeTrajets;i++) {
         int strLength = strlen(trajets[i]->GetDepart());
-        char depart[strLength];
+        char* depart = new char[strLength];
         strLength = strlen(trajets[i]->GetArrive());
-        char arrive[strLength];
+        char* arrive = new char[strLength];
         strcpy(depart,trajets[i]->GetDepart());
         strcpy(arrive,trajets[i]->GetArrive());
         Trajet *curr = trajets[i];

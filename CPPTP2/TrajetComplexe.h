@@ -11,6 +11,7 @@
 #define TRAJETCOMPLEXE_H
 
 #include "Trajet.h"
+#include "TrajetSimple.h"
 
 //--------------------------------------------------- Interfaces utilisées
 
@@ -49,7 +50,7 @@ public:
 
     TrajetComplexe ( );
 
-    TrajetComplexe (Trajet** elements, int nombre);
+    TrajetComplexe (TrajetSimple** elements, int nombre);
     // Mode d'emploi :
     //
     // Contrat :
@@ -70,7 +71,7 @@ protected:
 
 //----------------------------------------------------- Attributs protégés
     //const char **TRANSPORT;
-    Trajet **elements;
+    TrajetSimple **elements;
     int nombreDeTrajets;
     const char **TRANSPORT;
 };

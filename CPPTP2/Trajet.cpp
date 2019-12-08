@@ -74,7 +74,6 @@ Trajet::~Trajet ( )
 #endif
     delete[] depart;
     delete[] arrive;
-    delete[] TRANSPORT;
 } //----- Fin de ~Trajet
 
     char* Trajet::GetDepart() const {
@@ -85,9 +84,6 @@ Trajet::~Trajet ( )
         return arrive;
     }
 
-    const char* Trajet::GetTransport() const {
-        return TRANSPORT;
-    }
 
 
 //------------------------------------------------------------------ PRIVE

@@ -63,7 +63,6 @@ public:
 
     char* GetArrive() const;
 
-    const char* GetTransport() const;
 
     virtual void Afficher() const {} ;
 
@@ -75,7 +74,6 @@ protected:
 //----------------------------------------------------- Attributs protégés
     char *depart;
     char *arrive;
-    const char *TRANSPORT;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Trajet>

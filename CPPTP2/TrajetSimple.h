@@ -63,12 +63,15 @@ public:
 
     void Afficher() const;
 
+    const char* GetTransport() const;
+
 //------------------------------------------------------------------ PRIVE
 
 protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
+    const char *TRANSPORT;
 };
 
 //-------------------------------- Autres définitions dépendantes de <TrajetSimple>

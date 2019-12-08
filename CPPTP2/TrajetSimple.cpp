@@ -69,6 +69,7 @@ TrajetSimple::~TrajetSimple ( )
 #ifdef MAP
     cout << "Appel au destructeur de <TrajetSimple>" << endl;
 #endif
+    delete[] TRANSPORT;
 } //----- Fin de ~TrajetSimple
 
 void TrajetSimple::Afficher() const {
@@ -80,6 +81,10 @@ void TrajetSimple::Afficher() const {
     strcpy(transport,TRANSPORT);
     cout << "Transportation :" << transport << "\n";
     cout << "\n";
+}
+
+const char* TrajetSimple::GetTransport() const {
+    return TRANSPORT;
 }
 
 

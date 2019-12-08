@@ -52,7 +52,7 @@ TrajetComplexe::TrajetComplexe ( )
 #endif
 } //----- Fin de TrajetComplexe
 
-TrajetComplexe::TrajetComplexe (Trajet **elementInput, int nombre)
+TrajetComplexe::TrajetComplexe (TrajetSimple **elementInput, int nombre)
 // Algorithme :
 //
 {
@@ -60,7 +60,7 @@ TrajetComplexe::TrajetComplexe (Trajet **elementInput, int nombre)
     cout << "Appel au constructeur 2 de <TrajetComplexe>" << endl;
 #endif
     nombreDeTrajets = nombre;
-    elements= new Trajet*[nombreDeTrajets];
+    elements= new TrajetSimple*[nombreDeTrajets];
     elements = elementInput;
     depart = elements[0]->GetDepart();
     arrive = elements[nombreDeTrajets-1]->GetArrive();

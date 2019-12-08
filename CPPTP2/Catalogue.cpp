@@ -46,16 +46,16 @@ Catalogue::Catalogue ( const Catalogue & unCatalogue )
 } //----- Fin de Catalogue (constructeur de copie)
 
 
-Catalogue::Catalogue ( )
+Catalogue::Catalogue()
 // Algorithme :
 //
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Catalogue>" << endl;
+#endif
     nombreDeTrajets = 0;
     space = DEFAULT_SPACE;
     trajets = new Trajet*[space];
-#endif
 } //----- Fin de Catalogue
 
 Catalogue::Catalogue(Trajet** content, int nombre) {
@@ -81,7 +81,7 @@ void Catalogue::Ajouter(Trajet* newTrajet) {
 
 void Catalogue::Afficher() const {
     for(int i=0; i < nombreDeTrajets;i++) {
-        Trajet *curr = trajets[i];
+        Trajet* curr = trajets[i];
         curr->Afficher();
     }
 }

@@ -63,7 +63,6 @@ public:
 
     char* GetArrive() const;
 
-
     virtual void Afficher() const {} ;
 
 //------------------------------------------------------------------ PRIVE

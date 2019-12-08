@@ -47,7 +47,7 @@ public:
     // Contrat :
     //
 
-    Catalogue ( );
+    Catalogue();
     // Mode d'emploi :
     //
     // Contrat :
@@ -75,8 +75,8 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-    Trajet **trajets;
     int nombreDeTrajets;
+    Trajet **trajets;
     int space;
 };
 

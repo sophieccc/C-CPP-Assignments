@@ -15,7 +15,7 @@ using namespace std;
 #include "TrajetComplexe.h"
 
 int main() {
-    Catalogue cat = Catalogue();
+    Catalogue cat;
     bool exit = false;
     int choice;
     while(!exit) {
@@ -36,8 +36,8 @@ int main() {
                         cin >> arrive;
                         printf("Enter mode of transport:\n");
                         cin >> transport;
-                        TrajetSimple curr = TrajetSimple(depart, arrive, transport);
-                        cat.Ajouter(&curr);
+                        TrajetSimple* curr = new TrajetSimple(depart, arrive, transport);
+                        cat.Ajouter(curr);
                     }
                     else if(complexity=='c') {
 
@@ -81,5 +81,4 @@ int main() {
         }
     }
     return 0;
-
 }

@@ -20,8 +20,8 @@
 
 //------------------------------------------------------------------------
 // Rôle de la classe <TrajetSimple>
-//
-//
+// Cette classe déclare un trajet défini par sa ville de départ, sa ville 
+// sa ville d'arrivée et le moyen de transport utilisé.
 //------------------------------------------------------------------------
 
 class TrajetSimple : public Trajet
@@ -30,40 +30,26 @@ class TrajetSimple : public Trajet
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
+    void Afficher() const;
     // Mode d'emploi :
-    //
-    // Contrat :
-    //
+    // Cette fonction affiche les caractéristiques du trajet.
 
-
-//------------------------------------------------- Surcharge d'opérateurs
-
+    const char* GetTransport() const;
+    // Mode d'emploi :
+    // Cette fonction retourne le moyen de transport utilisé.
 
 //-------------------------------------------- Constructeurs - destructeur
     TrajetSimple ( const TrajetSimple & unTrajetSimple );
     // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
 
     TrajetSimple ( );
-    
+    // Mode d'emploi (constructeur 1) :
+
     TrajetSimple (char* depart, char* arrive, char* transport);
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+    // Mode d'emploi (constructeur 2) :
 
     virtual ~TrajetSimple ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-    void Afficher() const;
-
-    const char* GetTransport() const;
+    // Mode d'emploi (destructeur) :
 
 //------------------------------------------------------------------ PRIVE
 

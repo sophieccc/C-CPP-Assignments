@@ -22,15 +22,16 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type TrajetComplexe::Méthode ( liste des paramètres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Méthode
-
-
-//------------------------------------------------- Surcharge d'opérateurs
-
+void TrajetComplexe::Afficher() const {
+    cout << "Departing City:" << depart << "\n";
+    cout << "Arrival City:" << arrive << "\n";
+    cout << "Type of Trajet :" << "Complexe" << "\n";
+    cout << "List of Simple Trajets Inside :" << "\n";
+    for(int i=0; i < nombreDeTrajets; i++) {
+        elements[i]->Afficher();
+    }
+    cout << "\n";
+}
 
 //-------------------------------------------- Constructeurs - destructeur
 TrajetComplexe::TrajetComplexe ( const TrajetComplexe & unTrajetComplexe )
@@ -76,23 +77,6 @@ TrajetComplexe::~TrajetComplexe ( )
 #endif
     delete[] elements;
 } //----- Fin de ~TrajetComplexe
-
-void TrajetComplexe::Afficher() const {
-    cout << "Departing City:" << depart << "\n";
-    cout << "Arrival City:" << arrive << "\n";
-    cout << "Type of Trajet :" << "Complexe" << "\n";
-    cout << "List of Simple Trajets Inside :";
-    for(int i=0; i < nombreDeTrajets; i++) {
-        elements[i]->Afficher();
-        if(i!=nombreDeTrajets-1) {
-            cout << ", ";
-        }
-        else {
-            cout << "\n";
-        }
-    }
-    cout << "\n";
-}
 
 
 //------------------------------------------------------------------ PRIVE

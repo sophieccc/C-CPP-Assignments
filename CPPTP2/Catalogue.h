@@ -20,7 +20,9 @@
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Catalogue>
-//
+// Cette classe a pour rôle de contenir  un ensemble de trajets tout en
+// offrant la possibilité d'en rajouter d'autres, de chercher un trajet
+// souhaité et d'afficher le contenu à tout moment
 //
 //------------------------------------------------------------------------
 
@@ -30,44 +32,29 @@ class Catalogue
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-
-//------------------------------------------------- Surcharge d'opérateurs
-
+    void Ajouter(Trajet* newTrajet);
+    // Mode d'emploi : Cette méthode permet d'ajouter un trajet au 
+    // catalogue
+    void Afficher() const;
+    // Mode d'emploi : Permet d'afficher, à tout moment, le contenu du
+    // catalogue courant
+    void Rechercher(char* depart, char* arrive) const; 
+    // Mode d'emploi : Cette méthode permet de chercher un trajet dont 
+    // les villes de départ et d'arrivée sont rentrées en paramètres
+    // et d'ensuite l'afficher sur la sortie standard de la console.
 
 //-------------------------------------------- Constructeurs - destructeur
     Catalogue ( const Catalogue & unCatalogue );
     // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
 
     Catalogue();
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+    // Mode d'emploi : (constructeur par défaut)
 
     virtual ~Catalogue ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
+    // Mode d'emploi : (destructeur de Catalogue)
 
     Catalogue(Trajet** content, int nombre);
-
-    void Ajouter(Trajet* newTrajet);
-
-    void Afficher() const;
-
-    void Rechercher(char* depart, char* arrive) const; 
-    
+    // Mode d'emploi : (cestructeur de Catalogue)
 
 //------------------------------------------------------------------ PRIVE
 

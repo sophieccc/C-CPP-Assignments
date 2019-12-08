@@ -2,7 +2,7 @@
                            Trajet  -  description
                              -------------------
     début                : $20/11/2019$
-    copyright            : (C) $2019$ par $Sophie Crowley$
+    copyright            : (C) $2019$ par $Sophie Crowley, Zakaria Nassreddine, Zihao Hua$
     e-mail               : $sophie.crowley@insa-lyon.fr$
 *************************************************************************/
 
@@ -22,20 +22,15 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type Trajet::Méthode ( liste des paramètres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Méthode
+char* Trajet::GetDepart() const {
+    return depart;
+}
 
-
-//------------------------------------------------- Surcharge d'opérateurs
-
-
+char* Trajet::GetArrive() const {
+    return arrive;
+}
 //-------------------------------------------- Constructeurs - destructeur
 Trajet::Trajet ( const Trajet & unTrajet )
-// Algorithme :
-//
 {
 #ifdef MAP
    cout << "Appel au constructeur de copie de <Trajet>" << endl;
@@ -53,8 +48,6 @@ Trajet::Trajet ( )
 } //----- Fin de Trajet
 
 Trajet::Trajet (char* departInput, char* arriveInput)
-// Algorithme :
-//
 {
 #ifdef MAP
     cout << "Appel au constructeur 2 de <Trajet>" << endl;
@@ -66,8 +59,6 @@ Trajet::Trajet (char* departInput, char* arriveInput)
 } //----- Fin de Trajet
 
 Trajet::~Trajet ( )
-// Algorithme :
-//
 {
 #ifdef MAP
    cout << "Appel au destructeur de <Trajet>" << endl;
@@ -75,14 +66,6 @@ Trajet::~Trajet ( )
     delete[] depart;
     delete[] arrive;
 } //----- Fin de ~Trajet
-
-    char* Trajet::GetDepart() const {
-        return depart;
-    }
-
-    char* Trajet::GetArrive() const {
-        return arrive;
-    }
 
 
 

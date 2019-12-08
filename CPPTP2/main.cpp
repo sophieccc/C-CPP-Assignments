@@ -40,14 +40,30 @@ int main() {
                         cat.Ajouter(curr);
                     }
                     else if(complexity=='c') {
-
+                        int nombre;
+                        printf("Enter the no. of Trajets in this Complex Trajet:\n");
+                        cin >> nombre;
+                        char depart[30];
+                        char arrive[30];
+                        char transport[20];
+                        TrajetSimple** components = new TrajetSimple*[nombre];
+                        for(int i=0; i < nombre; i++) {
+                            printf("Receiving info for trajet %d:\n", i);
+                            printf("Enter city of departure:\n");
+                            cin >> depart;
+                            printf("Enter city of arrival:\n");
+                            cin >> arrive;
+                            printf("Enter mode of transport:\n");
+                            cin >> transport;
+                            TrajetSimple* curr = new TrajetSimple(depart, arrive, transport);
+                            components[i] = curr;
+                        }
+                        TrajetComplexe* complexCurr = new TrajetComplexe(components, nombre);
+                        cat.Ajouter(complexCurr);
                     }
                     else {
                         printf("Invalid complexity type\n");
                     }
-                    // ask if simple or complex, then get data and put into trajet
-                    // check that complex ones are valid, aka depart/arrive stuff
-                    // Ajouter
                     break;
                 }
                 case 2: {

@@ -21,8 +21,9 @@
 
 //------------------------------------------------------------------------
 // Rôle de la classe <TrajetComplexe>
-//
-//
+// Cette classe déclare un trajet composé de plusieurs trajets simples
+// allant chacun d'une ville de départ à une ville d'arrivée avec un moyen
+// de transport défini.
 //------------------------------------------------------------------------
 
 class TrajetComplexe : public Trajet
@@ -31,38 +32,21 @@ class TrajetComplexe : public Trajet
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-
-//------------------------------------------------- Surcharge d'opérateurs
-
-
+    void Afficher() const;
+    // Cette méthode affiche les caractéristique du trajet
+    
 //-------------------------------------------- Constructeurs - destructeur
     TrajetComplexe ( const TrajetComplexe & unTrajetComplexe );
     // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
 
     TrajetComplexe ( );
+    // Mode d'emploi (constructeur 1) :
 
     TrajetComplexe (TrajetSimple** elements, int nombre);
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+    // Mode d'emploi (constructeur 2) :
 
     virtual ~TrajetComplexe ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-    void Afficher() const;
+    // Mode d'emploi (destructeur) :
 
 //------------------------------------------------------------------ PRIVE
 

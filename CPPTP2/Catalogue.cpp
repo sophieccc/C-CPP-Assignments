@@ -20,19 +20,45 @@ using namespace std;
 #include "TrajetComplexe.h"
 
 //------------------------------------------------------------- Constantes
-    const int DEFAULT_SPACE = 5;
+ const int DEFAULT_SPACE = 5;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type Catalogue::Méthode ( liste des paramètres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Méthode
+// Cette méthode ajoute un trajet au catalogue.
+void Catalogue::Ajouter(Trajet* newTrajet) {
+    if(nombreDeTrajets==space) {
+        Trajet** temp = trajets;
+        space = nombreDeTrajets+DEFAULT_SPACE;
+        trajets = new Trajet*[space];
+        for(int i=0; i < nombreDeTrajets;i++) {
+            trajets[i] = temp[i];
+        }
+    }
+    trajets[nombreDeTrajets] = newTrajet;
+    nombreDeTrajets++;
+} //----- Fin de Méthode
 
+// Cette méthode permet d'afficher, à tout moment, le contenu du catalogue
+// courant
+void Catalogue::Afficher() const {
+    for(int i=0; i < nombreDeTrajets;i++) {
+        Trajet* curr = trajets[i];
+        curr->Afficher();
+    }
+} //----- Fin de Méthode
 
-//------------------------------------------------- Surcharge d'opérateurs
-
+// Cette méthode permet de rechercher un trajet dans le catalogue.
+void Catalogue::Rechercher(char* depart, char* arrive) const {
+    int count = 1;
+    for(int i=0; i < nombreDeTrajets;i++) {
+        if(strcmp(trajets[i]->GetDepart(),depart)==0 
+        && strcmp(trajets[i]->GetArrive(),arrive)==0) {
+            cout << "Found Trajet " << count << "--\n";
+            trajets[i]->Afficher();
+            count++;
+        }
+    }
+} //----- Fin de Méthode
 
 //-------------------------------------------- Constructeurs - destructeur
 
@@ -56,7 +82,7 @@ Catalogue::Catalogue()
     nombreDeTrajets = 0;
     space = DEFAULT_SPACE;
     trajets = new Trajet*[space];
-} //----- Fin de Catalogue
+} //----- Fin de Catalogue (Constructeur 1)
 
 Catalogue::Catalogue(Trajet** content, int nombre) {
     nombreDeTrajets = nombre;
@@ -64,40 +90,7 @@ Catalogue::Catalogue(Trajet** content, int nombre) {
     for(int i=0; i < nombreDeTrajets; i++) {
         trajets[i] = content[i];
     }
-}
-
-void Catalogue::Ajouter(Trajet* newTrajet) {
-    if(nombreDeTrajets==space) {
-        Trajet** temp = trajets;
-        space = nombreDeTrajets+DEFAULT_SPACE;
-        trajets = new Trajet*[space];
-        for(int i=0; i < nombreDeTrajets;i++) {
-            trajets[i] = temp[i];
-        }
-    }
-    trajets[nombreDeTrajets] = newTrajet;
-    nombreDeTrajets++;
-}
-
-void Catalogue::Afficher() const {
-    for(int i=0; i < nombreDeTrajets;i++) {
-        Trajet* curr = trajets[i];
-        curr->Afficher();
-    }
-}
-
-void Catalogue::Rechercher(char* depart, char* arrive) const {
-    int count = 1;
-    for(int i=0; i < nombreDeTrajets;i++) {
-        if(strcmp(trajets[i]->GetDepart(),depart)==0 
-        && strcmp(trajets[i]->GetArrive(),arrive)==0) {
-            cout << "Found Trajet " << count << "--\n";
-            trajets[i]->Afficher();
-            count++;
-        }
-    }
-}
-
+} //----- Fin de Catalogue (Constructeur 2)
 
 Catalogue::~Catalogue ( )
 // Algorithme :

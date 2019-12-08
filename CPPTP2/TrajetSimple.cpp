@@ -22,19 +22,21 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type TrajetSimple::Méthode ( liste des paramètres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Méthode
 
+void TrajetSimple::Afficher() const {
+    cout << "Departing City:" << depart << "\n";
+    cout << "Arrival City:" << arrive << "\n";
+    cout << "Type of Trajet :" << "Simple" << "\n";
+    cout << "Transportation :" << transport << "\n";
+    cout << "\n";
+}
 
-//------------------------------------------------- Surcharge d'opérateurs
+const char* TrajetSimple::GetTransport() const {
+    return transport;
+}
 
 //-------------------------------------------- Constructeurs - destructeur
 TrajetSimple::TrajetSimple ( const TrajetSimple & unTrajetSimple )
-// Algorithme :
-//
 {
 #ifdef MAP
    cout << "Appel au constructeur de copie de <TrajetSimple>" << endl;
@@ -43,8 +45,6 @@ TrajetSimple::TrajetSimple ( const TrajetSimple & unTrajetSimple )
 
 
 TrajetSimple::TrajetSimple ( )
-// Algorithme :
-//
 {
 #ifdef MAP
     cout << "Appel au constructeur de <TrajetSimple>" << endl;
@@ -53,8 +53,6 @@ TrajetSimple::TrajetSimple ( )
 
 TrajetSimple::TrajetSimple (char* departInput, char* arriveInput, char* transportInput) 
 : Trajet(departInput, arriveInput)
-// Algorithme :
-//
 {
 #ifdef MAP
     cout << "Appel au constructeur 2 de <TrajetSimple>" << endl;
@@ -72,18 +70,6 @@ TrajetSimple::~TrajetSimple ( )
 #endif
     delete[] transport;
 } //----- Fin de ~TrajetSimple
-
-void TrajetSimple::Afficher() const {
-    cout << "Departing City:" << depart << "\n";
-    cout << "Arrival City:" << arrive << "\n";
-    cout << "Type of Trajet :" << "Simple" << "\n";
-    cout << "Transportation :" << transport << "\n";
-    cout << "\n";
-}
-
-const char* TrajetSimple::GetTransport() const {
-    return transport;
-}
 
 
 //------------------------------------------------------------------ PRIVE

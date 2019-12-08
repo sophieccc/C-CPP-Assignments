@@ -18,8 +18,7 @@
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Trajet>
-//
-//
+// Cette classe déclare un trajet de base (la classe mère).
 //------------------------------------------------------------------------
 
 class Trajet 
@@ -28,42 +27,30 @@ class Trajet
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
+
+    char* GetDepart() const;
     // Mode d'emploi :
-    //
-    // Contrat :
-    //
+    // Cette méthode renvoie la ville de départ du trajet.
 
+    char* GetArrive() const;
+    // Mode d'emploi :
+    // Cette méthode renvoie la ville d'arrivée du trajet.
 
-//------------------------------------------------- Surcharge d'opérateurs
-
+    virtual void Afficher() const {} ;
+    // Mode d'emploi :
+    // Cette méthode affiche les caractéristiques du trajet.
 
 //-------------------------------------------- Constructeurs - destructeur
     Trajet ( const Trajet & unTrajet );
     // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
 
     Trajet ( );
-    
+     // Mode d'emploi (constructeur 1) :   
     Trajet (char* depart, char* arrive);
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+    // Mode d'emploi : (constructeur 2)
 
     virtual ~Trajet ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-    char* GetDepart() const;
-
-    char* GetArrive() const;
-
-    virtual void Afficher() const {} ;
+    // Mode d'emploi : (destructeur)
 
 //------------------------------------------------------------------ PRIVE
 

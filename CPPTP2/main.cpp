@@ -30,9 +30,9 @@ int main() {
                         char depart[30];
                         char arrive[30];
                         char transport[20];
-                        printf("Enter city of departure:\n");
+                        printf("Enter city of departure (replace spaces with '_'):\n");
                         cin >> depart;
-                        printf("Enter city of arrival:\n");
+                        printf("Enter city of arrival (replace spaces with '_'):\n");
                         cin >> arrive;
                         printf("Enter mode of transport:\n");
                         cin >> transport;
@@ -49,9 +49,9 @@ int main() {
                         TrajetSimple** components = new TrajetSimple*[nombre];
                         for(int i=0; i < nombre; i++) {
                             printf("Receiving info for trajet %d:\n", i);
-                            printf("Enter city of departure:\n");
+                            printf("Enter city of departure (replace spaces with '_'):\n");
                             cin >> depart;
-                            printf("Enter city of arrival:\n");
+                            printf("Enter city of arrival (replace spaces with '_'):\n");
                             cin >> arrive;
                             printf("Enter mode of transport:\n");
                             cin >> transport;
@@ -73,9 +73,9 @@ int main() {
                 case 3: {
                     char depart[30];
                     char arrive[30];
-                    printf("Enter city of departure:\n");
+                    printf("Enter city of departure (replace spaces with '_'):\n");
                     cin >> depart;
-                    printf("Enter city of arrival\n");
+                    printf("Enter city of arrival (replace spaces with '_')\n");
                     cin >> arrive;
                     cat.Rechercher(depart, arrive);
                     break;

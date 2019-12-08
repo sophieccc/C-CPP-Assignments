@@ -20,7 +20,8 @@ using namespace std;
 #include "TrajetComplexe.h"
 
 //------------------------------------------------------------- Constantes
- const int DEFAULT_SPACE = 5;
+const int DEFAULT_SPACE = 5;
+
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
@@ -38,8 +39,8 @@ void Catalogue::Ajouter(Trajet* newTrajet) {
     nombreDeTrajets++;
 } //----- Fin de Méthode
 
-// Cette méthode permet d'afficher, à tout moment, le contenu du catalogue
-// courant
+/* Cette méthode permet d'afficher, à tout moment, le contenu du 
+catalogue courant */
 void Catalogue::Afficher() const {
     for(int i=0; i < nombreDeTrajets;i++) {
         Trajet* curr = trajets[i];
@@ -63,8 +64,6 @@ void Catalogue::Rechercher(char* depart, char* arrive) const {
 //-------------------------------------------- Constructeurs - destructeur
 
 Catalogue::Catalogue ( const Catalogue & unCatalogue )
-// Algorithme :
-//
 {
 #ifdef MAP
    cout << "Appel au constructeur de copie de <Catalogue>" << endl;
@@ -73,8 +72,6 @@ Catalogue::Catalogue ( const Catalogue & unCatalogue )
 
 
 Catalogue::Catalogue()
-// Algorithme :
-//
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Catalogue>" << endl;
@@ -93,8 +90,6 @@ Catalogue::Catalogue(Trajet** content, int nombre) {
 } //----- Fin de Catalogue (Constructeur 2)
 
 Catalogue::~Catalogue ( )
-// Algorithme :
-//
 {
 #ifdef MAP
     cout << "Appel au destructeur de <Catalogue>" << endl;

@@ -20,7 +20,7 @@ using namespace std;
 #include "TrajetComplexe.h"
 
 //------------------------------------------------------------- Constantes
-
+    const int DEFAULT_SPACE = 5;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
@@ -53,6 +53,8 @@ Catalogue::Catalogue ( )
 #ifdef MAP
     cout << "Appel au constructeur de <Catalogue>" << endl;
     nombreDeTrajets = 0;
+    space = DEFAULT_SPACE;
+    trajets = new Trajet*[space];
 #endif
 } //----- Fin de Catalogue
 
@@ -60,15 +62,18 @@ Catalogue::Catalogue(Trajet** content, int nombre) {
     nombreDeTrajets = nombre;
     trajets= new Trajet*[nombreDeTrajets];
     for(int i=0; i < nombreDeTrajets; i++) {
-        trajets[i] = (TrajetSimple*) content[i];
+        trajets[i] = content[i];
     }
 }
 
 void Catalogue::Ajouter(Trajet* newTrajet) {
-    Trajet** temp = trajets;
-    trajets = new Trajet*[nombreDeTrajets+1];
-    for(int i=0; i < nombreDeTrajets;i++) {
-        trajets[i] = temp[i];
+    if(nombreDeTrajets==space) {
+        Trajet** temp = trajets;
+        space = nombreDeTrajets+DEFAULT_SPACE;
+        trajets = new Trajet*[space];
+        for(int i=0; i < nombreDeTrajets;i++) {
+            trajets[i] = temp[i];
+        }
     }
     trajets[nombreDeTrajets] = newTrajet;
     nombreDeTrajets++;
@@ -76,12 +81,6 @@ void Catalogue::Ajouter(Trajet* newTrajet) {
 
 void Catalogue::Afficher() const {
     for(int i=0; i < nombreDeTrajets;i++) {
-        int strLength = strlen(trajets[i]->GetDepart());
-        char* depart = new char[strLength];
-        strLength = strlen(trajets[i]->GetArrive());
-        char* arrive = new char[strLength];
-        strcpy(depart,trajets[i]->GetDepart());
-        strcpy(arrive,trajets[i]->GetArrive());
         Trajet *curr = trajets[i];
         curr->Afficher();
     }

@@ -77,6 +77,7 @@ protected:
 //----------------------------------------------------- Attributs protégés
     Trajet **trajets;
     int nombreDeTrajets;
+    int space;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Catalogue>

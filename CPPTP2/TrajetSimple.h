@@ -71,7 +71,7 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-    const char *TRANSPORT;
+    char *transport;
 };
 
 //-------------------------------- Autres définitions dépendantes de <TrajetSimple>

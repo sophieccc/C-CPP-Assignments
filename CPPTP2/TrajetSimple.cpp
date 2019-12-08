@@ -59,7 +59,8 @@ TrajetSimple::TrajetSimple (char* departInput, char* arriveInput, char* transpor
 #ifdef MAP
     cout << "Appel au constructeur 2 de <TrajetSimple>" << endl;
 #endif
-    TRANSPORT = transportInput;
+    transport = new char[strlen(arriveInput)];
+    strcpy(transport, transportInput);
 } //----- Fin de TrajetSimple
 
 TrajetSimple::~TrajetSimple ( )
@@ -69,22 +70,19 @@ TrajetSimple::~TrajetSimple ( )
 #ifdef MAP
     cout << "Appel au destructeur de <TrajetSimple>" << endl;
 #endif
-    delete[] TRANSPORT;
+    delete[] transport;
 } //----- Fin de ~TrajetSimple
 
 void TrajetSimple::Afficher() const {
     cout << "Departing City:" << depart << "\n";
     cout << "Arrival City:" << arrive << "\n";
     cout << "Type of Trajet :" << "Simple" << "\n";
-    int strLength = strlen(TRANSPORT);
-    char* transport = new char[strLength];
-    strcpy(transport,TRANSPORT);
     cout << "Transportation :" << transport << "\n";
     cout << "\n";
 }
 
 const char* TrajetSimple::GetTransport() const {
-    return TRANSPORT;
+    return transport;
 }
 
 

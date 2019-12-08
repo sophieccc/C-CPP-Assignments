@@ -15,7 +15,7 @@ using namespace std;
 #include "TrajetComplexe.h"
 
 int main() {
-    Catalogue cat;
+    Catalogue cat = Catalogue();
     bool exit = false;
     int choice;
     while(!exit) {
@@ -27,7 +27,17 @@ int main() {
                     printf("Enter 's' for simple or 'c' for complex trajet type:\n");
                     cin >> complexity;
                     if(complexity=='s') {
-
+                        char depart[30];
+                        char arrive[30];
+                        char transport[20];
+                        printf("Enter city of departure:\n");
+                        cin >> depart;
+                        printf("Enter city of arrival:\n");
+                        cin >> arrive;
+                        printf("Enter mode of transport:\n");
+                        cin >> transport;
+                        TrajetSimple curr = TrajetSimple(depart, arrive, transport);
+                        cat.Ajouter(&curr);
                     }
                     else if(complexity=='c') {
 

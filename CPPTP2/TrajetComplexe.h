@@ -70,7 +70,6 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-    //const char **TRANSPORT;
     TrajetSimple **elements;
     int nombreDeTrajets;
 };

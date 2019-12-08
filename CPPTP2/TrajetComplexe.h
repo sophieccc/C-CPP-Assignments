@@ -73,7 +73,6 @@ protected:
     //const char **TRANSPORT;
     TrajetSimple **elements;
     int nombreDeTrajets;
-    const char **TRANSPORT;
 };
 
 //-------------------------------- Autres définitions dépendantes de <TrajetComplexe>

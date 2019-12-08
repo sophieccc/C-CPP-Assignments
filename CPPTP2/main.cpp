@@ -48,7 +48,7 @@ int main() {
                         char transport[20];
                         TrajetSimple** components = new TrajetSimple*[nombre];
                         for(int i=0; i < nombre; i++) {
-                            printf("Receiving info for trajet %d:\n", i);
+                            printf("Receiving info for trajet %d:\n", i+1);
                             printf("Enter city of departure (replace spaces with '_'):\n");
                             cin >> depart;
                             printf("Enter city of arrival (replace spaces with '_'):\n");

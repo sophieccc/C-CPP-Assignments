@@ -60,6 +60,52 @@ void Catalogue::Rechercher(char* depart, char* arrive) const {
         }
     }
 } //----- Fin de Méthode
+bool Catalogue::Retirer(const int index) {
+    if (index < 0 || index >= nombreDeTrajets){
+        return false;
+    }
+    for (int i=index; i<nombreDeTrajets-1; i++){
+        trajets[i]=trajets[i+1];
+    }
+    nombreDeTrajets--;
+    return true;
+    
+}
+void Catalogue::RechercheAvance(const char* depart, const char* arrive) {
+    cout << endl;
+    Catalogue* used = new Catalogue();
+    int nbPropositions = composition(depart, arrive, used);
+    cout << "-- A total of: " << nbPropositions << " option(s) for6 you to choose from " << endl;
+}
+
+int Catalogue::composition(const char* depart, const char* arrive, Catalogue* used){
+    int composable=0;
+    if (strcmp(depart, arrive)==0){
+        cout << "Here is the following composition(s) of trajets that you might want to consider:" << endl;    
+        used->Afficher();
+        return 1;
+    }
+
+    for (unsigned int i=0; i<nombreDeTrajets; i++){
+        Trajet* t=trajets[i];
+        if (strcmp(t->GetDepart(),depart)==0){
+            int valid=1;
+            for (unsigned int j=0; j<used->nombreDeTrajets; j++){
+                Trajet* tUsed=used->trajets[j];
+                if (strcmp(t->GetArrive(),tUsed->GetDepart())==0){
+                    valid=0;
+                }
+            }
+            if(valid){
+                used->Ajouter(t);
+                composable += composition(t->GetArrive(), arrive, used);
+                used->Retirer(used->nombreDeTrajets-1);
+            }
+        }
+    }
+    return composable;
+}
+
 
 //-------------------------------------------- Constructeurs - destructeur
 

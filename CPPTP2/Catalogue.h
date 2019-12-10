@@ -42,7 +42,12 @@ public:
     // Mode d'emploi : Cette méthode permet de chercher un trajet dont 
     // les villes de départ et d'arrivée sont rentrées en paramètres
     // et d'ensuite l'afficher sur la sortie standard de la console.
-
+    bool Retirer(const int index);
+    // Mode d'emploi: cette méthode retire un trajet du catalogue dont
+    // l'indice est rentré en paramètre. On en a eu besoin pour le
+    // parcours récursif de la recherche avancée.
+    void RechercheAvance (const char* depart, const char* arrive);
+    int composition(const char* depart, const char* arrive, Catalogue* used);
 //-------------------------------------------- Constructeurs - destructeur
     Catalogue ( const Catalogue & unCatalogue );
     // Mode d'emploi (constructeur de copie) :
@@ -60,7 +65,6 @@ public:
 
 protected:
 //----------------------------------------------------- Méthodes protégées
-
 //----------------------------------------------------- Attributs protégés
     int nombreDeTrajets;
     Trajet **trajets;

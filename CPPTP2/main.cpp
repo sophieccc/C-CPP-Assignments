@@ -47,12 +47,20 @@ int main() {
                         char arrive[30];
                         char transport[20];
                         TrajetSimple** components = new TrajetSimple*[nombre];
+                        char stopover[30];
                         for(int i=0; i < nombre; i++) {
                             printf("Receiving info for trajet %d:\n", i+1);
                             printf("Enter city of departure (replace spaces with '_'):\n");
                             cin >> depart;
+                            if (i>0){
+                                while(strcmp(depart,stopover)!=0){
+                                    printf("Incoherent stopover city. Please enter valid departure:\n");
+                                    cin >> depart;
+                                }
+                            } // checking that trajet i+1 starts where trajet i ended
                             printf("Enter city of arrival (replace spaces with '_'):\n");
                             cin >> arrive;
+                            strcpy(stopover,arrive);
                             printf("Enter mode of transport:\n");
                             cin >> transport;
                             TrajetSimple* curr = new TrajetSimple(depart, arrive, transport);

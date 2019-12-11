@@ -77,6 +77,7 @@ void Catalogue::RechercheAvance(const char* depart, const char* arrive) {
     Catalogue* used = new Catalogue();
     int nbPropositions = composition(depart, arrive, used);
     cout << "-- A total of: " << nbPropositions << " option(s) for you to choose from " << endl;
+    delete used;
 }
 
 int Catalogue::composition(const char* depart, const char* arrive, Catalogue* used){

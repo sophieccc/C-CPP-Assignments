@@ -87,11 +87,11 @@ int Catalogue::composition(const char* depart, const char* arrive, Catalogue* us
         return 1;
     }
 
-    for (unsigned int i=0; i<nombreDeTrajets; i++){
+    for (int i=0; i<nombreDeTrajets; i++){
         Trajet* t=trajets[i];
         if (strcmp(t->GetDepart(),depart)==0){
             int valid=1;
-            for (unsigned int j=0; j<used->nombreDeTrajets; j++){
+            for (int j=0; j<used->nombreDeTrajets; j++){
                 Trajet* tUsed=used->trajets[j];
                 if (strcmp(t->GetArrive(),tUsed->GetDepart())==0){
                     valid=0;

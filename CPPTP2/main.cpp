@@ -39,7 +39,7 @@ int main() {
                         cin >> transport;
                         TrajetSimple* curr = new TrajetSimple(depart, arrive, transport);
                         cat->Ajouter(curr);
-                        delete curr;
+                        //delete curr;
                     }
                     else if(complexity=='c') {
                         int nombre;
@@ -70,7 +70,7 @@ int main() {
                         }
                         TrajetComplexe* complexCurr = new TrajetComplexe(components, nombre);
                         cat->Ajouter(complexCurr);
-                        delete[] components;
+                        //delete[] components;
                     }
                     else {
                         printf("Invalid complexity type\n");

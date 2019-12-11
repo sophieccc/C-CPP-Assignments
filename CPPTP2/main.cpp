@@ -16,7 +16,7 @@ using namespace std;
 #include "TrajetComplexe.h"
 
 int main() {
-    Catalogue cat;
+    Catalogue *cat=new Catalogue;
     bool exit = false;
     int choice;
     while(!exit) {
@@ -38,7 +38,7 @@ int main() {
                         printf("Enter mode of transport:\n");
                         cin >> transport;
                         TrajetSimple* curr = new TrajetSimple(depart, arrive, transport);
-                        cat.Ajouter(curr);
+                        cat->Ajouter(curr);
                     }
                     else if(complexity=='c') {
                         int nombre;
@@ -68,7 +68,7 @@ int main() {
                             components[i] = curr;
                         }
                         TrajetComplexe* complexCurr = new TrajetComplexe(components, nombre);
-                        cat.Ajouter(complexCurr);
+                        cat->Ajouter(complexCurr);
                     }
                     else {
                         printf("Invalid complexity type\n");
@@ -76,7 +76,7 @@ int main() {
                     break;
                 }
                 case 2: {
-                    cat.Afficher();
+                    cat->Afficher();
                     break;
                 }
                 case 3: {
@@ -86,7 +86,7 @@ int main() {
                     cin >> depart;
                     printf("Enter city of arrival (replace spaces with '_')\n");
                     cin >> arrive;
-                    cat.Rechercher(depart, arrive);
+                    cat->Rechercher(depart, arrive);
                     break;
                 }
                 case 4: {
@@ -96,14 +96,14 @@ int main() {
                     cin >> depart;
                     printf("Enter city of arrival (replace spaces with '_')\n");
                     cin >> arrive;
-                    cat.RechercheAvance(depart, arrive);
+                    cat->RechercheAvance(depart, arrive);
                     break;
                 }
                 case 5: {
                     int num;
                     printf("Enter index of trajet you want to delete:\n");
                     cin >> num;
-                    cat.Retirer(num);
+                    cat->Retirer(num);
                     break;
                 }
                 case 6: {
@@ -122,5 +122,6 @@ int main() {
             cin.ignore(80,'\n');
         }
     }
+    delete cat;
     return 0;
 }

@@ -31,7 +31,7 @@ void Catalogue::Ajouter(Trajet* newTrajet) {
     if(nombreDeTrajets==space) {
         Trajet** temp = trajets;
         space = nombreDeTrajets+DEFAULT_SPACE;
-        trajets = new Trajet*[space];
+        trajets = new Trajet*[space]; //occasional memory leak?
         for(int i=0; i < nombreDeTrajets;i++) {
             trajets[i] = temp[i];
         }

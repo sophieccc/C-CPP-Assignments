@@ -76,6 +76,7 @@ int main() {
                         }
                         TrajetComplexe* complexCurr = new TrajetComplexe(components, nombre);
                         cat->Ajouter(complexCurr);
+			delete[] components;
                     }
                     else {
                         printf("Invalid complexity type\n");
@@ -87,7 +88,8 @@ int main() {
                     break;
                 }
                 case 3: {
-                    char depart[30];
+                    
+		    char depart[30];
                     char arrive[30];
                     printf("Enter city of departure (replace spaces with '_'):\n");
                     cin >> depart;
@@ -97,6 +99,7 @@ int main() {
                     break;
                 }
                 case 4: {
+		    
                     char depart [30];
                     char arrive [30];
                     printf("Enter city of departure (replace spaces with '_':\n");

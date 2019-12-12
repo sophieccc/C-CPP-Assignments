@@ -47,6 +47,8 @@ void Catalogue::Ajouter(Trajet* newTrajet) {
 /* Cette méthode permet d'afficher, à tout moment, le contenu du 
 catalogue courant */
 void Catalogue::Afficher() const {
+    if(nombreDeTrajets==0)
+    cout << "Pas de trajet enregistre" << endl;
     for(int i=0; i < nombreDeTrajets;i++) {
         Trajet* curr = trajets[i];
         curr->Afficher();
@@ -55,6 +57,8 @@ void Catalogue::Afficher() const {
 
 // Cette méthode permet de rechercher un trajet dans le catalogue.
 void Catalogue::Rechercher(char* depart, char* arrive) const {
+    if(nombreDeTrajets==0)
+	cout << "Pas de trajet enregistre" << endl;
     int count = 1;
     for(int i=0; i < nombreDeTrajets;i++) {
         if(strcmp(trajets[i]->GetDepart(),depart)==0 
@@ -67,7 +71,8 @@ void Catalogue::Rechercher(char* depart, char* arrive) const {
 } //----- Fin de Méthode
 bool Catalogue::Retirer(const int index) {
     if (index < 0 || index >= nombreDeTrajets){
-        return false;
+	cout << "Pas de trajet enregistre, retrait impossible" << endl;        
+	return false;
     }
     for (int i=index; i<nombreDeTrajets-1; i++){
         trajets[i]=trajets[i+1];

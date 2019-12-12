@@ -58,8 +58,16 @@ TrajetSimple::TrajetSimple (char* departInput, char* arriveInput, char* transpor
 #ifdef MAP
     cout << "Appel au constructeur 2 de <TrajetSimple>" << endl;
 #endif
-    transport = new char[strlen(arriveInput)];
+
+    arrive = new char[strlen(arriveInput)+1];
+    strcpy(arrive, arriveInput);
+    arrive[strlen(arriveInput)]='\0';
+    depart = new char[strlen(departInput)+1];
+    strcpy(depart, departInput);
+    depart[strlen(departInput)]='\0';
+    transport = new char[strlen(arriveInput)+1];
     strcpy(transport, transportInput);
+    transport[strlen(transportInput)]='\0';
 } //----- Fin de TrajetSimple
 
 TrajetSimple::~TrajetSimple ( )
@@ -70,6 +78,8 @@ TrajetSimple::~TrajetSimple ( )
     cout << "Appel au destructeur de <TrajetSimple>" << endl;
 #endif
     delete[] transport;
+    delete[] depart;
+    delete[] arrive; 
 } //----- Fin de ~TrajetSimple
 
 

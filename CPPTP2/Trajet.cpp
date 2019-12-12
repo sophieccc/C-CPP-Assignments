@@ -53,10 +53,7 @@ Trajet::Trajet (char* departInput, char* arriveInput)
 #ifdef MAP
     cout << "Appel au constructeur 2 de <Trajet>" << endl;
 #endif
-    arrive = new char[strlen(arriveInput)];
-    strcpy(arrive, arriveInput);
-    depart = new char[strlen(departInput)];
-    strcpy(depart, departInput);
+    
 } //----- Fin de Trajet
 
 Trajet::~Trajet ( )
@@ -64,8 +61,6 @@ Trajet::~Trajet ( )
 #ifdef MAP
    cout << "Appel au destructeur de <Trajet>" << endl;
 #endif
-    delete[] depart;
-    delete[] arrive;
 } //----- Fin de ~Trajet
 
 

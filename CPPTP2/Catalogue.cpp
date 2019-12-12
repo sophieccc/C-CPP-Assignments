@@ -27,7 +27,8 @@ const int DEFAULT_SPACE = 5;
 
 //----------------------------------------------------- Méthodes publiques
 // Cette méthode ajoute un trajet au catalogue.
-void Catalogue::Ajouter(Trajet* newTrajet) {
+/*void Catalogue::Ajouter(Trajet* newTrajet) {
+    cout << "Made it to ajouter" << endl;
     if(nombreDeTrajets==space) {
         Trajet** temp = trajets;
         space = nombreDeTrajets+DEFAULT_SPACE;
@@ -36,9 +37,29 @@ void Catalogue::Ajouter(Trajet* newTrajet) {
             trajets[i] = temp[i];
         }
     }
+    cout << "Made it to end of ajouter" << endl;
     trajets[nombreDeTrajets] = newTrajet;
     nombreDeTrajets++;
-} //----- Fin de Méthode
+}*/ //----- Fin de Méthode
+
+void Catalogue::Ajouter(Trajet* newTrajet) {
+    cout << "Made it to start of ajouter" << endl;
+    if(nombreDeTrajets==space){
+        space+=DEFAULT_SPACE;
+        Trajet** temp=new Trajet*[space];
+        for (int i=0; i<nombreDeTrajets ; i++){
+            temp[i]=trajets[i];
+        }
+        for (int i=0; i<nombreDeTrajets; i++){
+            delete trajets[i];
+        }
+        delete[] trajets;
+        trajets=temp;
+    }
+    trajets[nombreDeTrajets]=newTrajet;
+    nombreDeTrajets++;
+    cout << "Made it to end of ajouter" << endl;
+}
 
 /* Cette méthode permet d'afficher, à tout moment, le contenu du 
 catalogue courant */

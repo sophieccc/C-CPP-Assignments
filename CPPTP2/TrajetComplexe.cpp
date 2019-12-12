@@ -62,8 +62,14 @@ TrajetComplexe::TrajetComplexe (TrajetSimple **elementInput, int nombre)
     cout << "Appel au constructeur 2 de <TrajetComplexe>" << endl;
 #endif
     nombreDeTrajets = nombre;
+    
     elements= new TrajetSimple*[nombreDeTrajets];
-    elements = elementInput;
+    
+    for (int i=0; i<nombreDeTrajets; i++){
+        elements[i]=elementInput[i];
+    }
+    cout << "Made it to compose" << endl;
+    //elements = elementInput;
     depart = elements[0]->GetDepart();
     arrive = elements[nombreDeTrajets-1]->GetArrive();
 } //----- Fin de TrajetComplexe
@@ -76,6 +82,12 @@ TrajetComplexe::~TrajetComplexe ( )
 #ifdef MAP
     cout << "Appel au destructeur de <TrajetComplexe>" << endl;
 #endif
+    //int i=0;
+    /*while(elements[i]!=NULL)
+    {
+        delete elements[i];
+        ++i;
+    }*/
     /*for(int i=0; i < nombreDeTrajets;i++) {
         delete elements[i];
     }*/

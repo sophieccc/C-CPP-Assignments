@@ -20,7 +20,13 @@ int main() {
     bool exit = false;
     int choice;
     while(!exit) {
-        printf("Enter 1 to add to Catalogue, 2 to display catalogue, 3 to search in catalogue, 4 to make an advanced search, 5 to delete a trajet, or 6 to exit\n");
+        cout << "       Welcome to Trip Scanner" << endl << "What would you like to do?" << endl;
+        cout << "================= MENU =================" << endl;
+        cout << "1: Enter 1 to add an itinerary." << endl;
+        cout << "2: Enter 2 to display current catalogue. " << endl;
+        cout << "3: Enter 3 to look for an itinerary." << endl;
+        cout << "4: Enter 4 to make an advanced search." << endl;
+        cout << "5: Enter 5 to exit." << endl; 
         if(cin >> choice) {
             switch(choice) {
                 case 1: {
@@ -102,13 +108,6 @@ int main() {
                     break;
                 }
                 case 5: {
-                    int num;
-                    printf("Enter index of trajet you want to delete:\n");
-                    cin >> num;
-                    cat->Retirer(num);
-                    break;
-                }
-                case 6: {
                     exit = true;
                     break;
                 }

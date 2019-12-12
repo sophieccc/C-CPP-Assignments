@@ -12,7 +12,7 @@
 
 //-------------------------------------------------------- Include système
 #include <iostream>
-#include <cstring>
+#include <cstring> //for more cross-platform compatibility
 using namespace std;
 
 //------------------------------------------------------ Include personnel
@@ -104,7 +104,7 @@ void Catalogue::RechercheAvance(const char* depart, const char* arrive) {
 int Catalogue::composition(const char* depart, const char* arrive, Catalogue* used){
     int composable=0;
     if (strcmp(depart, arrive)==0){
-        cout << "Here is the following composition(s) of trajets that you might want to consider:" << endl;    
+        cout << "Composition(s) of trajets that you might want to consider:" << endl;    
         used->Afficher();
         return 1;
     }

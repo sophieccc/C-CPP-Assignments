@@ -151,6 +151,7 @@ Catalogue::Catalogue()
 } //----- Fin de Catalogue (Constructeur 1)
 
 Catalogue::Catalogue(Trajet** content, int nombre) {
+    space = nombre;
     nombreDeTrajets = nombre;
     trajets= new Trajet*[nombreDeTrajets];
     for(int i=0; i < nombreDeTrajets; i++) {

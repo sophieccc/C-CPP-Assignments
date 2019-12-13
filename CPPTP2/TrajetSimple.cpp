@@ -35,10 +35,6 @@ void TrajetSimple::Afficher() const {
     cout << "\n";
 }
 
-const char* TrajetSimple::GetTransport() const {
-    return transport;
-}
-
 //-------------------------------------------- Constructeurs - destructeur
 TrajetSimple::TrajetSimple ( const TrajetSimple & unTrajetSimple )
 {
@@ -62,12 +58,7 @@ TrajetSimple::TrajetSimple (char* departInput, char* arriveInput, char* transpor
     cout << "Appel au constructeur 2 de <TrajetSimple>" << endl;
 #endif
 
-    arrive = new char[strlen(arriveInput)+1];
-    strcpy(arrive, arriveInput);
-    arrive[strlen(arriveInput)]='\0';
-    depart = new char[strlen(departInput)+1];
-    strcpy(depart, departInput);
-    depart[strlen(departInput)]='\0';
+    
     transport = new char[strlen(arriveInput)+1];
     strcpy(transport, transportInput);
     transport[strlen(transportInput)]='\0';

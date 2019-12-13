@@ -6,7 +6,7 @@
                                             Zihao Hua$
     e-mail               : $sophie.crowley@insa-lyon.fr$
                            $zakaria.nassreddine@insa-lyon.fr$
-                           $zihao.hua@insa-lyon.fr
+                           $zihao.hua@insa-lyon.fr$
 *******************************************************************************/
 
 

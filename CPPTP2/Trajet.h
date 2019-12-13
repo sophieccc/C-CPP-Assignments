@@ -6,8 +6,9 @@
                                             Zihao Hua$
     e-mail               : $sophie.crowley@insa-lyon.fr$
                            $zakaria.nassreddine@insa-lyon.fr$
-                           $zihao.hua@insa-lyon.fr
+                           $zihao.hua@insa-lyon.fr$
 *******************************************************************************/
+
 
 //---------- Interface de la classe <Trajet> (fichier Trajet.h) ----------------
 #if ! defined ( TRAJET_H )

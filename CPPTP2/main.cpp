@@ -1,10 +1,13 @@
-/*************************************************************************
+/******************************************************************************
                            main  -  description
                              -------------------
     début                : $20/11/2019$
-    copyright            : (C) $2019$ par $Sophie Crowley, Zakaria Nassreddine, Zihao Hua$
+    copyright            : (C) $2019$ par $Sophie Crowley, Zakaria Nassreddine, 
+                                            Zihao Hua$
     e-mail               : $sophie.crowley@insa-lyon.fr$
-*************************************************************************/
+                           $zakaria.nassreddine@insa-lyon.fr$
+                           $zihao.hua@insa-lyon.fr
+*******************************************************************************/
 
 #include <iostream>
 #include <cstring>
@@ -76,7 +79,7 @@ int main() {
                         }
                         TrajetComplexe* complexCurr = new TrajetComplexe(components, nombre);
                         cat->Ajouter(complexCurr);
-			delete[] components;
+			            delete[] components;
                     }
                     else {
                         printf("Invalid complexity type\n");
@@ -87,9 +90,8 @@ int main() {
                     cat->Afficher();
                     break;
                 }
-                case 3: {
-                    
-		    char depart[30];
+                case 3: { 
+		            char depart[30];
                     char arrive[30];
                     printf("Enter city of departure (replace spaces with '_'):\n");
                     cin >> depart;
@@ -98,8 +100,7 @@ int main() {
                     cat->Rechercher(depart, arrive);
                     break;
                 }
-                case 4: {
-		    
+                case 4: {		    
                     char depart [30];
                     char arrive [30];
                     printf("Enter city of departure (replace spaces with '_':\n");
@@ -126,5 +127,7 @@ int main() {
         }
     }
     delete cat;
+    int debug;
+    cin >> debug;
     return 0;
 }

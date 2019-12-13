@@ -95,23 +95,24 @@ void Catalogue::RechercheAvance(const char* depart, const char* arrive) {
 
 int Catalogue::composition(const char* depart, const char* arrive, Catalogue* used){
     int composable=0;
-    if (strcmp(depart, arrive)==0){
+    if (strcmp(depart, arrive)==0){ // arrêt en arrivant à destination
         cout << "Composition(s) of trajets that you might want to consider:" << endl;    
-        used->Afficher();
+        used->Afficher(); // affiche la composition de trajets prises
         return 1;
     }
 
     for (int i=0; i<nombreDeTrajets; i++){
-        Trajet* t=trajets[i];
-        if (strcmp(t->GetDepart(),depart)==0){
+        Trajet* t=trajets[i]; // pris comme départ s’il part de l’arrivée du précédent
+        if (strcmp(t->GetDepart(),depart)==0){ //départ identique
             int valid=1;
+            // détection de cycles (il ne faut pas arriver dans un départ déjà pris
             for (int j=0; j<used->nombreDeTrajets; j++){
                 Trajet* tUsed=used->trajets[j];
                 if (strcmp(t->GetArrive(),tUsed->GetDepart())==0){
-                    valid=0;
+                    valid=0; // arrêt
                 }
             }
-            if(valid){
+            if(valid){  // si aucune condition d’arrêt détectée, parcours récursif
                 used->Ajouter(t);
                 composable += composition(t->GetArrive(), arrive, used);
                 used->Retirer(used->nombreDeTrajets-1);

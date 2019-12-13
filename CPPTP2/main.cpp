@@ -135,6 +135,6 @@ int main() {
     }
     delete cat;
     int debug;
-    cin >> debug;
+    cin >> debug; // pour suivre les fuites après sortie de l'application par la commande leaks sur MacOS
     return 0;
 }

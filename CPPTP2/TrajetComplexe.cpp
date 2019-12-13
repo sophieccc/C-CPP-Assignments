@@ -56,7 +56,7 @@ TrajetComplexe::TrajetComplexe ( )
 #endif
 } //----- Fin de TrajetComplexe
 
-TrajetComplexe::TrajetComplexe (TrajetSimple **elementInput, int nombre)
+TrajetComplexe::TrajetComplexe (TrajetSimple **elementInput, int nombre) 
 // Algorithme :
 //
 {

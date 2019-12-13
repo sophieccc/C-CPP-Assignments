@@ -32,10 +32,6 @@ void TrajetSimple::Afficher() const {
     cout << "\n";
 }
 
-const char* TrajetSimple::GetTransport() const {
-    return transport;
-}
-
 //-------------------------------------------- Constructeurs - destructeur
 TrajetSimple::TrajetSimple ( const TrajetSimple & unTrajetSimple )
 {

@@ -1,10 +1,13 @@
-/*************************************************************************
+/******************************************************************************
                            TrajetSimple  -  description
                              -------------------
     début                : $20/11/2019$
-    copyright            : (C) $2019$ par $Sophie Crowley, Zakaria Nassreddine, Zihao Hua$
+    copyright            : (C) $2019$ par $Sophie Crowley, Zakaria Nassreddine, 
+                                            Zihao Hua$
     e-mail               : $sophie.crowley@insa-lyon.fr$
-*************************************************************************/
+                           $zakaria.nassreddine@insa-lyon.fr$
+                           $zihao.hua@insa-lyon.fr$
+*******************************************************************************/
 
 //---------- Réalisation de la classe <TrajetSimple> (fichier TrajetSimple.cpp) ------------
 
@@ -55,12 +58,7 @@ TrajetSimple::TrajetSimple (char* departInput, char* arriveInput, char* transpor
     cout << "Appel au constructeur 2 de <TrajetSimple>" << endl;
 #endif
 
-    arrive = new char[strlen(arriveInput)+1];
-    strcpy(arrive, arriveInput);
-    arrive[strlen(arriveInput)]='\0';
-    depart = new char[strlen(departInput)+1];
-    strcpy(depart, departInput);
-    depart[strlen(departInput)]='\0';
+    
     transport = new char[strlen(arriveInput)+1];
     strcpy(transport, transportInput);
     transport[strlen(transportInput)]='\0';

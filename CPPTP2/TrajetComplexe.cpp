@@ -1,10 +1,13 @@
-/*************************************************************************
+/******************************************************************************
                            TrajetComplexe  -  description
                              -------------------
     début                : $20/11/2019$
-    copyright            : (C) $2019$ par $Sophie Crowley, Zakaria Nassreddine, Zihao Hua$
+    copyright            : (C) $2019$ par $Sophie Crowley, Zakaria Nassreddine, 
+                                            Zihao Hua$
     e-mail               : $sophie.crowley@insa-lyon.fr$
-*************************************************************************/
+                           $zakaria.nassreddine@insa-lyon.fr$
+                           $zihao.hua@insa-lyon.fr$
+*******************************************************************************/
 
 //---------- Réalisation de la classe <TrajetComplexe> (fichier TrajetComplexe.cpp) ------------
 
@@ -56,7 +59,7 @@ TrajetComplexe::TrajetComplexe ( )
 #endif
 } //----- Fin de TrajetComplexe
 
-TrajetComplexe::TrajetComplexe (TrajetSimple **elementInput, int nombre)
+TrajetComplexe::TrajetComplexe (TrajetSimple **elementInput, int nombre) 
 // Algorithme :
 //
 {

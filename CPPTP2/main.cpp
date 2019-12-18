@@ -1,10 +1,13 @@
-/*************************************************************************
+/******************************************************************************
                            main  -  description
                              -------------------
     début                : $20/11/2019$
-    copyright            : (C) $2019$ par $Sophie Crowley, Zakaria Nassreddine, Zihao Hua$
+    copyright            : (C) $2019$ par $Sophie Crowley, Zakaria Nassreddine, 
+                                            Zihao Hua$
     e-mail               : $sophie.crowley@insa-lyon.fr$
-*************************************************************************/
+                           $zakaria.nassreddine@insa-lyon.fr$
+                           $zihao.hua@insa-lyon.fr$
+*******************************************************************************/
 
 #include <iostream>
 #include <fstream>
@@ -150,5 +153,7 @@ int main() {
         }
     }
     delete cat;
+    int debug;
+    cin >> debug; // pour suivre les fuites après sortie de l'application par la commande leaks sur MacOS
     return 0;
 }

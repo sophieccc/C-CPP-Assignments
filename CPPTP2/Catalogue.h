@@ -14,6 +14,7 @@
 #define CATALOGUE_H
 
 #include "Trajet.h"
+#include <string>
 
 //--------------------------------------------------- Interfaces utilisées
 
@@ -51,7 +52,7 @@ public:
     // parcours récursif de la recherche avancée.
     void RechercheAvance (const char* depart, const char* arrive);
     int composition(const char* depart, const char* arrive, Catalogue* used);
-    void EnregistrementSimple();
+    void EnregistrementSimple(string filename);
 //-------------------------------------------- Constructeurs - destructeur
     Catalogue ( const Catalogue & unCatalogue );
     // Mode d'emploi (constructeur de copie) :

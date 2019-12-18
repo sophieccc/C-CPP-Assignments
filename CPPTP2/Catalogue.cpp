@@ -123,9 +123,30 @@ int Catalogue::composition(const char* depart, const char* arrive, Catalogue* us
     }
     return composable;
 }
-void EnregistrementSimple()
+void Catalogue::EnregistrementSimple(string filename)
 {
-
+    ofstream file(filename.c_str());
+    if(file.good())
+    {
+        //file << "Number of itineraries " << nombreDeTrajets << endl;
+        for(int i=0; i < nombreDeTrajets;i++) {
+            Trajet* curr = trajets[i];
+            if(trajets[i]->GetType()=='S'){
+                TrajetSimple* current = (TrajetSimple*) curr;
+                file << "TS | " << current->GetDepart() << " | " << current->GetArrive() << " | " << current->GetTransport() << ";" <<endl;
+            }
+            else if(trajets[i]->GetType()=='C'){
+                TrajetComplexe* current = (TrajetComplexe*) curr;
+                int number = current->GetNumber();
+                file << "TC | " << number<< current->GetDepart() << " | " << current->GetArrive() << ";" << endl;
+                TrajetSimple** elements=current->GetElements();
+                for (int j=0; j<number ; j++){
+                    file << "TS | " << elements[j]->GetDepart() << " | " << elements[j]->GetArrive() << " | " << elements[j]->GetTransport() << ";" <<endl;
+                }
+                file << "---------------------------------- End of elementary itineraries;" << endl;
+            }
+        }
+    }
 }
 
 //-------------------------------------------- Constructeurs - destructeur

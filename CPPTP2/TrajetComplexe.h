@@ -52,7 +52,10 @@ public:
 
     virtual ~TrajetComplexe ( );
     // Mode d'emploi (destructeur) :
+    
+    int GetNumber ();
 
+    TrajetSimple** GetElements();
 //------------------------------------------------------------------ PRIVE
 
 protected:

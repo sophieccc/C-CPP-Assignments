@@ -43,7 +43,9 @@ public:
     virtual void Afficher() const {} ;
     // Mode d'emploi :
     // Cette méthode affiche les caractéristiques du trajet.
-
+    virtual const char GetType() const {
+        return 'x';
+    };
 //-------------------------------------------- Constructeurs - destructeur
     Trajet ( const Trajet & unTrajet );
     // Mode d'emploi (constructeur de copie) :

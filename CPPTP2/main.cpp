@@ -132,8 +132,10 @@ int main() {
                 case 6: { // sauvegarder
                     cin.ignore();
                     cout << "Where are saving the data?" << endl;
-                    char fileName[50];
-                    cin.getline(fileName, 50);
+                    string fileName;
+                    getline(cin, fileName);
+                    fileName+=".txt";
+                    cat->EnregistrementSimple(fileName);
                     break;
                 }
                 case 7: {

@@ -38,10 +38,17 @@ void TrajetComplexe::Afficher() const {
     cout << "== End of List" << "\n";
     cout << "\n";
 }
+int TrajetComplexe::GetNumber ()
+{
+    return nombreDeTrajets;
+}
+
 const char TrajetComplexe::GetType() const {
     return 'C';
 }
-
+TrajetSimple** TrajetComplexe::GetElements(){
+    return elements;
+}
 //-------------------------------------------- Constructeurs - destructeur
 TrajetComplexe::TrajetComplexe ( const TrajetComplexe & unTrajetComplexe )
 // Algorithme :

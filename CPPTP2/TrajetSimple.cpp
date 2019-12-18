@@ -38,7 +38,9 @@ void TrajetSimple::Afficher() const {
 const char TrajetSimple::GetType() const {
     return 'S';
 }
-
+const char* TrajetSimple::GetTransport() const {
+    return transport;
+}
 //-------------------------------------------- Constructeurs - destructeur
 TrajetSimple::TrajetSimple ( const TrajetSimple & unTrajetSimple )
 {

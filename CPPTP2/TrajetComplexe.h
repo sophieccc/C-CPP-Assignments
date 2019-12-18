@@ -37,6 +37,8 @@ public:
 //----------------------------------------------------- Méthodes publiques
     void Afficher() const;
     // Cette méthode affiche les caractéristique du trajet
+
+    const char GetType() const;
     
 //-------------------------------------------- Constructeurs - destructeur
     TrajetComplexe ( const TrajetComplexe & unTrajetComplexe );

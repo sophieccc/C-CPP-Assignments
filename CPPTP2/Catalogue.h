@@ -51,6 +51,7 @@ public:
     // parcours récursif de la recherche avancée.
     void RechercheAvance (const char* depart, const char* arrive);
     int composition(const char* depart, const char* arrive, Catalogue* used);
+    void EnregistrementSimple();
 //-------------------------------------------- Constructeurs - destructeur
     Catalogue ( const Catalogue & unCatalogue );
     // Mode d'emploi (constructeur de copie) :

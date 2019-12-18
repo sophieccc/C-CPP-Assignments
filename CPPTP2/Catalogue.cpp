@@ -17,6 +17,8 @@
 //-------------------------------------------------------- Include système
 #include <iostream>
 #include <cstring> //for more cross-platform compatibility
+#include <fstream>
+#include <string>
 using namespace std;
 
 //------------------------------------------------------ Include personnel
@@ -121,7 +123,10 @@ int Catalogue::composition(const char* depart, const char* arrive, Catalogue* us
     }
     return composable;
 }
+void EnregistrementSimple()
+{
 
+}
 
 //-------------------------------------------- Constructeurs - destructeur
 

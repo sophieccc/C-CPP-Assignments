@@ -40,6 +40,8 @@ public:
     const char* GetTransport() const;
     // Mode d'emploi :
     // Cette fonction retourne le moyen de transport utilisé.
+    
+    const char GetType() const;
 
 //-------------------------------------------- Constructeurs - destructeur
     TrajetSimple ( const TrajetSimple & unTrajetSimple );

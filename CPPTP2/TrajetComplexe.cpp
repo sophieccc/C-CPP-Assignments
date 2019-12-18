@@ -38,6 +38,9 @@ void TrajetComplexe::Afficher() const {
     cout << "== End of List" << "\n";
     cout << "\n";
 }
+const char TrajetComplexe::GetType() const {
+    return 'C';
+}
 
 //-------------------------------------------- Constructeurs - destructeur
 TrajetComplexe::TrajetComplexe ( const TrajetComplexe & unTrajetComplexe )
@@ -87,7 +90,7 @@ TrajetComplexe::~TrajetComplexe ( )
 #endif
     for(int i=0;i<nombreDeTrajets;i++){
 		delete elements[i];
-}
+    }
     delete[] elements;
 } //----- Fin de ~TrajetComplexe
 

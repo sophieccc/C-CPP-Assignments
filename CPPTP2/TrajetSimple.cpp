@@ -35,6 +35,10 @@ void TrajetSimple::Afficher() const {
     cout << "\n";
 }
 
+const char TrajetSimple::GetType() const {
+    return 'S';
+}
+
 //-------------------------------------------- Constructeurs - destructeur
 TrajetSimple::TrajetSimple ( const TrajetSimple & unTrajetSimple )
 {

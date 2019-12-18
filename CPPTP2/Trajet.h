@@ -32,27 +32,25 @@ class Trajet
 public:
 //----------------------------------------------------- Méthodes publiques
 
-    char* GetDepart() const;
+    string GetDepart() const;
     // Mode d'emploi :
     // Cette méthode renvoie la ville de départ du trajet.
 
-    char* GetArrive() const;
+    string GetArrive() const;
     // Mode d'emploi :
     // Cette méthode renvoie la ville d'arrivée du trajet.
 
     virtual void Afficher() const {} ;
     // Mode d'emploi :
     // Cette méthode affiche les caractéristiques du trajet.
-    virtual const char GetType() const {
-        return 'x';
-    };
+    virtual const char GetType() const = 0;
 //-------------------------------------------- Constructeurs - destructeur
     Trajet ( const Trajet & unTrajet );
     // Mode d'emploi (constructeur de copie) :
 
     Trajet ( );
      // Mode d'emploi (constructeur 1) :   
-    Trajet (char* depart, char* arrive);
+    Trajet (string depart, string arrive);
     // Mode d'emploi : (constructeur 2)
 
     virtual ~Trajet ( );
@@ -64,8 +62,8 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-    char *depart;
-    char *arrive;
+    string depart;
+    string arrive;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Trajet>

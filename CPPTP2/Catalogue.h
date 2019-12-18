@@ -42,7 +42,7 @@ public:
     void Afficher() const;
     // Mode d'emploi : Permet d'afficher, à tout moment, le contenu du
     // catalogue courant
-    void Rechercher(char* depart, char* arrive) const; 
+    void Rechercher(string depart, string arrive) const; 
     // Mode d'emploi : Cette méthode permet de chercher un trajet dont 
     // les villes de départ et d'arrivée sont rentrées en paramètres
     // et d'ensuite l'afficher sur la sortie standard de la console.
@@ -50,9 +50,10 @@ public:
     // Mode d'emploi: cette méthode retire un trajet du catalogue dont
     // l'indice est rentré en paramètre. On en a eu besoin pour le
     // parcours récursif de la recherche avancée.
-    void RechercheAvance (const char* depart, const char* arrive);
-    int composition(const char* depart, const char* arrive, Catalogue* used);
+    void RechercheAvance (const string depart, const string arrive);
+    int composition(const string depart, const string arrive, Catalogue* used);
     void EnregistrementSimple(string filename);
+    void RestitutionSimple(string filename);
 //-------------------------------------------- Constructeurs - destructeur
     Catalogue ( const Catalogue & unCatalogue );
     // Mode d'emploi (constructeur de copie) :

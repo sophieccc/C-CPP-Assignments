@@ -26,11 +26,11 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-char* Trajet::GetDepart() const {
+string Trajet::GetDepart() const {
     return depart;
 }
 
-char* Trajet::GetArrive() const {
+string Trajet::GetArrive() const {
     return arrive;
 }
 //-------------------------------------------- Constructeurs - destructeur
@@ -51,17 +51,13 @@ Trajet::Trajet ( )
 #endif
 } //----- Fin de Trajet
 
-Trajet::Trajet (char* departInput, char* arriveInput)
+Trajet::Trajet (string departInput, string arriveInput)
 {
 #ifdef MAP
     cout << "Appel au constructeur 2 de <Trajet>" << endl;
 #endif
-    arrive = new char[strlen(arriveInput)+1];
-    strcpy(arrive, arriveInput);
-    arrive[strlen(arriveInput)]='\0';
-    depart = new char[strlen(departInput)+1];
-    strcpy(depart, departInput);
-    depart[strlen(departInput)]='\0';
+    arrive=arriveInput;
+    depart=departInput;
 } //----- Fin de Trajet
 
 Trajet::~Trajet ( )

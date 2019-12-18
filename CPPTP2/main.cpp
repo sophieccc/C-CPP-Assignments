@@ -42,9 +42,9 @@ int main() {
                     printf("Enter 's' for simple or 'c' for complex trajet type:\n");
                     cin >> complexity;
                     if(complexity=='s') {
-                        char depart[30];
-                        char arrive[30];
-                        char transport[20];
+                        string depart;
+                        string arrive;
+                        string transport;
                         printf("Enter city of departure (replace spaces with '_'):\n");
                         cin >> depart;
                         printf("Enter city of arrival (replace spaces with '_'):\n");
@@ -59,24 +59,24 @@ int main() {
                         int nombre;
                         printf("Enter the no. of Trajets in this Complex Trajet:\n");
                         if(cin >> nombre) {
-                            char depart[30];
-                            char arrive[30];
-                            char transport[20];
+                            string depart;
+                            string arrive;
+                            string transport;
                             TrajetSimple** components = new TrajetSimple*[nombre];
-                            char stopover[30];
+                            string stopover;
                             for(int i=0; i < nombre; i++) {
                                 printf("Receiving info for trajet %d:\n", i+1);
                                 printf("Enter city of departure (replace spaces with '_'):\n");
                                 cin >> depart;
                                 if (i>0){
-                                    while(strcmp(depart,stopover)!=0){
+                                    while(depart.compare(stopover)!=0){
                                         printf("Incoherent stopover city. Please enter valid departure:\n");
                                         cin >> depart;
                                     }
                                 } // checking that trajet i+1 starts where trajet i ended
                                 printf("Enter city of arrival (replace spaces with '_'):\n");
                                 cin >> arrive;
-                                strcpy(stopover,arrive);
+                                stopover=arrive;
                                 printf("Enter mode of transport:\n");
                                 cin >> transport;
                                 TrajetSimple* curr = new TrajetSimple(depart, arrive, transport);
@@ -103,8 +103,8 @@ int main() {
                     break;
                 }
                 case 3: {
-		            char depart[30];
-                    char arrive[30];
+		            string depart;
+                    string arrive;
                     printf("Enter city of departure (replace spaces with '_'):\n");
                     cin >> depart;
                     printf("Enter city of arrival (replace spaces with '_')\n");
@@ -113,8 +113,8 @@ int main() {
                     break;
                 }
                 case 4: {
-                    char depart [30];
-                    char arrive [30];
+                    string depart;
+                    string arrive;
                     printf("Enter city of departure (replace spaces with '_':\n");
                     cin >> depart;
                     printf("Enter city of arrival (replace spaces with '_')\n");
@@ -125,8 +125,10 @@ int main() {
                 case 5: { // chargement
                     cin.ignore();
                     cout << "Where are we getting the data from?" << endl;
-                    char fileName[50];
-                    cin.getline(fileName, 50);
+                    string fileName;
+                    getline(cin,fileName);
+                    fileName+=".txt";
+                    cat->RestitutionSimple(fileName);
                     break;
                 }
                 case 6: { // sauvegarder

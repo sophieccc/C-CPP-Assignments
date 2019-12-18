@@ -38,7 +38,7 @@ void TrajetSimple::Afficher() const {
 const char TrajetSimple::GetType() const {
     return 'S';
 }
-const char* TrajetSimple::GetTransport() const {
+const string  TrajetSimple::GetTransport() const {
     return transport;
 }
 //-------------------------------------------- Constructeurs - destructeur
@@ -57,17 +57,14 @@ TrajetSimple::TrajetSimple ( )
 #endif
 } //----- Fin de TrajetSimple
 
-TrajetSimple::TrajetSimple (char* departInput, char* arriveInput, char* transportInput) 
+TrajetSimple::TrajetSimple (string departInput, string arriveInput, string transportInput) 
 : Trajet(departInput, arriveInput)
 {
 #ifdef MAP
     cout << "Appel au constructeur 2 de <TrajetSimple>" << endl;
 #endif
 
-    
-    transport = new char[strlen(arriveInput)+1];
-    strcpy(transport, transportInput);
-    transport[strlen(transportInput)]='\0';
+    transport=transportInput;
 } //----- Fin de TrajetSimple
 
 TrajetSimple::~TrajetSimple ( )
@@ -77,9 +74,6 @@ TrajetSimple::~TrajetSimple ( )
 #ifdef MAP
     cout << "Appel au destructeur de <TrajetSimple>" << endl;
 #endif
-    delete[] transport;
-    delete[] depart;
-    delete[] arrive; 
 } //----- Fin de ~TrajetSimple
 
 

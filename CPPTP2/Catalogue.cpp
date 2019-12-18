@@ -62,13 +62,13 @@ void Catalogue::Afficher() const {
 } //----- Fin de Méthode
 
 // Cette méthode permet de rechercher un trajet dans le catalogue.
-void Catalogue::Rechercher(char* depart, char* arrive) const {
+void Catalogue::Rechercher(string depart, string arrive) const {
     if(nombreDeTrajets==0)
 	cout << "Pas de trajet enregistre" << endl;
     int count = 1;
     for(int i=0; i < nombreDeTrajets;i++) {
-        if(strcmp(trajets[i]->GetDepart(),depart)==0 
-        && strcmp(trajets[i]->GetArrive(),arrive)==0) {
+        if(trajets[i]->GetDepart().compare(depart)==0
+        && trajets[i]->GetArrive().compare(arrive)==0) {
             cout << "Found Trajet " << count << "--\n";
             trajets[i]->Afficher();
             count++;
@@ -87,7 +87,7 @@ bool Catalogue::Retirer(const int index) {
     return true;
     
 }
-void Catalogue::RechercheAvance(const char* depart, const char* arrive) {
+void Catalogue::RechercheAvance(const string depart, const string arrive) {
     cout << endl;
     Catalogue* used = new Catalogue();
     int nbPropositions = composition(depart, arrive, used);
@@ -95,9 +95,9 @@ void Catalogue::RechercheAvance(const char* depart, const char* arrive) {
     delete used;
 }
 
-int Catalogue::composition(const char* depart, const char* arrive, Catalogue* used){
+int Catalogue::composition(const string depart, const string arrive, Catalogue* used){
     int composable=0;
-    if (strcmp(depart, arrive)==0){ // arrêt en arrivant à destination
+    if (depart.compare(arrive)==0){ // arrêt en arrivant à destination
         cout << "Composition(s) of trajets that you might want to consider:" << endl;    
         used->Afficher(); // affiche la composition de trajets prises
         return 1;
@@ -105,12 +105,12 @@ int Catalogue::composition(const char* depart, const char* arrive, Catalogue* us
 
     for (int i=0; i<nombreDeTrajets; i++){
         Trajet* t=trajets[i]; // pris comme départ s’il part de l’arrivée du précédent
-        if (strcmp(t->GetDepart(),depart)==0){ //départ identique
+        if (t->GetDepart().compare(depart)==0){ //départ identique
             int valid=1;
             // détection de cycles (il ne faut pas arriver dans un départ déjà pris
             for (int j=0; j<used->nombreDeTrajets; j++){
                 Trajet* tUsed=used->trajets[j];
-                if (strcmp(t->GetArrive(),tUsed->GetDepart())==0){
+                if (t->GetArrive().compare(tUsed->GetDepart())==0){
                     valid=0; // arrêt
                 }
             }
@@ -138,7 +138,7 @@ void Catalogue::EnregistrementSimple(string filename)
             else if(trajets[i]->GetType()=='C'){
                 TrajetComplexe* current = (TrajetComplexe*) curr;
                 int number = current->GetNumber();
-                file << "TC | " << number<< current->GetDepart() << " | " << current->GetArrive() << ";" << endl;
+                file << "TC | " << number<< " | " << current->GetDepart() << " | " << current->GetArrive() << ";" << endl;
                 TrajetSimple** elements=current->GetElements();
                 for (int j=0; j<number ; j++){
                     file << "TS | " << elements[j]->GetDepart() << " | " << elements[j]->GetArrive() << " | " << elements[j]->GetTransport() << ";" <<endl;
@@ -149,6 +149,61 @@ void Catalogue::EnregistrementSimple(string filename)
     }
 }
 
+void Catalogue::RestitutionSimple(string filename)
+{
+    ifstream file(filename.c_str());
+    if (file.good())
+    {
+        cout << "Made it past good" << endl;
+        string input;
+        while(getline(file,input))
+        {
+            cout << "Made it past getline" << endl;
+            int start=0;
+            int end=input.find('|');
+            string type = input.substr(start, end);
+            if (type.compare("TS")==0){
+                cout << "Made it past typecompare" << endl;
+                start=end+1;
+                end=input.find('|',start);
+                string depart=input.substr(start, end-start);
+                cout << start;
+                cout << end;
+                cout << depart;
+                start=end+1;
+                end=input.find('|',start);
+                string arrive=input.substr(start, end-start);
+                start=end+1;
+                end=input.find(';',start);
+                string transport=input.substr(start, end-start);
+                TrajetSimple* curr = new TrajetSimple(depart,arrive,transport);
+                Ajouter(curr);
+            }
+            else if (type.compare("TC")==0){ 
+                start=end+1;
+                end=input.find('|',start);
+                int nombre=stoi(input.substr(start, end-start));
+                TrajetSimple** elements = new TrajetSimple*[nombre];
+                for (int i=0; i<nombre; i++){
+                    getline(file, input);
+                    start=input.find('|')+1;
+                    end=input.find('|',start);
+                    string depart=input.substr(start, end-start);
+                    start=end+1;
+                    end=input.find('|',start);
+                    string arrive=input.substr(start, end-start);
+                    start=end+1;
+                    end=input.find(';',start);
+                    string transport=input.substr(start, end-start);
+                    TrajetSimple* curr = new TrajetSimple(depart,arrive,transport);
+                    elements[i]=curr;
+                }
+                TrajetComplexe* complexCurr = new TrajetComplexe(elements, nombre);
+                Ajouter(complexCurr);
+            }
+        }
+    }
+}
 //-------------------------------------------- Constructeurs - destructeur
 
 Catalogue::Catalogue ( const Catalogue & unCatalogue )

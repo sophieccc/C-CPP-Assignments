@@ -13,6 +13,7 @@
 #if ! defined ( TRAJETSIMPLE_H )
 #define TRAJETSIMPLE_H
 
+#include <string>
 #include "Trajet.h"
 
 //--------------------------------------------------- Interfaces utilisées
@@ -37,7 +38,7 @@ public:
     // Mode d'emploi :
     // Cette fonction affiche les caractéristiques du trajet.
 
-    const char* GetTransport() const;
+    const string GetTransport() const;
     // Mode d'emploi :
     // Cette fonction retourne le moyen de transport utilisé.
     
@@ -50,7 +51,7 @@ public:
     TrajetSimple ( );
     // Mode d'emploi (constructeur 1) :
 
-    TrajetSimple (char* depart, char* arrive, char* transport);
+    TrajetSimple (string depart, string arrive, string transport);
     // Mode d'emploi (constructeur 2) :
 
     virtual ~TrajetSimple ( );
@@ -62,7 +63,7 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-    char *transport;
+    string transport;
 };
 
 //-------------------------------- Autres définitions dépendantes de <TrajetSimple>

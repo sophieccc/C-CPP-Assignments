@@ -10,7 +10,10 @@
 *******************************************************************************/
 
 #include <iostream>
+#include <fstream>
 #include <cstring>
+#include <string>
+
 using namespace std;
 
 #include "Catalogue.h"
@@ -29,7 +32,9 @@ int main() {
         cout << "2: Enter 2 to display current catalogue. " << endl;
         cout << "3: Enter 3 to look for an itinerary." << endl;
         cout << "4: Enter 4 to make an advanced search." << endl;
-        cout << "5: Enter 5 to exit." << endl; 
+        cout << "3: Enter 5 to upload from a file." << endl;
+        cout << "4: Enter 6 to save." << endl;
+        cout << "5: Enter 7 to exit." << endl; 
         if(cin >> choice) {
             switch(choice) {
                 case 1: {
@@ -117,7 +122,21 @@ int main() {
                     cat->RechercheAvance(depart, arrive);
                     break;
                 }
-                case 5: {
+                case 5: { // chargement
+                    cin.ignore();
+                    cout << "Where are we getting the data from?" << endl;
+                    char fileName[50];
+                    cin.getline(fileName, 50);
+                    break;
+                }
+                case 6: { // sauvegarder
+                    cin.ignore();
+                    cout << "Where are saving the data?" << endl;
+                    char fileName[50];
+                    cin.getline(fileName, 50);
+                    break;
+                }
+                case 7: {
                     exit = true;
                     break;
                 }

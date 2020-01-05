@@ -1,0 +1,5 @@
+TC|2|Casablanca|Bordeaux;
+TS|Casablanca|Paris|Plane;
+TS|Paris|Bordeaux|Train;
+---------------------------------- End of elementary itineraries;
+TS|Marrakech|Tanger|Train;

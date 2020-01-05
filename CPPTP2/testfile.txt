@@ -1,4 +1,2 @@
-TC | 2 | Dublin | Casablanca;
-TS | Dublin | Paris | Plane;
-TS | Paris | Casablanca | Plane;
----------------------------------- End of elementary itineraries;
+TS|Dublin|Paris|Plane;
+TS|Paris|Casablanca|Plane;

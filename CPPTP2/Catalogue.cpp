@@ -131,6 +131,7 @@ void Catalogue::EnregistrementSimple(string filename)
         //file << "Number of itineraries " << nombreDeTrajets << endl;
         for(int i=0; i < nombreDeTrajets;i++) {
             Trajet* curr = trajets[i];
+            file << "--------------No."<< i <<"--------------" << endl;
             if(trajets[i]->GetType()=='S'){
                 TrajetSimple* current = (TrajetSimple*) curr;
                 file << "TS | " << current->GetDepart() << " | " << current->GetArrive() << " | " << current->GetTransport() << ";" <<endl;
@@ -141,9 +142,10 @@ void Catalogue::EnregistrementSimple(string filename)
                 file << "TC | " << number<< " | " << current->GetDepart() << " | " << current->GetArrive() << ";" << endl;
                 TrajetSimple** elements=current->GetElements();
                 for (int j=0; j<number ; j++){
+                    file << "--------------Elementary itinerary no." << j << "--------------" << endl; 
                     file << "TS | " << elements[j]->GetDepart() << " | " << elements[j]->GetArrive() << " | " << elements[j]->GetTransport() << ";" <<endl;
                 }
-                file << "---------------------------------- End of elementary itineraries;" << endl;
+                file << "---------------------------------- End of elementary itineraries for no. "<< i << endl;
             }
         }
     }

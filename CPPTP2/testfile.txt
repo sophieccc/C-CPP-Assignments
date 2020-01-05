@@ -1,2 +1,2 @@
-TS|Dublin|Paris|Plane;
-TS|Paris|Casablanca|Plane;
+TS|Marrakech|Tanger|Train;
+TS|Casablanca|Bordeaux|Foot;

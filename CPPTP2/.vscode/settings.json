@@ -4,6 +4,7 @@
         "istream": "cpp",
         "bitset": "cpp",
         "locale": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "iosfwd": "cpp"
     }
 }

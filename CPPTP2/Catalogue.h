@@ -54,6 +54,14 @@ public:
     int composition(const string depart, const string arrive, Catalogue* used);
     void EnregistrementSimple(string filename);
     void RestitutionSimple(string filename);
+    void EnregistrementTypeTrajet(string filename, int typeTrajet);
+    void RestitutionTypeTrajet(string filename, int typeTrajet);
+    void EnregistrementDepart(string filename, string depart);
+    void RestitutionDepart(string filename, string mondepart);
+    void EnregistrementArrive(string filename, string arrive);
+    void RestitutionArrive(string filename, string monarrive);
+    void EnregistrementBoth(string filename, string depart, string arrive);
+    void RestitutionBoth(string filename, string mondepart, string monarrive);
 //-------------------------------------------- Constructeurs - destructeur
     Catalogue ( const Catalogue & unCatalogue );
     // Mode d'emploi (constructeur de copie) :

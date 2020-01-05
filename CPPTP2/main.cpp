@@ -25,6 +25,7 @@ int main() {
     Catalogue *cat=new Catalogue;
     bool exit = false;
     int choice;
+    int typeTrajet;
     while(!exit) {
         cout << "       Welcome to Trip Scanner" << endl << "What would you like to do?" << endl;
         cout << "================= MENU =================" << endl;
@@ -32,9 +33,9 @@ int main() {
         cout << "2: Enter 2 to display current catalogue. " << endl;
         cout << "3: Enter 3 to look for an itinerary." << endl;
         cout << "4: Enter 4 to make an advanced search." << endl;
-        cout << "3: Enter 5 to upload from a file." << endl;
-        cout << "4: Enter 6 to save." << endl;
-        cout << "5: Enter 7 to exit." << endl; 
+        cout << "5: Enter 5 to upload from a file." << endl;
+        cout << "6: Enter 6 to save." << endl;
+        cout << "7: Enter 7 to exit." << endl; 
         if(cin >> choice) {
             switch(choice) {
                 case 1: {
@@ -128,7 +129,54 @@ int main() {
                     string fileName;
                     getline(cin,fileName);
                     fileName+=".txt";
-                    cat->RestitutionSimple(fileName);
+                    int typeRestitution;
+                    cout << "Do you want to restore all types of 'Trajets' (1), a specific type (2) or specific cities (3)?" << endl;
+                    if(cin >> typeRestitution){
+                      switch(typeRestitution){
+                        case 1:{
+                          cat->RestitutionSimple(fileName);
+                          break;
+                        }
+                        case 2:{
+                          cout << "What type of 'Trajet' would you like to restore ? TS (1) or TC (2)." << endl;
+                          cin >> typeTrajet;
+                          cat->RestitutionTypeTrajet(fileName,typeTrajet);
+                          break;
+                        }
+                        case 3:{
+                            int cities;
+                            string depart;
+                            string arrive;
+                            cout << "Would you like to restore by departure (1), arrival (2), or both (3)?" << endl;
+                            if (cin >> cities){
+                                switch (cities){
+                                    case 1: {
+                                        cout << "Enter departure city:" << endl; 
+                                        cin >> depart;
+                                        cat->RestitutionDepart(fileName,depart);
+                                        break;
+                                    }
+                                    case 2: {
+                                        cout << "Enter arrival city:" << endl;
+                                        cin >> arrive;
+                                        cat->RestitutionArrive(fileName,arrive);
+                                        break;
+                                    }
+                                    case 3: {
+                                        cout << "Enter departure city:" << endl; 
+                                        cin >> depart;
+                                        cout << "Enter arrival city:" << endl;
+                                        cin >> arrive;
+                                        cat->RestitutionBoth(fileName,depart,arrive);
+                                        break;
+                                    }
+                                }
+                            }
+                            break;   
+                        }
+                      }
+                    }
+
                     break;
                 }
                 case 6: { // sauvegarder
@@ -137,7 +185,53 @@ int main() {
                     string fileName;
                     getline(cin, fileName);
                     fileName+=".txt";
-                    cat->EnregistrementSimple(fileName);
+                    int typeEnregistrement;
+                    cout << "Do you want to save all the data (1), a specific type of 'Trajet' (2) or specific cities (3) ? " << endl;
+                    if (cin >> typeEnregistrement){
+                      switch(typeEnregistrement){
+                        case 1:{
+                          cat->EnregistrementSimple(fileName);
+                          break;
+                        }
+                        case 2:{
+                          cout << "Do you want to save TS (1) or TC (2) ?" << endl;
+                          cin >> typeTrajet;
+                          cat->EnregistrementTypeTrajet(fileName, typeTrajet);
+                          break;
+                        }
+                        case 3:{
+                            int cities;
+                            string depart;
+                            string arrive;
+                            cout << "Would you like to save by departure (1), arrival (2), or both (3)?" << endl;
+                            if (cin >> cities){
+                                switch (cities){
+                                    case 1: {
+                                        cout << "Enter departure city:" << endl; 
+                                        cin >> depart;
+                                        cat->EnregistrementDepart(fileName,depart);
+                                        break;
+                                    }
+                                    case 2: {
+                                        cout << "Enter arrival city:" << endl;
+                                        cin >> arrive;
+                                        cat->EnregistrementArrive(fileName,arrive);
+                                        break;
+                                    }
+                                    case 3: {
+                                        cout << "Enter departure city:" << endl; 
+                                        cin >> depart;
+                                        cout << "Enter arrival city:" << endl;
+                                        cin >> arrive;
+                                        cat->EnregistrementBoth(fileName,depart,arrive);
+                                        break;
+                                    }
+                                }
+                            }
+                            break;
+                        }
+                      }
+                    }
                     break;
                 }
                 case 7: {

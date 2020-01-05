@@ -3,3 +3,4 @@ TS|Casablanca|Paris|Plane;
 TS|Paris|Bordeaux|Train;
 ---------------------------------- End of elementary itineraries;
 TS|Marrakech|Tanger|Train;
+TS|Casablanca|Bordeaux|Foot;

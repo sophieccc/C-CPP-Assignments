@@ -49,6 +49,19 @@ void Catalogue::Ajouter(Trajet* newTrajet) {
     trajets[nombreDeTrajets]=newTrajet;
     nombreDeTrajets++;
 }
+void Catalogue::Expand()
+{
+    space+=DEFAULT_SPACE;
+    Trajet** temp=new Trajet*[space];
+    for (int i=0; i<nombreDeTrajets ; i++){
+        temp[i]=trajets[i];
+    }
+    for (int i=0; i<nombreDeTrajets; i++){
+        delete trajets[i];
+    }
+    delete[] trajets;
+    trajets=temp;
+}
 
 /* Cette méthode permet d'afficher, à tout moment, le contenu du 
 catalogue courant */
@@ -128,7 +141,6 @@ void Catalogue::EnregistrementSimple(string filename)
     ofstream file(filename.c_str());
     if(file.good())
     {
-        //file << "Number of itineraries " << nombreDeTrajets << endl;
         for(int i=0; i < nombreDeTrajets;i++) {
             Trajet* curr = trajets[i];
             if(trajets[i]->GetType()=='S'){
@@ -362,6 +374,7 @@ void Catalogue::RestitutionBoth(string filename, string mondepart, string monarr
                 string transport=input.substr(start, end-start);
                 if (depart.compare(mondepart)==0 && arrive.compare(monarrive)==0){
                     TrajetSimple* curr = new TrajetSimple(depart,arrive,transport);
+
                     Ajouter(curr);
                 }   
             }
@@ -392,6 +405,7 @@ void Catalogue::RestitutionBoth(string filename, string mondepart, string monarr
                         elements[i]=curr;
                     }
                     TrajetComplexe* complexCurr = new TrajetComplexe(elements, nombre);
+
                     Ajouter(complexCurr);
                 }else{
                     for(int i=0;i<nombre;i++){
@@ -459,6 +473,7 @@ void Catalogue::RestitutionDepart(string filename, string mondepart)
                 string transport=input.substr(start, end-start);
                 if (depart.compare(mondepart)==0){
                     TrajetSimple* curr = new TrajetSimple(depart,arrive,transport);
+
                     Ajouter(curr);
                 }   
             }
@@ -489,6 +504,7 @@ void Catalogue::RestitutionDepart(string filename, string mondepart)
                         elements[i]=curr;
                     }
                     TrajetComplexe* complexCurr = new TrajetComplexe(elements, nombre);
+
                     Ajouter(complexCurr);
                 }else{
                     for(int i=0;i<nombre;i++){
@@ -556,6 +572,7 @@ void Catalogue::RestitutionArrive(string filename, string monarrive)
                 string transport=input.substr(start, end-start);
                 if (arrive.compare(monarrive)==0){
                     TrajetSimple* curr = new TrajetSimple(depart,arrive,transport);
+
                     Ajouter(curr);
                 }   
             }
@@ -586,12 +603,107 @@ void Catalogue::RestitutionArrive(string filename, string monarrive)
                         elements[i]=curr;
                     }
                     TrajetComplexe* complexCurr = new TrajetComplexe(elements, nombre);
+
                     Ajouter(complexCurr);
                 }else{
                     for(int i=0;i<nombre;i++){
                         getline(file, input);
                     }
                 }
+            }
+        }
+    }
+}
+void Catalogue::EnregistrementIntervalle(string filename, int n, int m)
+{
+    ofstream file(filename.c_str());
+    if(file.good())
+    {
+        for(int i=n-1; i < m;i++) {
+            Trajet* curr = trajets[i];
+            if(trajets[i]->GetType()=='S'){
+                TrajetSimple* current = (TrajetSimple*) curr;
+                file << "TS|" << current->GetDepart() << "|" << current->GetArrive() << "|" << current->GetTransport() << ";" <<endl;
+            }
+            else if(trajets[i]->GetType()=='C'){
+                TrajetComplexe* current = (TrajetComplexe*) curr;
+                int number = current->GetNumber();
+                file << "TC|" << number<< "|" << current->GetDepart() << "|" << current->GetArrive() << ";" << endl;
+                TrajetSimple** elements=current->GetElements();
+                for (int j=0; j<number ; j++){ 
+                    file << "TS|" << elements[j]->GetDepart() << "|" << elements[j]->GetArrive() << "|" << elements[j]->GetTransport() << ";" <<endl;
+                }
+                file << "---------------------------------- End of elementary itineraries;" << endl;
+            }
+        }
+    }
+}
+void Catalogue::RestitutionIntervalle(string filename, int n, int m)
+{
+    ifstream file(filename.c_str());
+    if (file.good())
+    {
+        int k=0;
+        cout << "Made it past good" << endl;
+        string input;
+        while(getline(file,input))
+        {
+            cout << "Made it past getline" << endl;
+            int start=0;
+            int end=input.find('|');
+            string type = input.substr(start, end);
+            if (type.compare("TS")==0){
+                cout << "Made it past typecompare" << endl;
+                start=end+1;
+                end=input.find('|',start);
+                string depart=input.substr(start, end-start);
+                cout << start;
+                cout << end;
+                cout << depart;
+                start=end+1;
+                end=input.find('|',start);
+                string arrive=input.substr(start, end-start);
+                start=end+1;
+                end=input.find(';',start);
+                string transport=input.substr(start, end-start);
+                if (k>=n-1 && k<=m-1){
+                    TrajetSimple* curr = new TrajetSimple(depart,arrive,transport);
+
+                    Ajouter(curr);
+                }else if(k>=m){
+                    break;
+                }
+                k++;
+                
+            }
+            else if (type.compare("TC")==0){ 
+                start=end+1;
+                end=input.find('|',start);
+                int nombre=stoi(input.substr(start, end-start));
+                TrajetSimple** elements = new TrajetSimple*[nombre];
+                for (int i=0; i<nombre; i++){
+                    getline(file, input);
+                    start=input.find('|')+1;
+                    end=input.find('|',start);
+                    string depart=input.substr(start, end-start);
+                    start=end+1;
+                    end=input.find('|',start);
+                    string arrive=input.substr(start, end-start);
+                    start=end+1;
+                    end=input.find(';',start);
+                    string transport=input.substr(start, end-start);
+                    TrajetSimple* curr = new TrajetSimple(depart,arrive,transport);
+                    elements[i]=curr;
+                }
+                if (k>=n-1 && k<=m-1){
+                    TrajetComplexe* complexCurr = new TrajetComplexe(elements, nombre);
+
+                    Ajouter(complexCurr);
+                }else if(k>=m){
+                    break;
+                }
+                k++;
+                
             }
         }
     }

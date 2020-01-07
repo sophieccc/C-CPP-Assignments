@@ -50,6 +50,7 @@ public:
     // Mode d'emploi: cette méthode retire un trajet du catalogue dont
     // l'indice est rentré en paramètre. On en a eu besoin pour le
     // parcours récursif de la recherche avancée.
+    void Expand();
     void RechercheAvance (const string depart, const string arrive);
     int composition(const string depart, const string arrive, Catalogue* used);
     void EnregistrementSimple(string filename);
@@ -62,6 +63,8 @@ public:
     void RestitutionArrive(string filename, string monarrive);
     void EnregistrementBoth(string filename, string depart, string arrive);
     void RestitutionBoth(string filename, string mondepart, string monarrive);
+    void EnregistrementIntervalle(string filename, int n, int m);
+    void RestitutionIntervalle(string filename, int n, int m);
 //-------------------------------------------- Constructeurs - destructeur
     Catalogue ( const Catalogue & unCatalogue );
     // Mode d'emploi (constructeur de copie) :

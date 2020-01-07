@@ -130,7 +130,7 @@ int main() {
                     getline(cin,fileName);
                     fileName+=".txt";
                     int typeRestitution;
-                    cout << "Do you want to restore all types of 'Trajets' (1), a specific type (2) or specific cities (3)?" << endl;
+                    cout << "Do you want to restore all types of 'Trajets' (1), a specific type (2), specific cities (3) or a range (4)?" << endl;
                     if(cin >> typeRestitution){
                       switch(typeRestitution){
                         case 1:{
@@ -174,6 +174,14 @@ int main() {
                             }
                             break;   
                         }
+                        case 4:{
+                            int n,m;
+                            cout << "Enter the first itinierary you want to restore:" << endl;;
+                            cin >> n;
+                            cout << "Enter the last itinierary you want to restore:" << endl;;
+                            cin >> m;
+                            cat->RestitutionIntervalle(fileName, n,m);
+                        }
                       }
                     }
 
@@ -186,7 +194,7 @@ int main() {
                     getline(cin, fileName);
                     fileName+=".txt";
                     int typeEnregistrement;
-                    cout << "Do you want to save all the data (1), a specific type of 'Trajet' (2) or specific cities (3) ? " << endl;
+                    cout << "Do you want to save all the data (1), a specific type of 'Trajet' (2), specific cities (3) or a specific range (4) ? " << endl;
                     if (cin >> typeEnregistrement){
                       switch(typeEnregistrement){
                         case 1:{
@@ -229,6 +237,14 @@ int main() {
                                 }
                             }
                             break;
+                        }
+                        case 4:{
+                            int n,m;
+                            cout << "Enter the first itinerary you want to save: " << endl;
+                            cin >> n;
+                            cout << "Enter the last itnerary you want to save: " << endl;
+                            cin >> m;
+                            cat->EnregistrementIntervalle(fileName, n,m);
                         }
                       }
                     }

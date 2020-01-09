@@ -11,7 +11,6 @@
 
 #include <iostream>
 #include <fstream>
-#include <cstring>
 #include <string>
 
 using namespace std;
@@ -43,15 +42,16 @@ int main() {
                     printf("Enter 's' for simple or 'c' for complex trajet type:\n");
                     cin >> complexity;
                     if(complexity=='s') {
+                        cin.ignore();
                         string depart;
                         string arrive;
                         string transport;
                         printf("Enter city of departure (replace spaces with '_'):\n");
-                        cin >> depart;
+                        getline(cin, depart);
                         printf("Enter city of arrival (replace spaces with '_'):\n");
-                        cin >> arrive;
+                        getline(cin, arrive);
                         printf("Enter mode of transport:\n");
-                        cin >> transport;
+                        getline(cin, transport);
                         TrajetSimple* curr = new TrajetSimple(depart, arrive, transport);
                         cat->Ajouter(curr);
                         //delete curr;
@@ -60,6 +60,7 @@ int main() {
                         int nombre;
                         printf("Enter the no. of Trajets in this Complex Trajet:\n");
                         if(cin >> nombre) {
+                            cin.ignore();
                             string depart;
                             string arrive;
                             string transport;
@@ -68,18 +69,18 @@ int main() {
                             for(int i=0; i < nombre; i++) {
                                 printf("Receiving info for trajet %d:\n", i+1);
                                 printf("Enter city of departure (replace spaces with '_'):\n");
-                                cin >> depart;
+                                getline(cin, depart);
                                 if (i>0){
                                     while(depart.compare(stopover)!=0){
                                         printf("Incoherent stopover city. Please enter valid departure:\n");
-                                        cin >> depart;
+                                        getline(cin, depart);
                                     }
                                 } // checking that trajet i+1 starts where trajet i ended
                                 printf("Enter city of arrival (replace spaces with '_'):\n");
-                                cin >> arrive;
+                                getline(cin, arrive);
                                 stopover=arrive;
                                 printf("Enter mode of transport:\n");
-                                cin >> transport;
+                                getline(cin, transport);
                                 TrajetSimple* curr = new TrajetSimple(depart, arrive, transport);
                                 components[i] = curr;
                             }
@@ -104,22 +105,24 @@ int main() {
                     break;
                 }
                 case 3: {
+                    cin.ignore();
 		            string depart;
                     string arrive;
                     printf("Enter city of departure (replace spaces with '_'):\n");
-                    cin >> depart;
+                    getline(cin, depart);
                     printf("Enter city of arrival (replace spaces with '_')\n");
-                    cin >> arrive;
+                    getline(cin, arrive);
                     cat->Rechercher(depart, arrive);
                     break;
                 }
                 case 4: {
+                    cin.ignore();
                     string depart;
                     string arrive;
                     printf("Enter city of departure (replace spaces with '_':\n");
-                    cin >> depart;
+                    getline(cin, depart);
                     printf("Enter city of arrival (replace spaces with '_')\n");
-                    cin >> arrive;
+                    getline(cin, arrive);
                     cat->RechercheAvance(depart, arrive);
                     break;
                 }
@@ -151,22 +154,25 @@ int main() {
                             if (cin >> cities){
                                 switch (cities){
                                     case 1: {
+                                        cin.ignore();
                                         cout << "Enter departure city:" << endl; 
-                                        cin >> depart;
+                                        getline(cin,depart);
                                         cat->RestitutionDepart(fileName,depart);
                                         break;
                                     }
                                     case 2: {
+                                        cin.ignore();
                                         cout << "Enter arrival city:" << endl;
-                                        cin >> arrive;
+                                        getline(cin,arrive);
                                         cat->RestitutionArrive(fileName,arrive);
                                         break;
                                     }
                                     case 3: {
+                                        cin.ignore();
                                         cout << "Enter departure city:" << endl; 
-                                        cin >> depart;
+                                        getline(cin,depart);
                                         cout << "Enter arrival city:" << endl;
-                                        cin >> arrive;
+                                        getline(cin,arrive);
                                         cat->RestitutionBoth(fileName,depart,arrive);
                                         break;
                                     }
@@ -176,9 +182,9 @@ int main() {
                         }
                         case 4:{
                             int n,m;
-                            cout << "Enter the first itinierary you want to restore:" << endl;;
+                            cout << "Enter the first itinerary you want to restore:" << endl;;
                             cin >> n;
-                            cout << "Enter the last itinierary you want to restore:" << endl;;
+                            cout << "Enter the last itinerary you want to restore:" << endl;;
                             cin >> m;
                             cat->RestitutionIntervalle(fileName, n,m);
                         }
@@ -215,22 +221,25 @@ int main() {
                             if (cin >> cities){
                                 switch (cities){
                                     case 1: {
+                                        cin.ignore();
                                         cout << "Enter departure city:" << endl; 
-                                        cin >> depart;
+                                        getline(cin, depart);
                                         cat->EnregistrementDepart(fileName,depart);
                                         break;
                                     }
                                     case 2: {
+                                        cin.ignore();
                                         cout << "Enter arrival city:" << endl;
-                                        cin >> arrive;
+                                        getline(cin, arrive);
                                         cat->EnregistrementArrive(fileName,arrive);
                                         break;
                                     }
                                     case 3: {
+                                        cin.ignore();
                                         cout << "Enter departure city:" << endl; 
-                                        cin >> depart;
+                                        getline(cin, depart);
                                         cout << "Enter arrival city:" << endl;
-                                        cin >> arrive;
+                                        getline(cin, arrive);
                                         cat->EnregistrementBoth(fileName,depart,arrive);
                                         break;
                                     }

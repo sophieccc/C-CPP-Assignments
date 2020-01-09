@@ -47,6 +47,7 @@ void Catalogue::Expand()
     for (int i=0; i<nombreDeTrajets ; i++){
         temp[i]=trajets[i];
     }
+    delete[] trajets;
     trajets=temp;
 }
 

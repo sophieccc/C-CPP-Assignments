@@ -300,6 +300,7 @@ void Catalogue::RestitutionTypeTrajet(string filename, int typeTrajet)
                 }
                 TrajetComplexe* complexCurr = new TrajetComplexe(elements, nombre);
                 Ajouter(complexCurr);
+                delete[] elements;
             }
           }
     }
@@ -686,11 +687,11 @@ void Catalogue::RestitutionIntervalle(string filename, int n, int m)
                 }
                 if (k>=n-1 && k<=m-1){
                     TrajetComplexe* complexCurr = new TrajetComplexe(elements, nombre);
-
                     Ajouter(complexCurr);
                 }else if(k>=m){
                     break;
                 }
+                delete[] elements;
                 k++;
                 
             }

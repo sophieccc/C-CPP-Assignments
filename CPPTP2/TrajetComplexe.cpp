@@ -98,6 +98,10 @@ TrajetComplexe::~TrajetComplexe ( )
     /*for(int i=0;i<nombreDeTrajets;i++){
 		delete elements[i];
     }*/
+    for(int i=0; i<nombreDeTrajets; i++)
+    {
+        delete elements[i];
+    }
     delete[] elements;
 } //----- Fin de ~TrajetComplexe
 

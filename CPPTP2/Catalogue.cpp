@@ -27,7 +27,7 @@ using namespace std;
 #include "TrajetComplexe.h"
 
 //------------------------------------------------------------- Constantes
-const int DEFAULT_SPACE = 5;
+const int DEFAULT_SPACE = 10;
 
 //----------------------------------------------------------------- PUBLIC
 

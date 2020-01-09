@@ -95,9 +95,6 @@ TrajetComplexe::~TrajetComplexe ( )
 #ifdef MAP
     cout << "Appel au destructeur de <TrajetComplexe>" << endl;
 #endif
-    /*for(int i=0;i<nombreDeTrajets;i++){
-		delete elements[i];
-    }*/
     for(int i=0; i<nombreDeTrajets; i++)
     {
         delete elements[i];

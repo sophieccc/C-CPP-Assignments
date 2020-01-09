@@ -199,6 +199,7 @@ void Catalogue::RestitutionSimple(string filename)
                     elements[i]=curr;
                 }
                 TrajetComplexe* complexCurr = new TrajetComplexe(elements, nombre);
+                delete[] elements;
                 Ajouter(complexCurr);
             }
         }

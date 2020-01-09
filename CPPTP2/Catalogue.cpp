@@ -35,16 +35,7 @@ const int DEFAULT_SPACE = 5;
 // Cette méthode ajoute un trajet au catalogue.
 void Catalogue::Ajouter(Trajet* newTrajet) {
     if(nombreDeTrajets==space){
-        space+=DEFAULT_SPACE;
-        Trajet** temp=new Trajet*[space];
-        for (int i=0; i<nombreDeTrajets ; i++){
-            temp[i]=trajets[i];
-        }
-        for (int i=0; i<nombreDeTrajets; i++){
-            delete trajets[i];
-        }
-        delete[] trajets;
-        trajets=temp;
+        Expand();
     }
     trajets[nombreDeTrajets]=newTrajet;
     nombreDeTrajets++;
@@ -56,10 +47,6 @@ void Catalogue::Expand()
     for (int i=0; i<nombreDeTrajets ; i++){
         temp[i]=trajets[i];
     }
-    for (int i=0; i<nombreDeTrajets; i++){
-        delete trajets[i];
-    }
-    delete[] trajets;
     trajets=temp;
 }
 

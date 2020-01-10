@@ -1,0 +1,16 @@
+TC|2|Casablanca|Bordeaux;
+TS|Casablanca|Paris|Plane;
+TS|Paris|Bordeaux|Train;
+---------------------------------- End of elementary itineraries;
+TS|Marrakech|Tanger|Train;
+TS|Casablanca|Bordeaux|Foot;
+TS|Paris|Lille|Train;
+TS|Casablanca|Stockholm|Plane;
+TS|Marrakech|Ibiza|Plane;
+TC|2|Lyon|Gothenburg;
+TS|Lyon|Stockholm|Plane;
+TS|Stockholm|Gothenburg|Train;
+---------------------------------- End of elementary itineraries;
+TS|Seoul|Singapore|Plane;
+TS|Dublin|Gothenburg|Plane;
+TS|Casablanca|Barcelona|IF;

@@ -686,14 +686,11 @@ void Catalogue::RestitutionIntervalle(string filename, int n, int m)
                 }
                 if (k>=n-1 && k<=m-1){
                     TrajetComplexe* complexCurr = new TrajetComplexe(elements, nombre);
-                    delete [] elements;
                     Ajouter(complexCurr);
                 }else if(k>=m){
-                    delete [] elements;  
                     break;
-                }else{
-                    delete [] elements;  
-                }                     
+                }
+                delete [] elements;             
                 k++;
             }
         }

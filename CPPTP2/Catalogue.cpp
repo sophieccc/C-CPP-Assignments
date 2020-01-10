@@ -27,7 +27,7 @@ using namespace std;
 #include "TrajetComplexe.h"
 
 //------------------------------------------------------------- Constantes
-const int DEFAULT_SPACE = 10;
+const int DEFAULT_SPACE = 20;
 
 //----------------------------------------------------------------- PUBLIC
 
@@ -395,7 +395,7 @@ void Catalogue::RestitutionBoth(string filename, string mondepart, string monarr
                         elements[i]=curr;
                     }
                     TrajetComplexe* complexCurr = new TrajetComplexe(elements, nombre);
-
+                    delete[] elements;
                     Ajouter(complexCurr);
                 }else{
                     for(int i=0;i<nombre;i++){
@@ -494,7 +494,7 @@ void Catalogue::RestitutionDepart(string filename, string mondepart)
                         elements[i]=curr;
                     }
                     TrajetComplexe* complexCurr = new TrajetComplexe(elements, nombre);
-
+                    delete [] elements;
                     Ajouter(complexCurr);
                 }else{
                     for(int i=0;i<nombre;i++){
@@ -593,7 +593,7 @@ void Catalogue::RestitutionArrive(string filename, string monarrive)
                         elements[i]=curr;
                     }
                     TrajetComplexe* complexCurr = new TrajetComplexe(elements, nombre);
-
+                    delete[] elements;
                     Ajouter(complexCurr);
                 }else{
                     for(int i=0;i<nombre;i++){

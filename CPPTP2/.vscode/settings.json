@@ -5,6 +5,7 @@
         "bitset": "cpp",
         "locale": "cpp",
         "string": "cpp",
-        "iosfwd": "cpp"
+        "iosfwd": "cpp",
+        "new": "cpp"
     }
 }

@@ -1,2 +1,0 @@
-TS|Marrakech|Tanger|Train;
-TS|Casablanca|Bordeaux|Foot;

@@ -633,43 +633,49 @@ void Catalogue::RestitutionIntervalle(string filename, int n, int m)
     ifstream file(filename.c_str());
     if (file.good())
     {
+        int beginning = n-1;
+        int ending = m-1;
         int k=0;
         cout << "Made it past good" << endl;
         string input;
-        while(getline(file,input))
+        while(getline(file,input) && k <=ending)
         {
             cout << "Made it past getline" << endl;
             int start=0;
             int end=input.find('|');
             string type = input.substr(start, end);
             if (type.compare("TS")==0){
-                cout << "Made it past typecompare" << endl;
-                start=end+1;
-                end=input.find('|',start);
-                string depart=input.substr(start, end-start);
-                cout << start;
-                cout << end;
-                cout << depart;
-                start=end+1;
-                end=input.find('|',start);
-                string arrive=input.substr(start, end-start);
-                start=end+1;
-                end=input.find(';',start);
-                string transport=input.substr(start, end-start);
-                if (k>=n-1 && k<=m-1){
+                cout << "Made it past typecompare TS" << endl;
+                if(k>=beginning) {
+                    start=end+1;
+                    end=input.find('|',start);
+                    string depart=input.substr(start, end-start);
+                    cout << start;
+                    cout << end;
+                    cout << depart;
+                    start=end+1;
+                    end=input.find('|',start);
+                    string arrive=input.substr(start, end-start);
+                    start=end+1;
+                    end=input.find(';',start);
+                    string transport=input.substr(start, end-start);
                     TrajetSimple* curr = new TrajetSimple(depart,arrive,transport);
-
                     Ajouter(curr);
-                }else if(k>=m){
-                    break;
                 }
-                k++;
-                
             }
             else if (type.compare("TC")==0){ 
                 start=end+1;
                 end=input.find('|',start);
                 int nombre=stoi(input.substr(start, end-start));
+                cout << "Made it past typecompare TC" << endl;
+                if(k<beginning) {
+                    int temp = k;
+                    while(temp<=beginning+1) {
+                        getline(file, input);
+                        temp++;
+                    }
+                }
+                else {
                 TrajetSimple** elements = new TrajetSimple*[nombre];
                 for (int i=0; i<nombre; i++){
                     getline(file, input);
@@ -685,16 +691,13 @@ void Catalogue::RestitutionIntervalle(string filename, int n, int m)
                     TrajetSimple* curr = new TrajetSimple(depart,arrive,transport);
                     elements[i]=curr;
                 }
-                if (k>=n-1 && k<=m-1){
-                    TrajetComplexe* complexCurr = new TrajetComplexe(elements, nombre);
-                    Ajouter(complexCurr);
-                }else if(k>=m){
-                    break;
-                }
+                TrajetComplexe* complexCurr = new TrajetComplexe(elements, nombre);
                 delete[] elements;
-                k++;
-                
+                Ajouter(complexCurr);
+                    getline(file, input);
+                }
             }
+            k++;
         }
     }
 }

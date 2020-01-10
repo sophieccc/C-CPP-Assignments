@@ -27,7 +27,7 @@ using namespace std;
 #include "TrajetComplexe.h"
 
 //------------------------------------------------------------- Constantes
-const int DEFAULT_SPACE = 10;
+const int DEFAULT_SPACE = 20;
 
 //----------------------------------------------------------------- PUBLIC
 
@@ -395,7 +395,7 @@ void Catalogue::RestitutionBoth(string filename, string mondepart, string monarr
                         elements[i]=curr;
                     }
                     TrajetComplexe* complexCurr = new TrajetComplexe(elements, nombre);
-
+                    delete[] elements;
                     Ajouter(complexCurr);
                 }else{
                     for(int i=0;i<nombre;i++){
@@ -494,7 +494,7 @@ void Catalogue::RestitutionDepart(string filename, string mondepart)
                         elements[i]=curr;
                     }
                     TrajetComplexe* complexCurr = new TrajetComplexe(elements, nombre);
-
+                    delete [] elements;
                     Ajouter(complexCurr);
                 }else{
                     for(int i=0;i<nombre;i++){
@@ -593,7 +593,7 @@ void Catalogue::RestitutionArrive(string filename, string monarrive)
                         elements[i]=curr;
                     }
                     TrajetComplexe* complexCurr = new TrajetComplexe(elements, nombre);
-
+                    delete[] elements;
                     Ajouter(complexCurr);
                 }else{
                     for(int i=0;i<nombre;i++){
@@ -658,7 +658,6 @@ void Catalogue::RestitutionIntervalle(string filename, int n, int m)
                 string transport=input.substr(start, end-start);
                 if (k>=n-1 && k<=m-1){
                     TrajetSimple* curr = new TrajetSimple(depart,arrive,transport);
-
                     Ajouter(curr);
                 }else if(k>=m){
                     break;
@@ -687,13 +686,15 @@ void Catalogue::RestitutionIntervalle(string filename, int n, int m)
                 }
                 if (k>=n-1 && k<=m-1){
                     TrajetComplexe* complexCurr = new TrajetComplexe(elements, nombre);
+                    delete [] elements;
                     Ajouter(complexCurr);
                 }else if(k>=m){
+                    delete [] elements;  
                     break;
-                }
-                delete[] elements;
+                }else{
+                    delete [] elements;  
+                }                     
                 k++;
-                
             }
         }
     }

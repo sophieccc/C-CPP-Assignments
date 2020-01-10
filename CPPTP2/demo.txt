@@ -1,0 +1,6 @@
+TS|Lyon|Bordeaux|Train;
+TC|2|Lyon|Paris;
+TS|Lyon|Marseille|Bateau;
+TS|Marseille|Paris|Avion;
+---------------------------------- End of elementary itineraries;
+TS|Lyon|Paris|Auto;

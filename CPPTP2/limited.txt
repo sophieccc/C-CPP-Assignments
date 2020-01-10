@@ -1,7 +1,0 @@
-TS|Casablanca|Stockholm|Plane;
-TS|Marrakech|Ibiza|Plane;
-TC|2|Lyon|Gothenburg;
-TS|Lyon|Stockholm|Plane;
-TS|Stockholm|Gothenburg|Train;
----------------------------------- End of elementary itineraries;
-TS|Seoul|Singapore|Plane;

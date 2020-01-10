@@ -395,7 +395,7 @@ void Catalogue::RestitutionBoth(string filename, string mondepart, string monarr
                         elements[i]=curr;
                     }
                     TrajetComplexe* complexCurr = new TrajetComplexe(elements, nombre);
-
+                    delete[] elements;
                     Ajouter(complexCurr);
                 }else{
                     for(int i=0;i<nombre;i++){
@@ -494,7 +494,7 @@ void Catalogue::RestitutionDepart(string filename, string mondepart)
                         elements[i]=curr;
                     }
                     TrajetComplexe* complexCurr = new TrajetComplexe(elements, nombre);
-
+                    delete[] elements;
                     Ajouter(complexCurr);
                 }else{
                     for(int i=0;i<nombre;i++){
@@ -562,7 +562,6 @@ void Catalogue::RestitutionArrive(string filename, string monarrive)
                 string transport=input.substr(start, end-start);
                 if (arrive.compare(monarrive)==0){
                     TrajetSimple* curr = new TrajetSimple(depart,arrive,transport);
-
                     Ajouter(curr);
                 }   
             }
@@ -593,7 +592,7 @@ void Catalogue::RestitutionArrive(string filename, string monarrive)
                         elements[i]=curr;
                     }
                     TrajetComplexe* complexCurr = new TrajetComplexe(elements, nombre);
-
+                    delete[] elements;
                     Ajouter(complexCurr);
                 }else{
                     for(int i=0;i<nombre;i++){

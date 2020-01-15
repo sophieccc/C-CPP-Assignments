@@ -11,7 +11,7 @@
 #include <iostream> 
 #include <string> 
 #include <cstdlib>
-#include <map> 
+#include <unordered_map> 
 #include <fstream>
 
 using namespace std; 
@@ -50,10 +50,10 @@ int main(int argc, char** argv)
             }    
         }
     } 
-    map<string, int> stats;
-    typedef map<string, int> innerMap;
+    unordered_map<string, int> stats;
+    typedef unordered_map<string, int> innerMap;
     if(graphFileName != "") {
-        map<string, innerMap> graph;
+        unordered_map<string, innerMap> graph;
     }
     ifstream logFile(fileName);
     if(logFile.good()) {

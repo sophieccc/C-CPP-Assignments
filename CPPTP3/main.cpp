@@ -20,8 +20,7 @@ int main(int argc, char** argv)
         printf("\nNo log file name was passed"); 
     else if(argc==2) 
     {
-        printf("\nBasic functionality, no options/specifications, 
-        just give top 10");
+        printf("\nBasic functionality, no options/specifications, just give top 10");
     }
     else {
         for (int i = 0; i < argc-1; ++i) {

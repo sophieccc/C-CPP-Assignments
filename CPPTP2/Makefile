@@ -10,7 +10,7 @@ PROGS = main.o Trajet.o Catalogue.o TrajetSimple.o TrajetComplexe.o
 Final : $(PROGS)
 	$(CPP) -o $@ $^
 
-%.o : %.cpp %.h
+%.o : %.cpp
 	$(CPP) -c $< $(CFLAGS)
 
 clean:

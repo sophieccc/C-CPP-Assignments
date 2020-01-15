@@ -8,7 +8,17 @@
                            $mohamed.eddhabi@insa-lyon.fr$
 *******************************************************************************/
 
-using namespace std;
+#include <iostream> 
+#include <string> 
 
-int main() {
-}
+using namespace std; 
+  
+int main(int argc, char** argv) 
+{ 
+    string fileName = argv[(argc-1)];
+    for (int i = 0; i < argc-1; ++i) {
+        cout << argv[i] << "\n";       
+    }
+    return 0; 
+} 
+                        

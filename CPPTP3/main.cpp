@@ -12,6 +12,7 @@
 #include <string> 
 #include <cstdlib>
 #include <map> 
+#include <fstream>
 
 using namespace std; 
   
@@ -49,16 +50,18 @@ int main(int argc, char** argv)
             }    
         }
     } 
-
     map<string, int> stats;
+    typedef map<string, int> innerMap;
     if(graphFileName != "") {
-        map<string, (map<string, int>)> graph;
+        map<string, innerMap> graph;
     }
-    ifstream file(filename);
-    if(file.good()) {
+    ifstream logFile(fileName);
+    if(logFile.good()) {
         string input;
-        while(getline(file,input))
+        while(getline(logFile,input))
         {
+            string time = input.substr(input.find(':')+1, 2);
+            int hour=stoi(time);
             // get time
             // if : time is between (or equal to) start and end time then do loop stuff
             // get file type
@@ -69,6 +72,7 @@ int main(int argc, char** argv)
             // or increment w referrer if already there
         }
         // call stats afficher method etc.
+    }
     return 0;
 } 
                         

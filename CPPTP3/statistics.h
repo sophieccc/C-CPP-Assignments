@@ -56,7 +56,7 @@ public:
     statistics();
 
     // Mode d'emploi : (constructeur 2)
-    statistics(unordered_map<string,int>,multimap<int,string> );
+    statistics(unordered_map<string,int>);
     
     // Mode d'emploi : (destructeur)
 
@@ -67,10 +67,9 @@ protected:
 
 //----------------------------------------------------- Attributs protégés
     unordered_map<string, int> hits;
-    multimap<int, string> orderderHits;
+    multimap<int, string> orderedHits;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Trajet>
 
 #endif // STATISTICS_H
-

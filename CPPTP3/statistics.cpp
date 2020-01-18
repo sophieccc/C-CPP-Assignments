@@ -16,35 +16,47 @@
 //-------------------------------------------------------- Include système
 #include <iostream>
 #include <cstring>
-#include <unordered_map>
 using namespace std;
 
 //------------------------------------------------------ Include personnel
-
+#include "statistics.h"
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
 
+void statistics::printTopX(int x)
+{
+    for(auto iter=orderedHits.begin(); iter!=next(orderedHits.begin(),x);iter++)
+    {
+        cout << "/" << iter->second << " " << "(" << iter->first << "hits)";
+    }
+}
 
-
+void statistics::copyIntoMulti()
+{
+    for(auto iter=hits.begin(); iter!=hits.end(); iter++)
+    {
+        orderedHits.insert(pair<int,string>(iter->second, iter->first));
+    }
+}
 //-------------------------------------------- Constructeurs - destructeur
 
 #ifdef MAP
    cout << "Appel au constructeur de copie de <Trajet>" << endl;
 #endif
 //----- Fin de Trajet (constructeur de copie)
+statistics::statistics(unordered_map<string,int>)
+{
 
-
-
+}
 // Algorithme :
 //
-
 #ifdef MAP
     cout << "Appel au constructeur de <Trajet>" << endl;
 #endif
-    //----- Fin de Trajet
+//----- Fin de Trajet
 
 
 #ifdef MAP

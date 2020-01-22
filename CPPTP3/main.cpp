@@ -89,7 +89,8 @@ int main(int argc, char** argv)
             }
         }
     }
-    Statistics *statsMap=new Statistics(stats);
+    statistics *statsMap=new statistics(stats);
+    statsMap->printTopX(6);
     return 0;
 } 
 

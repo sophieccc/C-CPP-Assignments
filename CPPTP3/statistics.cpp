@@ -66,25 +66,7 @@ statistics::statistics()
 {
 }
     //----- Fin de Trajet
-
-statistics::~statistics()
-{
-#ifdef MAP
-   cout << "Appel au destructeur de <Trajet>" << endl;
-#endif
-    /*for(auto iter=hits.begin(); iter!=hits.end(); iter++)
-    {
-        hits.erase(iter);
-    }
-    for(auto iter=orderedHits.begin(); iter!=orderedHits.end(); iter++)
-    {
-        orderedHits.erase(iter);
-    }
-    for(auto iter=graph.begin(); iter!=graph.end(); iter++)
-    {
-        graph.erase(iter);
-    }*/
-}
+    
 //----- Fin de ~Trajet
 //------------------------------------------------------------------ PRIVE
 

@@ -1,17 +1,15 @@
 .PHONY: all, clean
 
-CC = g++
-CFLAGS = -Wall -Werror
+CPP = g++
+CFLAGS = -ansi -pedantic -Wall -Werror -std=c++11 -DMAP -g
 
-LIBS += -lpthread
+all: main statistics
 
-SRCS = $(wildcard *.c)
-PROGS = $(SRCS:.c=.o)
+statistics: statistics.cpp
+	g++ -o statistics statistics.cpp $(CFLAGS)
 
-all: $(PROGS)	
+main: main.cpp
+	g++ -o main main.cpp statistics.cpp $(CFLAGS)
 
-(PROGS): $(SRCS)
-	$(CC) $(CFLAGS) -c -o $@ $<	
-	
 clean:
-	rm -f $(PROGS) *.o
+	rm -f $(OBJ) *.o

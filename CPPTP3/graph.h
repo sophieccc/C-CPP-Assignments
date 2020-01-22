@@ -9,11 +9,10 @@
 *******************************************************************************/
 
 //---------- Interface de la classe <Statistics> (fichier statistics.h) ----------------
-#if ! defined ( STATISTICS_H )
-#define STATISTICS_H
+#if ! defined ( GRAPH_H )
+#define GRAPH_H
 using namespace std;
 #include <unordered_map>
-#include <map>
 //--------------------------------------------------- Interfaces utilisées
 
 //------------------------------------------------------------- Constantes
@@ -25,7 +24,7 @@ using namespace std;
 // Cette classe 
 //------------------------------------------------------------------------
 
-class statistics 
+class graph 
 {
 //----------------------------------------------------------------- PUBLIC
 
@@ -35,8 +34,8 @@ public:
     
     // Mode d'emploi :
     // Cette méthode renvoie la ville de départ du trajet.
-    void copyIntoMulti();
-    void printTopX(int x);
+    void writeGraph(string fileName);
+    void fillNodes();
     // Mode d'emploi :
     // Cette méthode renvoie la ville d'arrivée du trajet.
 
@@ -47,13 +46,13 @@ public:
 //-------------------------------------------- Constructeurs - destructeur
     
     // Mode d'emploi (constructeur de copie) :
-    statistics(const statistics &DesStats);
+    graph(const graph &unGraphe);
     
     // Mode d'emploi (constructeur 1) :   
-    statistics();
+    graph();
 
     // Mode d'emploi : (constructeur 2)
-    statistics(unordered_map<string,int>);
+    graph(unordered_map<string,unordered_map<string, int>>);
     
     // Mode d'emploi : (destructeur)
 
@@ -63,8 +62,8 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-    unordered_map<string, int> hits;
-    multimap<int, string> orderedHits;
+    unordered_map<string,unordered_map<string, int>> links;
+    unordered_map<string,int> nodes;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Trajet>

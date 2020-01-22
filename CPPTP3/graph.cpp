@@ -15,43 +15,72 @@
 //-------------------------------------------------------- Include système
 #include <iostream>
 #include <cstring>
+#include <fstream>
 using namespace std;
 
 //------------------------------------------------------ Include personnel
-#include "statistics.h"
+#include "graph.h"
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
 
-void statistics::printTopX(int x)
+void graph::writeGraph(string fileName)
 {
-    for(auto iter=orderedHits.begin(); iter!=next(orderedHits.begin(),x);iter++)
+    cout << "Dot-file " << fileName << ".dot generated" << endl;
+    ofstream file(fileName.c_str());
+    if(file.good())
     {
-        cout << "/" << iter->second << " " << "(" << iter->first << "hits)";
+        file << "digraph {" << endl;
+        for (auto iter=links.begin(); iter!=links.end(); iter++)
+        {
+            file << iter->first << ";" << endl;
+        }
+        for (auto iter=links.begin(); iter!=links.end(); iter++)
+        {
+            for (auto iter2=iter->second.begin(); iter2!=iter->second.end(); iter2++)
+            {
+                file << iter2->first << " -> " << iter->first << "[label=\"" << iter2->second << "\"];" << endl;
+            }
+        }
+        file << "}" << endl;
     }
 }
 
-void statistics::copyIntoMulti()
-{
-    for(auto iter=hits.begin(); iter!=hits.end(); iter++)
+void graph::fillNodes()
+{   
+    int i=0;
+    for (auto iter=links.begin(); iter!=links.end(); iter++)
     {
-        orderedHits.insert(pair<int,string>(iter->second, iter->first));
+        if(nodes.count(iter->first)==0)
+        {
+            nodes.insert(pair<string,int>(iter->first,i));
+            i++;
+        }
+        for(auto iter2=iter->second.begin(); iter2!=iter->second.end(); iter2++)
+        {
+            if(nodes.count(iter2->first)==0)
+            {
+                nodes.insert(pair<string,int>(iter2->first,i));
+                i++;
+            }
+        }
     }
 }
+
 
 //-------------------------------------------- Constructeurs - destructeur
-statistics::statistics(const statistics &DesStats)
+graph::graph(const graph &unGraphe)
 {
 #ifdef MAP
    cout << "Appel au constructeur de copie de <Trajet>" << endl;
 #endif
-    hits=DesStats.hits;
+    links=unGraphe.links;
 }
 //----- Fin de Trajet (constructeur de copie)
 
-statistics::statistics(unordered_map<string,int> inputMap)
+graph::graph(unordered_map<string,unordered_map<string, int>> inputLinks)
 {
 // Algorithme :
 //
@@ -59,16 +88,15 @@ statistics::statistics(unordered_map<string,int> inputMap)
     cout << "Appel au constructeur de <Trajet>" << endl;
 #endif
 //----- Fin de Trajet
-    hits=inputMap;
+    links=inputLinks;
 }
 
-statistics::statistics()
-{
-
-}
+#ifdef MAP
+    cout << "Appel au constructeur 2 de <Trajet>" << endl;
+#endif
     //----- Fin de Trajet
 
-statistics::~statistics()
+graph::~graph()
 {
 #ifdef MAP
    cout << "Appel au destructeur de <Trajet>" << endl;

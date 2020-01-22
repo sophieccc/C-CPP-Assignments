@@ -15,6 +15,7 @@
 #include <fstream>
 #include <vector>
 #include "statistics.h"
+#include "graph.h"
 
 using namespace std; 
 
@@ -59,7 +60,7 @@ int main(int argc, char** argv)
         }
     } 
     innerMap stats;
-    unordered_map<string, innerMap> graph;
+    unordered_map<string, innerMap> graphInput;
     ifstream logFile(fileName);
     if(logFile.good()) {
         string input;
@@ -83,7 +84,7 @@ int main(int argc, char** argv)
                         stats.insert(pair<string, int>(hitLink, 1));
                     }
                     if(graphFileName != "") {
-                        graph = createGraphMap(input, hitLink);
+                        graphInput = createGraphMap(input, hitLink);
                     }
                 }
             }
@@ -91,6 +92,8 @@ int main(int argc, char** argv)
     }
     statistics *statsMap=new statistics(stats);
     statsMap->printTopX(5);
+    graph *graphMap=new graph(graphInput);
+    graphMap->writeGraph("hi.dot");
     return 0;
 } 
 

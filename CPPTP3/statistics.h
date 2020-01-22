@@ -67,6 +67,7 @@ protected:
 //----------------------------------------------------- Attributs protégés
     unordered_map<string, int> hits;
     multimap<int, string> orderedHits;
+    unordered_map<string,unordered_map<string, int>> graph;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Trajet>

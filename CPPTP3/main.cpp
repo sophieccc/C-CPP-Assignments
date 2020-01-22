@@ -13,8 +13,11 @@
 #include <cstdlib>
 #include <unordered_map> 
 #include <fstream>
+#include <vector>
 
 using namespace std; 
+
+vector<string> lectureLigne(const string input);
   
 int main(int argc, char** argv) 
 { 
@@ -77,10 +80,12 @@ int main(int argc, char** argv)
                     }
                     if(graphFileName != "") {
                         int searchIndex = input.find("HTTP/1.1")+2;
-                        int beginning = input.find('"', searchIndex);
-                        int ending = input.find('"', beginning);
-                        int linkLength = ending-beginning;
-                        string referrerLink = input.substr(beginning, linkLength);
+                        cout << searchIndex << endl;
+                        searchIndex = input.find('\"', searchIndex);
+                        searchIndex = input.find('\"', searchIndex+1);
+                        int ending = input.find('\"', searchIndex+1);
+                        int linkLength = ending-(searchIndex+1);
+                        string referrerLink = input.substr(searchIndex+1, linkLength);
                         if(referrerLink.back()=='/') {
                             referrerLink = referrerLink.substr(0, referrerLink.size()-1);
                         }
@@ -102,8 +107,79 @@ int main(int argc, char** argv)
                 }
             }
         }
-        // call stats afficher method etc.
     }
     return 0;
 } 
+
+vector<string> lectureLigne(const string input)
+{
+  vector<string> output(13,"");
+
+  int start = 0;
+  int end = input.find(' ');
+  string ipAdress = input.substr(start, end);
+  output[0]=ipAdress;
+
+  start = end;
+  end = input.find(' ',start+1);
+  string userLogname = input.substr(start,end-start);
+  output[1]=userLogname;
+
+  start = end;
+  end = input.find(' ',start+1);
+  string authenticatedUser = input.substr(start,end-start);
+  output[2]=authenticatedUser;
+
+  start = input.find('[');
+  end = input.find(':',start+1);
+  string date = input.substr(start+1,end-start-1);
+  output[3]=date;
+
+  start = end;
+  end = input.find(' ',start+1);
+  string heure = input.substr(start,end-start);
+  output[4]=heure;
+
+  start = end;
+  end = input.find(']',start+1);
+  string gmt = input.substr(start,end-start);
+  output[5]=gmt;
+
+  start = input.find('"');
+  end = input.find(' ',start+1);
+  string action = input.substr(start+1,end-start-1);
+  output[6]=action;
+
+  start = end;
+  end = input.find(' ',start+1);
+  string url = input.substr(start,end-start);
+  output[7]=url;
+
+  start = end;
+  end = input.find('"',start+1);
+  string http = input.substr(start,end-start);
+  output[8]=http;
+
+  start = end+1;
+  end = input.find(' ',start+1);
+  string status = input.substr(start+1,end-start);
+  output[9]=status;
+
+  start = end;
+  end = input.find(' ',start+1);
+  string qData = input.substr(start+1,end-start);
+  output[10]=qData;
+
+  start = input.find('"',end);
+  end = input.find('"',start+1);
+  string referer = input.substr(start+1,end-start-1);
+  output[11]=referer;
+
+  start = input.find('"',end+1);
+  end = input.find('"',start+1);
+  string navId = input.substr(start+1,end-start-1);
+  output[12]=navId;
+
+  return output;
+}
                         

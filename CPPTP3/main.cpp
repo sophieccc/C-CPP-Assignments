@@ -17,7 +17,11 @@
 
 using namespace std; 
 
+typedef unordered_map<string, int> innerMap;
+
 vector<string> lectureLigne(const string input);
+unordered_map<string, innerMap> createGraphMap(string input, string hitLink);
+
   
 int main(int argc, char** argv) 
 { 
@@ -53,7 +57,6 @@ int main(int argc, char** argv)
             }    
         }
     } 
-    typedef unordered_map<string, int> innerMap;
     innerMap stats;
     unordered_map<string, innerMap> graph;
     ifstream logFile(fileName);
@@ -79,30 +82,7 @@ int main(int argc, char** argv)
                         stats.insert(pair<string, int>(hitLink, 1));
                     }
                     if(graphFileName != "") {
-                        int searchIndex = input.find("HTTP/1.1")+2;
-                        cout << searchIndex << endl;
-                        searchIndex = input.find('\"', searchIndex);
-                        searchIndex = input.find('\"', searchIndex+1);
-                        int ending = input.find('\"', searchIndex+1);
-                        int linkLength = ending-(searchIndex+1);
-                        string referrerLink = input.substr(searchIndex+1, linkLength);
-                        if(referrerLink.back()=='/') {
-                            referrerLink = referrerLink.substr(0, referrerLink.size()-1);
-                        }
-                        // check if last thing in link is '/' and if so delete it
-                        if (graph.count(hitLink)>0) {
-                            if (graph.at(hitLink).count(referrerLink)>0) {
-                                graph.at(hitLink).at(referrerLink)++;
-                            }
-                            else {
-                                graph.at(hitLink).insert(pair<string, int>(referrerLink, 1));
-                            }
-                        }
-                        else {
-                            innerMap referrerMap;
-                            referrerMap.insert(pair<string, int>(referrerLink, 1));
-                            graph.insert(pair<string, innerMap>(hitLink, referrerMap));
-                        }
+                        graph = createGraphMap(input, hitLink);
                     }
                 }
             }
@@ -110,6 +90,36 @@ int main(int argc, char** argv)
     }
     return 0;
 } 
+
+unordered_map<string, innerMap> createGraphMap(string input, string hitLink) {
+    unordered_map<string, innerMap> newGraph;
+
+    int searchIndex = input.find("HTTP/1.1")+2;
+    searchIndex = input.find('\"', searchIndex);
+    searchIndex = input.find('\"', searchIndex+1);
+    int ending = input.find('\"', searchIndex+1);
+    int linkLength = ending-(searchIndex+1);
+    string referrerLink = input.substr(searchIndex+1, linkLength);
+    if(referrerLink.back()=='/') {
+        referrerLink = referrerLink.substr(0, referrerLink.size()-1);
+    }
+
+    if (newGraph.count(hitLink)>0) {
+        if (newGraph.at(hitLink).count(referrerLink)>0) {
+            newGraph.at(hitLink).at(referrerLink)++;
+        }
+        else {
+            newGraph.at(hitLink).insert(pair<string, int>(referrerLink, 1));
+        }
+    }
+    else {
+        innerMap referrerMap;
+        referrerMap.insert(pair<string, int>(referrerLink, 1));
+        newGraph.insert(pair<string, innerMap>(hitLink, referrerMap));
+    }
+
+    return newGraph;
+}
 
 vector<string> lectureLigne(const string input)
 {

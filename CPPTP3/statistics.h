@@ -38,7 +38,7 @@ public:
     // Cette méthode renvoie la ville de départ du trajet.
     void copyIntoMulti();
     void printTopX(int x);
-    
+    void writeGraph(string fileName);
     // Mode d'emploi :
     // Cette méthode renvoie la ville d'arrivée du trajet.
 

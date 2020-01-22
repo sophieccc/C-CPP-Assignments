@@ -15,6 +15,7 @@
 //-------------------------------------------------------- Include système
 #include <iostream>
 #include <cstring>
+#include <fstream>
 using namespace std;
 
 //------------------------------------------------------ Include personnel
@@ -40,15 +41,37 @@ void statistics::copyIntoMulti()
         orderedHits.insert(pair<int,string>(iter->second, iter->first));
     }
 }
+
+void statistics::writeGraph(string fileName)
+{
+    cout << "Dot-file " << fileName << ".dot generated" << endl;
+    ofstream file(fileName.c_str());
+    if(file.good())
+    {
+        file << "diagraph {" << endl;
+        for (auto iter=graph.begin(); iter!=graph.end(); iter++)
+        {
+            file << iter->first << ";" << endl;
+        }
+        for (auto iter=graph.begin(); iter!=graph.end(); iter++)
+        {
+            for (auto iter2=iter->second.begin(); iter2!=iter->second.end(); iter2++)
+            {
+                file << iter2->first << " -> " << iter->first << "[label=\"" << iter2->second << "\"];" << endl;
+            }
+        }
+        file << "}" << endl;
+    }
+}
 //-------------------------------------------- Constructeurs - destructeur
 
 #ifdef MAP
    cout << "Appel au constructeur de copie de <Trajet>" << endl;
 #endif
 //----- Fin de Trajet (constructeur de copie)
-statistics::statistics(unordered_map<string,int>)
+statistics::statistics(unordered_map<string,int> inputMap)
 {
-
+    hits=inputMap;
 }
 // Algorithme :
 //
@@ -63,14 +86,24 @@ statistics::statistics(unordered_map<string,int>)
 #endif
     //----- Fin de Trajet
 
-
+statistics::~statistics()
+{
 #ifdef MAP
    cout << "Appel au destructeur de <Trajet>" << endl;
 #endif
-	
+    /*for(auto iter=hits.begin(); iter!=hits.end(); iter++)
+    {
+        hits.erase(iter);
+    }
+    for(auto iter=orderedHits.begin(); iter!=orderedHits.end(); iter++)
+    {
+        orderedHits.erase(iter);
+    }
+    for(auto iter=graph.begin(); iter!=graph.end(); iter++)
+    {
+        graph.erase(iter);
+    }*/
     //----- Fin de ~Trajet
-
-
 
 //------------------------------------------------------------------ PRIVE
 

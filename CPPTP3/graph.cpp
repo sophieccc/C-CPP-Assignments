@@ -35,19 +35,18 @@ void graph::writeGraph(string fileName)
         file << "digraph {" << endl;
         for (auto iter=links.begin(); iter!=links.end(); iter++)
         {
-            file << iter->first << ";" << endl;
+            file <<  "node" << nodes.at(iter->first) << "[label=\"" << iter->first << "\"];" << endl;
         }
         for (auto iter=links.begin(); iter!=links.end(); iter++)
         {
             for (auto iter2=iter->second.begin(); iter2!=iter->second.end(); iter2++)
             {
-                file << iter2->first << " -> " << iter->first << "[label=\"" << iter2->second << "\"];" << endl;
+                file << "node" << nodes.at(iter2->first) << " -> " << "node" << nodes.at(iter->first) << "[label=\"" << iter2->second << "\"];" << endl;
             }
         }
         file << "}" << endl;
     }
 }
-
 void graph::fillNodes()
 {   
     int i=0;
@@ -68,8 +67,6 @@ void graph::fillNodes()
         }
     }
 }
-
-
 //-------------------------------------------- Constructeurs - destructeur
 graph::graph(const graph &unGraphe)
 {

@@ -66,6 +66,9 @@ int main(int argc, char** argv)
                 input.find("js"))) {
                     int linkLength = input.find(" HTTP")- input.find("GET")-4;
                     string hitLink = input.substr(input.find("GET ")+4, linkLength);
+                    if(hitLink.back()=='/') {
+                        hitLink = hitLink.substr(0, hitLink.size()-1);
+                    }
                     if (stats.count(hitLink)>0) {
                         stats.at(hitLink)++;
                     }
@@ -73,7 +76,15 @@ int main(int argc, char** argv)
                         stats.insert(pair<string, int>(hitLink, 1));
                     }
                     if(graphFileName != "") {
-                        string referrerLink;
+                        int searchIndex = input.find("HTTP/1.1")+2;
+                        int beginning = input.find('"', searchIndex);
+                        int ending = input.find('"', beginning);
+                        int linkLength = ending-beginning;
+                        string referrerLink = input.substr(beginning, linkLength);
+                        if(referrerLink.back()=='/') {
+                            referrerLink = referrerLink.substr(0, referrerLink.size()-1);
+                        }
+                        // check if last thing in link is '/' and if so delete it
                         if (graph.count(hitLink)>0) {
                             if (graph.at(hitLink).count(referrerLink)>0) {
                                 graph.at(hitLink).at(referrerLink)++;

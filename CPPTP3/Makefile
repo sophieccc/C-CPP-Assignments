@@ -3,7 +3,7 @@
 CPP = g++
 CFLAGS = -ansi -pedantic -Wall -Werror -std=c++11 -DMAP -g
 
-all: statistics statistics
+all: main statistics
 
 statistics: statistics.cpp
 	g++ -o statistics statistics.cpp $(CFLAGS)

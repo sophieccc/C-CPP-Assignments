@@ -90,7 +90,7 @@ int main(int argc, char** argv)
         }
     }
     statistics *statsMap=new statistics(stats);
-    statsMap->printTopX(6);
+    statsMap->printTopX(5);
     return 0;
 } 
 

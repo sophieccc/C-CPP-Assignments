@@ -50,11 +50,8 @@ int main(int argc, char** argv)
             }    
         }
     } 
-    unordered_map<string, int> stats;
     typedef unordered_map<string, int> innerMap;
-    if(graphFileName != "") {
-        unordered_map<string, innerMap> graph;
-    }
+    innerMap stats;
     ifstream logFile(fileName);
     if(logFile.good()) {
         string input;
@@ -66,10 +63,31 @@ int main(int argc, char** argv)
                 if(includeImages || !(input.find("jpg") || input.find("png") || 
                 input.find("gif") || input.find("ico") || input.find("css") || 
                 input.find("js"))) {
-                // get referrer and hit url strings
-                // add 'hit' url to map or increment it if its already there
-                // if doing graph, then add get and referrer to map
-                // or increment w referrer if already there
+                    int linkLength = input.find(" HTTP")- input.find("GET")-4;
+                    string hitLink = input.substr(input.find("GET ")+4, linkLength);
+                    if (stats.count(hitLink)>0) {
+                        stats.at(hitLink)++;
+                    }
+                    else {
+                        stats.insert(pair<string, int>(hitLink, 1));
+                    }
+                    if(graphFileName != "") {
+                        unordered_map<string, innerMap> graph;
+                        string referrerLink;
+                        if (graph.count(hitLink)>0) {
+                            if (graph.at(hitLink).count(referrerLink)>0) {
+                                graph.at(hitLink).at(referrerLink)++;
+                            }
+                            else {
+                                graph.at(hitLink).insert(pair<string, int>(referrerLink, 1));
+                            }
+                        }
+                        else {
+                            innerMap referrerMap;
+                            referrerMap.insert(pair<string, int>(referrerLink, 1));
+                            graph.insert(pair<string, innerMap>(hitLink, referrerMap));
+                        }
+                    }
                 }
             }
         }

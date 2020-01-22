@@ -52,6 +52,7 @@ int main(int argc, char** argv)
     } 
     typedef unordered_map<string, int> innerMap;
     innerMap stats;
+    unordered_map<string, innerMap> graph;
     ifstream logFile(fileName);
     if(logFile.good()) {
         string input;
@@ -72,7 +73,6 @@ int main(int argc, char** argv)
                         stats.insert(pair<string, int>(hitLink, 1));
                     }
                     if(graphFileName != "") {
-                        unordered_map<string, innerMap> graph;
                         string referrerLink;
                         if (graph.count(hitLink)>0) {
                             if (graph.at(hitLink).count(referrerLink)>0) {

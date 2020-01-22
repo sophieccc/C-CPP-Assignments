@@ -35,13 +35,19 @@ void graph::writeGraph(string fileName)
         file << "digraph {" << endl;
         for (auto iter=links.begin(); iter!=links.end(); iter++)
         {
-            file <<  "node" << nodes.at(iter->first) << " [label=\"" << iter->first << "\"];" << endl;
+            if(nodes.count(iter->first)>0)
+            {
+                file <<  "node" << nodes.at(iter->first) << " [label=\"" << iter->first << "\"];" << endl;
+            }
         }
         for (auto iter=links.begin(); iter!=links.end(); iter++)
         {
             for (auto iter2=iter->second.begin(); iter2!=iter->second.end(); iter2++)
             {
-                file << "node" << nodes.at(iter2->first) << " -> " << "node" << nodes.at(iter->first) << " [label=\"" << iter2->second << "\"];" << endl;
+                if(nodes.count(iter2->first)>0)
+                {
+                    file << "node" << nodes.at(iter2->first) << " -> " << "node" << nodes.at(iter->first) << " [label=\"" << iter2->second;file << "\"];" << endl;
+                }
             }
         }
         file << "}" << endl;

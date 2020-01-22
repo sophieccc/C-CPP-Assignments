@@ -14,6 +14,7 @@
 #include <unordered_map> 
 #include <fstream>
 #include <vector>
+#include "statistics.h"
 
 using namespace std; 
 
@@ -88,6 +89,7 @@ int main(int argc, char** argv)
             }
         }
     }
+    Statistics *statsMap=new Statistics(stats);
     return 0;
 } 
 

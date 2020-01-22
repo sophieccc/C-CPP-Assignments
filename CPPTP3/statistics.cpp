@@ -64,7 +64,6 @@ statistics::statistics(unordered_map<string,int> inputMap)
 
 statistics::statistics()
 {
-
 }
     //----- Fin de Trajet
 

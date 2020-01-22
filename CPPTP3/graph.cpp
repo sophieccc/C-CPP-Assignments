@@ -35,13 +35,13 @@ void graph::writeGraph(string fileName)
         file << "digraph {" << endl;
         for (auto iter=links.begin(); iter!=links.end(); iter++)
         {
-            file <<  "node" << nodes.at(iter->first) << "[label=\"" << iter->first << "\"];" << endl;
+            file <<  "node" << nodes.at(iter->first) << " [label=\"" << iter->first << "\"];" << endl;
         }
         for (auto iter=links.begin(); iter!=links.end(); iter++)
         {
             for (auto iter2=iter->second.begin(); iter2!=iter->second.end(); iter2++)
             {
-                file << "node" << nodes.at(iter2->first) << " -> " << "node" << nodes.at(iter->first) << "[label=\"" << iter2->second << "\"];" << endl;
+                file << "node" << nodes.at(iter2->first) << " -> " << "node" << nodes.at(iter->first) << " [label=\"" << iter2->second << "\"];" << endl;
             }
         }
         file << "}" << endl;
@@ -87,30 +87,14 @@ graph::graph(unordered_map<string,unordered_map<string, int>> inputLinks)
 //----- Fin de Trajet
     links=inputLinks;
 }
-
+graph::graph()
+{
 #ifdef MAP
     cout << "Appel au constructeur 2 de <Trajet>" << endl;
 #endif
-    //----- Fin de Trajet
-
-graph::~graph()
-{
-#ifdef MAP
-   cout << "Appel au destructeur de <Trajet>" << endl;
-#endif
-    /*for(auto iter=hits.begin(); iter!=hits.end(); iter++)
-    {
-        hits.erase(iter);
-    }
-    for(auto iter=orderedHits.begin(); iter!=orderedHits.end(); iter++)
-    {
-        orderedHits.erase(iter);
-    }
-    for(auto iter=graph.begin(); iter!=graph.end(); iter++)
-    {
-        graph.erase(iter);
-    }*/
 }
+//----- Fin de Trajet
+
 //----- Fin de ~Trajet
 //------------------------------------------------------------------ PRIVE
 

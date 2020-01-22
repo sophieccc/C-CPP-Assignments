@@ -68,4 +68,4 @@ protected:
 
 //-------------------------------- Autres définitions dépendantes de <Trajet>
 
-#endif // STATISTICS_H
+#endif // GRAPH_H

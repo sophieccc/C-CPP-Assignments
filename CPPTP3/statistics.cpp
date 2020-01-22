@@ -48,7 +48,7 @@ void statistics::writeGraph(string fileName)
     ofstream file(fileName.c_str());
     if(file.good())
     {
-        file << "diagraph {" << endl;
+        file << "digraph {" << endl;
         for (auto iter=graph.begin(); iter!=graph.end(); iter++)
         {
             file << iter->first << ";" << endl;
@@ -69,9 +69,10 @@ void statistics::writeGraph(string fileName)
    cout << "Appel au constructeur de copie de <Trajet>" << endl;
 #endif
 //----- Fin de Trajet (constructeur de copie)
-statistics::statistics(unordered_map<string,int> inputMap)
+statistics::statistics(unordered_map<string,int> inputMap,unordered_map<string,unordered_map<string, int>> inputGraph)
 {
     hits=inputMap;
+    graph=inputGraph;
 }
 // Algorithme :
 //

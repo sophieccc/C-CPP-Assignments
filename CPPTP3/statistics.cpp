@@ -48,7 +48,7 @@ void statistics::writeGraph(string fileName)
     ofstream file(fileName.c_str());
     if(file.good())
     {
-        file << "diagraph {" << endl;
+        file << "digraph {" << endl;
         for (auto iter=graph.begin(); iter!=graph.end(); iter++)
         {
             file << iter->first << ";" << endl;

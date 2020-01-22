@@ -62,14 +62,16 @@ int main(int argc, char** argv)
         {
             string time = input.substr(input.find(':')+1, 2);
             int hour=stoi(time);
-            // get time
-            // if : time is between (or equal to) start and end time then do loop stuff
-            // get file type
-            // if includeImages = true || its not an image file  then do loop stuff
-            // get referrer and hit url strings
-            // add 'hit' url to map or increment it if its already there
-            // if doing graph, then add get and referrer to map
-            // or increment w referrer if already there
+            if(hour<= endTime && hour >=startTime) {
+                if(includeImages || !(input.find("jpg") || input.find("png") || 
+                input.find("gif") || input.find("ico") || input.find("css") || 
+                input.find("js"))) {
+                // get referrer and hit url strings
+                // add 'hit' url to map or increment it if its already there
+                // if doing graph, then add get and referrer to map
+                // or increment w referrer if already there
+                }
+            }
         }
         // call stats afficher method etc.
     }

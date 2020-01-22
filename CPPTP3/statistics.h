@@ -55,7 +55,7 @@ public:
     statistics();
 
     // Mode d'emploi : (constructeur 2)
-    statistics(unordered_map<string,int>);
+    statistics(unordered_map<string,int>,unordered_map<string,unordered_map<string, int>>);
     
     // Mode d'emploi : (destructeur)
 

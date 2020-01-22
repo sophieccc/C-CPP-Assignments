@@ -69,9 +69,10 @@ void statistics::writeGraph(string fileName)
    cout << "Appel au constructeur de copie de <Trajet>" << endl;
 #endif
 //----- Fin de Trajet (constructeur de copie)
-statistics::statistics(unordered_map<string,int> inputMap)
+statistics::statistics(unordered_map<string,int> inputMap,unordered_map<string,unordered_map<string, int>> inputGraph)
 {
     hits=inputMap;
+    graph=inputGraph;
 }
 // Algorithme :
 //

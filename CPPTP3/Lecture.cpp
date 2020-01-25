@@ -22,10 +22,17 @@ int getHour(string input) {
 }
 string getDestinationLink(string input) {
   string destinationLink;
-  int linkLength = input.find(" HTTP")- input.find("GET")-4;
-  destinationLink = input.substr(input.find("GET ")+4, linkLength);
+  int linkLength;
+  if(input.find("GET")!=string::npos) {
+    linkLength = input.find(" HTTP")- input.find("GET")-4;
+    destinationLink = input.substr(input.find("GET ")+4, linkLength);
+  }
+  else if(input.find("POST")!=string::npos) {
+    linkLength = input.find(" HTTP")- input.find("POST")-5;
+    destinationLink = input.substr(input.find("POST ")+5, linkLength);
+  }
   if(destinationLink.back()=='/') {
-      destinationLink = destinationLink.substr(0, destinationLink.size()-1);
+    destinationLink = destinationLink.substr(0, destinationLink.size()-1);
   }
   return destinationLink;
 }

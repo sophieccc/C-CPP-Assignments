@@ -35,14 +35,6 @@ void Statistics::printTopX(int x)
     }
 }
 
-void Statistics::copyIntoMulti()
-{
-    for(auto iter=hits.begin(); iter!=hits.end(); iter++)
-    {
-        orderedHits.insert(pair<int,string>(iter->second, iter->first));
-    }
-}
-
 //-------------------------------------------- Constructeurs - destructeur
 Statistics::Statistics(const Statistics &desStats)
 {
@@ -77,3 +69,10 @@ Statistics::Statistics()
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
+void Statistics::copyIntoMulti()
+{
+    for(auto iter=hits.begin(); iter!=hits.end(); iter++)
+    {
+        orderedHits.insert(pair<int,string>(iter->second, iter->first));
+    }
+}

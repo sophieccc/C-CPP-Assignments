@@ -53,29 +53,6 @@ void Graph::writeGraph(string fileName)
         file << "}" << endl;
     }
 }
-void Graph::fillNodes()
-{   
-    int i=0;
-    for (auto iter=links.begin(); iter!=links.end(); iter++)
-    {
-        if(nodes.count(iter->first)==0)
-        {
-            nodes.insert(pair<string,int>(iter->first,i));
-            i++;
-        }
-    }
-    for (auto iter=links.begin(); iter!=links.end(); iter++)
-    {
-        for(auto iter2=iter->second.begin(); iter2!=iter->second.end(); iter2++)
-        {
-            if(nodes.count(iter2->first)==0)
-            {
-                nodes.insert(pair<string,int>(iter2->first,i));
-                i++;
-            }
-        }
-    }
-}
 //-------------------------------------------- Constructeurs - destructeur
 Graph::Graph(const Graph &unGraphe)
 {
@@ -105,7 +82,29 @@ Graph::Graph()
 }
 //----- Fin de Graph
 
-//----- Fin de ~Graph
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
+void Graph::fillNodes()
+{   
+    int i=0;
+    for (auto iter=links.begin(); iter!=links.end(); iter++)
+    {
+        if(nodes.count(iter->first)==0)
+        {
+            nodes.insert(pair<string,int>(iter->first,i));
+            i++;
+        }
+    }
+    for (auto iter=links.begin(); iter!=links.end(); iter++)
+    {
+        for(auto iter2=iter->second.begin(); iter2!=iter->second.end(); iter2++)
+        {
+            if(nodes.count(iter2->first)==0)
+            {
+                nodes.insert(pair<string,int>(iter2->first,i));
+                i++;
+            }
+        }
+    }
+}

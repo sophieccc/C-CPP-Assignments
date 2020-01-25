@@ -11,6 +11,7 @@
 //---------- Interface de la classe <Statistics> (fichier statistics.h) ----------------
 #if ! defined ( GRAPH_H )
 #define GRAPH_H
+
 using namespace std;
 #include <unordered_map>
 //--------------------------------------------------- Interfaces utilisées
@@ -33,14 +34,8 @@ public:
 
     
     // Mode d'emploi :
-    // Cette méthode renvoie la ville de départ du trajet.
+    // Cette méthode crée un .dot file.
     void writeGraph(string fileName);
-    // Mode d'emploi :
-    // Cette méthode renvoie la ville d'arrivée du trajet.
-
-    
-    // Mode d'emploi :
-    // Cette méthode affiche les caractéristiques du trajet.
     
 //-------------------------------------------- Constructeurs - destructeur
     
@@ -52,8 +47,6 @@ public:
 
     // Mode d'emploi : (constructeur 2)
     Graph(unordered_map<string,unordered_map<string, int>>);
-    
-    // Mode d'emploi : (destructeur)
 
 //------------------------------------------------------------------ PRIVE
 

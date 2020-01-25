@@ -11,6 +11,7 @@
 //---------- Interface de la classe <Statistics> (fichier Statistics.h) ----------------
 #if ! defined ( STATISTICS_H )
 #define STATISTICS_H
+
 using namespace std;
 #include <unordered_map>
 #include <map>
@@ -35,7 +36,6 @@ public:
     
     // Mode d'emploi :
     // Cette méthode renvoie la ville de départ du trajet.
-    void copyIntoMulti();
     void printTopX(int x);
     // Mode d'emploi :
     // Cette méthode renvoie la ville d'arrivée du trajet.
@@ -61,6 +61,7 @@ public:
 
 protected:
 //----------------------------------------------------- Méthodes protégées
+    void copyIntoMulti();
 
 //----------------------------------------------------- Attributs protégés
     unordered_map<string, int> hits;

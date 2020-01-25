@@ -47,7 +47,7 @@ public:
 //-------------------------------------------- Constructeurs - destructeur
     
     // Mode d'emploi (constructeur de copie) :
-    Statistics(const Statistics &DesStats);
+    Statistics(const Statistics &desStats);
     
     // Mode d'emploi (constructeur 1) :   
     Statistics();
@@ -67,6 +67,6 @@ protected:
     multimap<int, string> orderedHits;
 };
 
-//-------------------------------- Autres définitions dépendantes de <Trajet>
+//-------------------------------- Autres définitions dépendantes de <Statistics>
 
 #endif // STATISTICS_H

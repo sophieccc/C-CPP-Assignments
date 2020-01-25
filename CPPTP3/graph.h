@@ -66,6 +66,6 @@ protected:
     unordered_map<string,int> nodes;
 };
 
-//-------------------------------- Autres définitions dépendantes de <Trajet>
+//-------------------------------- Autres définitions dépendantes de <Graph>
 
 #endif // GRAPH_H

@@ -77,32 +77,32 @@ void Graph::fillNodes()
 Graph::Graph(const Graph &unGraphe)
 {
 #ifdef MAP
-   cout << "Appel au constructeur de copie de <Trajet>" << endl;
+   cout << "Appel au constructeur de copie de <Graph>" << endl;
 #endif
     links=unGraphe.links;
 }
-//----- Fin de Trajet (constructeur de copie)
+//----- Fin de Graph (constructeur de copie)
 
 Graph::Graph(unordered_map<string,unordered_map<string, int>> inputLinks)
 {
 // Algorithme :
 //
 #ifdef MAP
-    cout << "Appel au constructeur de <Trajet>" << endl;
+    cout << "Appel au constructeur de <Graph>" << endl;
 #endif
-//----- Fin de Trajet
+//----- Fin de Graph
     links=inputLinks;
     fillNodes();
 }
 Graph::Graph()
 {
 #ifdef MAP
-    cout << "Appel au constructeur 2 de <Trajet>" << endl;
+    cout << "Appel au constructeur 2 de <Graph>" << endl;
 #endif
 }
-//----- Fin de Trajet
+//----- Fin de Graph
 
-//----- Fin de ~Trajet
+//----- Fin de ~Graph
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées

@@ -27,9 +27,10 @@ using namespace std;
 
 void Statistics::printTopX(int x)
 {
-    for(auto iter=orderedHits.begin(); iter!=next(orderedHits.begin(),x);iter++)
+    int i=0;
+    for(auto iter=orderedHits.begin(); iter!=next(orderedHits.begin(),x);++iter, ++i)
     {
-        cout << "/" << iter->second << " " << "(" << iter->first << "hits)";
+        cout << i << ". " << iter->second << " " << "(" << iter->first << " hits)" << endl;
     }
 }
 
@@ -42,32 +43,36 @@ void Statistics::copyIntoMulti()
 }
 
 //-------------------------------------------- Constructeurs - destructeur
-Statistics::Statistics(const Statistics &DesStats)
+Statistics::Statistics(const Statistics &desStats)
 {
 #ifdef MAP
-   cout << "Appel au constructeur de copie de <Trajet>" << endl;
+   cout << "Appel au constructeur de copie de <Statistics>" << endl;
 #endif
-    hits=DesStats.hits;
+    hits=desStats.hits;
 }
-//----- Fin de Trajet (constructeur de copie)
+//----- Fin de Statistics (constructeur de copie)
 
 Statistics::Statistics(unordered_map<string,int> inputMap)
 {
 // Algorithme :
 //
 #ifdef MAP
-    cout << "Appel au constructeur de <Trajet>" << endl;
+    cout << "Appel au constructeur de <Statistics>" << endl;
 #endif
-//----- Fin de Trajet
+//----- Fin de Statistics
     hits=inputMap;
+    copyIntoMulti();
 }
 
 Statistics::Statistics()
 {
+#ifdef MAP
+    cout << "Appel au constructeur 2 de <Statistics>" << endl;
+#endif
 }
-    //----- Fin de Trajet
+    //----- Fin de Statistics
     
-//----- Fin de ~Trajet
+//----- Fin de ~Statistics
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées

@@ -13,8 +13,8 @@
 #include <unordered_map> 
 #include <fstream>
 
-#include "statistics.h"
-#include "graph.h"
+#include "Statistics.h"
+#include "Graph.h"
 #include "Lecture.h"
 
 using namespace std; 
@@ -66,9 +66,9 @@ int main(int argc, char** argv)
     
     processLogfile(fileName, startTime, endTime, includeImages, graphFileName);
 
-    //statistics *InputMap=new statistics(statsInput);
-    //InputMap->printTopX(5);
-    graph *graphMap=new graph(graphInput);
+    Statistics *statsMap=new Statistics(statsInput);
+    statsMap->printTopX(5);
+    Graph *graphMap=new Graph(graphInput);
     graphMap->writeGraph(graphFileName);
     return 0;
 } 

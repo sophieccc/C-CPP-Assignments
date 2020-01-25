@@ -8,7 +8,7 @@
                            $mohamed.eddhabi@insa-lyon.fr$
 *******************************************************************************/
 
-//---------- Réalisation de la classe <Statistics> (fichier statistics.cpp) ------------
+//---------- Réalisation de la classe <Statistics> (fichier Statistics.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -18,14 +18,14 @@
 using namespace std;
 
 //------------------------------------------------------ Include personnel
-#include "statistics.h"
+#include "Statistics.h"
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
 
-void statistics::printTopX(int x)
+void Statistics::printTopX(int x)
 {
     for(auto iter=orderedHits.begin(); iter!=next(orderedHits.begin(),x);iter++)
     {
@@ -33,7 +33,7 @@ void statistics::printTopX(int x)
     }
 }
 
-void statistics::copyIntoMulti()
+void Statistics::copyIntoMulti()
 {
     for(auto iter=hits.begin(); iter!=hits.end(); iter++)
     {
@@ -42,7 +42,7 @@ void statistics::copyIntoMulti()
 }
 
 //-------------------------------------------- Constructeurs - destructeur
-statistics::statistics(const statistics &DesStats)
+Statistics::Statistics(const Statistics &DesStats)
 {
 #ifdef MAP
    cout << "Appel au constructeur de copie de <Trajet>" << endl;
@@ -51,7 +51,7 @@ statistics::statistics(const statistics &DesStats)
 }
 //----- Fin de Trajet (constructeur de copie)
 
-statistics::statistics(unordered_map<string,int> inputMap)
+Statistics::Statistics(unordered_map<string,int> inputMap)
 {
 // Algorithme :
 //
@@ -62,7 +62,7 @@ statistics::statistics(unordered_map<string,int> inputMap)
     hits=inputMap;
 }
 
-statistics::statistics()
+Statistics::Statistics()
 {
 }
     //----- Fin de Trajet

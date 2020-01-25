@@ -24,7 +24,7 @@ using namespace std;
 // Cette classe 
 //------------------------------------------------------------------------
 
-class graph 
+class Graph 
 {
 //----------------------------------------------------------------- PUBLIC
 
@@ -45,13 +45,13 @@ public:
 //-------------------------------------------- Constructeurs - destructeur
     
     // Mode d'emploi (constructeur de copie) :
-    graph(const graph &unGraphe);
+    Graph(const Graph &unGraphe);
     
     // Mode d'emploi (constructeur 1) :   
-    graph();
+    Graph();
 
     // Mode d'emploi : (constructeur 2)
-    graph(unordered_map<string,unordered_map<string, int>>);
+    Graph(unordered_map<string,unordered_map<string, int>>);
     
     // Mode d'emploi : (destructeur)
 

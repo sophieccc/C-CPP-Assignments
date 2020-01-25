@@ -19,20 +19,20 @@
 using namespace std;
 
 //------------------------------------------------------ Include personnel
-#include "graph.h"
+#include "Graph.h"
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
 
-void graph::writeGraph(string fileName)
+void Graph::writeGraph(string fileName)
 {
     cout << "Dot-file " << fileName << " generated" << endl;
     ofstream file(fileName.c_str());
     if(file.good())
     {
-        file << "digraph {" << endl;
+        file << "diGraph {" << endl;
         for (auto iter=links.begin(); iter!=links.end(); iter++)
         {
             if(nodes.count(iter->first)>0)
@@ -53,7 +53,7 @@ void graph::writeGraph(string fileName)
         file << "}" << endl;
     }
 }
-void graph::fillNodes()
+void Graph::fillNodes()
 {   
     int i=0;
     for (auto iter=links.begin(); iter!=links.end(); iter++)
@@ -74,7 +74,7 @@ void graph::fillNodes()
     }
 }
 //-------------------------------------------- Constructeurs - destructeur
-graph::graph(const graph &unGraphe)
+Graph::Graph(const Graph &unGraphe)
 {
 #ifdef MAP
    cout << "Appel au constructeur de copie de <Trajet>" << endl;
@@ -83,7 +83,7 @@ graph::graph(const graph &unGraphe)
 }
 //----- Fin de Trajet (constructeur de copie)
 
-graph::graph(unordered_map<string,unordered_map<string, int>> inputLinks)
+Graph::Graph(unordered_map<string,unordered_map<string, int>> inputLinks)
 {
 // Algorithme :
 //
@@ -94,7 +94,7 @@ graph::graph(unordered_map<string,unordered_map<string, int>> inputLinks)
     links=inputLinks;
     fillNodes();
 }
-graph::graph()
+Graph::Graph()
 {
 #ifdef MAP
     cout << "Appel au constructeur 2 de <Trajet>" << endl;

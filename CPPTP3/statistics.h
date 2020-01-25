@@ -8,7 +8,7 @@
                            $mohamed.eddhabi@insa-lyon.fr$
 *******************************************************************************/
 
-//---------- Interface de la classe <Statistics> (fichier statistics.h) ----------------
+//---------- Interface de la classe <Statistics> (fichier Statistics.h) ----------------
 #if ! defined ( STATISTICS_H )
 #define STATISTICS_H
 using namespace std;
@@ -25,7 +25,7 @@ using namespace std;
 // Cette classe 
 //------------------------------------------------------------------------
 
-class statistics 
+class Statistics 
 {
 //----------------------------------------------------------------- PUBLIC
 
@@ -47,13 +47,13 @@ public:
 //-------------------------------------------- Constructeurs - destructeur
     
     // Mode d'emploi (constructeur de copie) :
-    statistics(const statistics &DesStats);
+    Statistics(const Statistics &DesStats);
     
     // Mode d'emploi (constructeur 1) :   
-    statistics();
+    Statistics();
 
     // Mode d'emploi : (constructeur 2)
-    statistics(unordered_map<string,int>);
+    Statistics(unordered_map<string,int>);
     
     // Mode d'emploi : (destructeur)
 

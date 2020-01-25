@@ -21,7 +21,7 @@ using namespace std;
 
 typedef unordered_map<string, int> innerMap;
 
-void processLogfile(string fileName, int startTime, int endTime, bool includeImages, string graphFileName);
+bool processLogfile(string fileName, int startTime, int endTime, bool includeImages, string graphFileName);
 string updateStatsMap(string input);
 void updateGraphMap(string input, string hitLink);
 
@@ -64,16 +64,17 @@ int main(int argc, char** argv)
         }
     } 
     
-    processLogfile(fileName, startTime, endTime, includeImages, graphFileName);
-
-    Statistics *statsMap=new Statistics(statsInput);
-    statsMap->printTopX(5);
-    Graph *graphMap=new Graph(graphInput);
-    graphMap->writeGraph(graphFileName);
+    bool success = processLogfile(fileName, startTime, endTime, includeImages, graphFileName);
+    if(success) {
+        Statistics *statsMap=new Statistics(statsInput);
+        statsMap->printTopX(5);
+        Graph *graphMap=new Graph(graphInput);
+        graphMap->writeGraph(graphFileName);
+    }
     return 0;
 } 
 
-void processLogfile(string fileName, int startTime, int endTime, bool includeImages, string graphFileName) {
+bool processLogfile(string fileName, int startTime, int endTime, bool includeImages, string graphFileName) {
     ifstream logFile(fileName);
     if(logFile.good()) {
         string input;
@@ -89,6 +90,11 @@ void processLogfile(string fileName, int startTime, int endTime, bool includeIma
                 }
             }
         }
+        return true;
+    }
+    else {
+        cout << "Bad file input, could not process" << endl;
+        return false;
     }
 }
 

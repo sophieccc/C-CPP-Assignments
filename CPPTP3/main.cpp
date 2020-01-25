@@ -84,8 +84,8 @@ int main(int argc, char** argv)
     }
     //statistics *statsMap=new statistics(stats);
     //statsMap->printTopX(5);
-    //graph *graphMap=new graph(graphInput);
-    //graphMap->writeGraph("hggi.dot");
+    graph *graphMap=new graph(graphInput);
+    graphMap->writeGraph("hggi.dot");
     return 0;
 } 
 

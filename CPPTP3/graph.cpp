@@ -63,6 +63,9 @@ void Graph::fillNodes()
             nodes.insert(pair<string,int>(iter->first,i));
             i++;
         }
+    }
+    for (auto iter=links.begin(); iter!=links.end(); iter++)
+    {
         for(auto iter2=iter->second.begin(); iter2!=iter->second.end(); iter2++)
         {
             if(nodes.count(iter2->first)==0)

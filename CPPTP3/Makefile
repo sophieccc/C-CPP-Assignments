@@ -3,19 +3,19 @@
 CPP = g++
 CFLAGS = -ansi -pedantic -Wall -Werror -std=c++11 -DMAP -g
 
-all: main statistics graph Lecture
+all: main Statistics Graph Lecture
 
 Lecture: Lecture.cpp
 	g++ -o Lecture Lecture.cpp $(CFLAGS)
 
-statistics: statistics.cpp
-	g++ -o statistics statistics.cpp $(CFLAGS)
+Statistics: Statistics.cpp
+	g++ -o Statistics Statistics.cpp $(CFLAGS)
 
-graph: graph.cpp
-	g++ -o statistics graph.cpp $(CFLAGS)
+Graph: Graph.cpp
+	g++ -o Statistics Graph.cpp $(CFLAGS)
 
-main: main.cpp Lecture.cpp graph.cpp statistics.cpp
-	g++ -o main main.cpp statistics.cpp graph.cpp Lecture.cpp $(CFLAGS)
+main: main.cpp Lecture.cpp Graph.cpp Statistics.cpp
+	g++ -o main main.cpp Statistics.cpp Graph.cpp Lecture.cpp $(CFLAGS)
 
 clean:
 	rm -f $(OBJ) *.o

@@ -28,9 +28,10 @@ using namespace std;
 void Statistics::printTopX(int x)
 {
     int i=0;
-    for(auto iter=orderedHits.begin(); iter!=next(orderedHits.begin(),x);++iter, ++i)
+    map<int,string>::reverse_iterator rit;
+    for(rit=orderedHits.rbegin(); rit!=orderedHits.rend() && (i < x);++rit, ++i)
     {
-        cout << i << ". " << iter->second << " " << "(" << iter->first << " hits)" << endl;
+        cout << i << ". " << rit->second << " " << "(" << rit->first << " hits)" << endl;
     }
 }
 

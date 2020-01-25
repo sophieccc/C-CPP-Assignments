@@ -31,6 +31,9 @@ string getDestinationLink(string input) {
     linkLength = input.find(" HTTP")- input.find("POST")-5;
     destinationLink = input.substr(input.find("POST ")+5, linkLength);
   }
+  if(destinationLink.find('?')!=string::npos) {
+    destinationLink = destinationLink.substr(0,(destinationLink.find('?')-1));
+  }
   if(destinationLink.back()=='/') {
     destinationLink = destinationLink.substr(0, destinationLink.size()-1);
   }
@@ -42,7 +45,9 @@ string getReferrerLink(string input) {
   int ending = input.find('\"', start);
   int linkLength = ending-(start);
   string referrerLink = input.substr(start, linkLength);
-
+  if(referrerLink.find('?')!=string::npos) {
+    referrerLink = referrerLink.substr(0,(referrerLink.find('?')-1));
+  }
   if(referrerLink.back()=='/') {
     referrerLink = referrerLink.substr(0, referrerLink.size()-1);
   }
@@ -51,8 +56,8 @@ string getReferrerLink(string input) {
 
 bool isImageType(string input) {
   bool isImageType = false;
-  if(input.find("jpg") || input.find("png") || input.find("gif") || 
-  input.find("ico") || input.find("css") || input.find("js")) {
+  if(input.find("jpg")!=string::npos || input.find("png")!=string::npos || input.find("gif")!=string::npos || 
+  input.find("ico")!=string::npos || input.find("css")!=string::npos || input.find("js")!=string::npos) {
     isImageType = true;
   }
   return isImageType;

@@ -38,6 +38,7 @@ int main(int argc, char** argv)
     bool includeImages = true;
     int startTime = 0;
     int endTime = 24;
+    
     for (int i = 0; i < argc-1; ++i) {
         if (string(argv[i]) == "-g") { 
             if((i+1)< argc-1 && string(argv[i+1]).at(0)!='-') {

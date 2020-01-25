@@ -28,7 +28,7 @@ using namespace std;
 
 void graph::writeGraph(string fileName)
 {
-    cout << "Dot-file " << fileName << ".dot generated" << endl;
+    cout << "Dot-file " << fileName << " generated" << endl;
     ofstream file(fileName.c_str());
     if(file.good())
     {
@@ -92,6 +92,7 @@ graph::graph(unordered_map<string,unordered_map<string, int>> inputLinks)
 #endif
 //----- Fin de Trajet
     links=inputLinks;
+    fillNodes();
 }
 graph::graph()
 {

@@ -12,6 +12,7 @@
 #include <cstdlib>
 #include <unordered_map> 
 #include <fstream>
+
 #include "statistics.h"
 #include "graph.h"
 #include "Lecture.h"
@@ -24,7 +25,7 @@ void processLogfile(string fileName, int startTime, int endTime, bool includeIma
 string updateStatsMap(string input);
 void updateGraphMap(string input, string hitLink);
 
-innerMap stats;
+innerMap statsInput;
 unordered_map<string, innerMap> graphInput;
   
 int main(int argc, char** argv) 
@@ -65,10 +66,10 @@ int main(int argc, char** argv)
     
     processLogfile(fileName, startTime, endTime, includeImages, graphFileName);
 
-    //statistics *statsMap=new statistics(stats);
-    //statsMap->printTopX(5);
+    //statistics *InputMap=new statistics(statsInput);
+    //InputMap->printTopX(5);
     graph *graphMap=new graph(graphInput);
-    graphMap->writeGraph("hggi.dot");
+    graphMap->writeGraph(graphFileName);
     return 0;
 } 
 
@@ -94,11 +95,11 @@ void processLogfile(string fileName, int startTime, int endTime, bool includeIma
 string updateStatsMap(string input) 
 {
     string hitLink = getDestinationLink(input);
-    if (stats.count(hitLink)>0) {
-        stats.at(hitLink)++;
+    if (statsInput.count(hitLink)>0) {
+        statsInput.at(hitLink)++;
     }
     else {
-        stats.insert(pair<string, int>(hitLink, 1));
+        statsInput.insert(pair<string, int>(hitLink, 1));
     }
     return hitLink;
 }

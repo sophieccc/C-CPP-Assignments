@@ -35,7 +35,6 @@ public:
     // Mode d'emploi :
     // Cette méthode renvoie la ville de départ du trajet.
     void writeGraph(string fileName);
-    void fillNodes();
     // Mode d'emploi :
     // Cette méthode renvoie la ville d'arrivée du trajet.
 
@@ -60,6 +59,7 @@ public:
 
 protected:
 //----------------------------------------------------- Méthodes protégées
+    void fillNodes();
 
 //----------------------------------------------------- Attributs protégés
     unordered_map<string,unordered_map<string, int>> links;

@@ -20,8 +20,12 @@ using namespace std;
 
 typedef unordered_map<string, int> innerMap;
 
-unordered_map<string, innerMap> updateGraphMap(
-    string input, string hitLink, unordered_map<string, innerMap> graphInput);
+void processLogfile(string fileName, int startTime, int endTime, bool includeImages, string graphFileName);
+string updateStatsMap(string input);
+void updateGraphMap(string input, string hitLink);
+
+innerMap stats;
+unordered_map<string, innerMap> graphInput;
   
 int main(int argc, char** argv) 
 { 
@@ -57,8 +61,17 @@ int main(int argc, char** argv)
             }    
         }
     } 
-    innerMap stats;
-    unordered_map<string, innerMap> graphInput;
+    
+    processLogfile(fileName, startTime, endTime, includeImages, graphFileName);
+
+    //statistics *statsMap=new statistics(stats);
+    //statsMap->printTopX(5);
+    graph *graphMap=new graph(graphInput);
+    graphMap->writeGraph("hggi.dot");
+    return 0;
+} 
+
+void processLogfile(string fileName, int startTime, int endTime, bool includeImages, string graphFileName) {
     ifstream logFile(fileName);
     if(logFile.good()) {
         string input;
@@ -67,30 +80,29 @@ int main(int argc, char** argv)
             int hour = getHour(input);
             if(hour<= endTime && hour >=startTime) {
                 if(includeImages || !isImageType(input)) {
-
-                    string hitLink = getDestinationLink(input);
-                    if (stats.count(hitLink)>0) {
-                        stats.at(hitLink)++;
-                    }
-                    else {
-                        stats.insert(pair<string, int>(hitLink, 1));
-                    }
+                    string hitLink = updateStatsMap(input);
                     if(graphFileName != "") {
-                        graphInput = updateGraphMap(input, hitLink, graphInput);
+                        updateGraphMap(input, hitLink);
                     }
                 }
             }
         }
     }
-    //statistics *statsMap=new statistics(stats);
-    //statsMap->printTopX(5);
-    graph *graphMap=new graph(graphInput);
-    graphMap->writeGraph("hggi.dot");
-    return 0;
-} 
+}
 
-unordered_map<string, innerMap> updateGraphMap(
-    string input, string hitLink, unordered_map<string, innerMap> graphInput) 
+string updateStatsMap(string input) 
+{
+    string hitLink = getDestinationLink(input);
+    if (stats.count(hitLink)>0) {
+        stats.at(hitLink)++;
+    }
+    else {
+        stats.insert(pair<string, int>(hitLink, 1));
+    }
+    return hitLink;
+}
+
+void updateGraphMap(string input, string hitLink) 
 {
     string referrerLink = getReferrerLink(input);
     if (graphInput.count(hitLink)>0) {
@@ -106,7 +118,5 @@ unordered_map<string, innerMap> updateGraphMap(
         referrerMap.insert(pair<string, int>(referrerLink, 1));
         graphInput.insert(pair<string, innerMap>(hitLink, referrerMap));
     }
-
-    return graphInput;
 }
                         

@@ -70,10 +70,11 @@ Graph::Graph(unordered_map<string,unordered_map<string, int>> inputLinks)
 #ifdef MAP
     cout << "Appel au constructeur de <Graph>" << endl;
 #endif
-//----- Fin de Graph
     links=inputLinks;
     fillNodes();
 }
+//----- Fin de Graph
+
 Graph::Graph()
 {
 #ifdef MAP

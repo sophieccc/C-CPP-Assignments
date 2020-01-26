@@ -32,7 +32,6 @@ class Graph
 public:
 //----------------------------------------------------- Méthodes publiques
 
-    
     // Mode d'emploi :
     // Cette méthode crée un .dot file.
     void writeGraph(string fileName);

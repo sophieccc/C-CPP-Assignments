@@ -20,6 +20,7 @@ int getHour(string input) {
   int hour=stoi(time);
   return hour;
 }
+
 string getDestinationLink(string input) {
   string destinationLink;
   int linkLength;

@@ -9,7 +9,6 @@
 *******************************************************************************/
 
 #include <iostream> 
-#include <cstdlib>
 #include <unordered_map> 
 #include <fstream>
 
@@ -21,7 +20,7 @@ using namespace std;
 
 typedef unordered_map<string, int> innerMap;
 
-bool processLogfile(string fileName, int startTime, int endTime, bool includeImages, string graphFileName);
+bool processLogfile(string fileName, int startTime, int endTime, bool includeImages, string graphFile);
 string updateStatsMap(string input);
 void updateGraphMap(string input, string hitLink);
 
@@ -35,7 +34,7 @@ int main(int argc, char** argv)
         printf("\nNo log file name was passed");
         return 0; 
     }
-    string graphFileName = "";
+    string graphFile = "";
     bool includeImages = true;
     int startTime = 0;
     int endTime = 24;
@@ -43,7 +42,7 @@ int main(int argc, char** argv)
     for (int i = 0; i < argc-1; ++i) {
         if (string(argv[i]) == "-g") { 
             if((i+1)< argc-1 && string(argv[i+1]).at(0)!='-') {
-                graphFileName =  string(argv[++i]);
+                graphFile =  string(argv[++i]);
             }
             else {
                 printf("No graph file name was passed, graph will not be made");
@@ -64,17 +63,17 @@ int main(int argc, char** argv)
         }
     } 
     
-    bool success = processLogfile(fileName, startTime, endTime, includeImages, graphFileName);
+    bool success = processLogfile(fileName, startTime, endTime, includeImages, graphFile);
     if(success) {
         Statistics *statsMap=new Statistics(statsInput);
         statsMap->printTopX(5);
         Graph *graphMap=new Graph(graphInput);
-        graphMap->writeGraph(graphFileName);
+        graphMap->writeGraph(graphFile);
     }
     return 0;
 } 
 
-bool processLogfile(string fileName, int startTime, int endTime, bool includeImages, string graphFileName) {
+bool processLogfile(string fileName, int startTime, int endTime, bool includeImages, string graphFile) {
     ifstream logFile(fileName);
     if(logFile.good()) {
         string input;
@@ -84,7 +83,7 @@ bool processLogfile(string fileName, int startTime, int endTime, bool includeIma
             if(hour<= endTime && hour >=startTime) {
                 if(includeImages || !isImageType(input)) {
                     string hitLink = updateStatsMap(input);
-                    if(graphFileName != "") {
+                    if(graphFile != "") {
                         updateGraphMap(input, hitLink);
                     }
                 }
@@ -126,5 +125,4 @@ void updateGraphMap(string input, string hitLink)
         referrerMap.insert(pair<string, int>(referrerLink, 1));
         graphInput.insert(pair<string, innerMap>(hitLink, referrerMap));
     }
-}
-                        
+}        

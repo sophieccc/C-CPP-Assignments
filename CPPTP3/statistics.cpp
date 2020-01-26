@@ -52,10 +52,10 @@ Statistics::Statistics(unordered_map<string,int> inputMap)
 #ifdef MAP
     cout << "Appel au constructeur de <Statistics>" << endl;
 #endif
-//----- Fin de Statistics
     hits=inputMap;
     copyIntoMulti();
 }
+//----- Fin de Statistics
 
 Statistics::Statistics()
 {
@@ -63,9 +63,8 @@ Statistics::Statistics()
     cout << "Appel au constructeur 2 de <Statistics>" << endl;
 #endif
 }
-    //----- Fin de Statistics
-    
-//----- Fin de ~Statistics
+ //----- Fin de Statistics
+
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées

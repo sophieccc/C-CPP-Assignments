@@ -37,12 +37,6 @@ public:
     // Mode d'emploi :
     // Cette méthode renvoie la ville de départ du trajet.
     void printTopX(int x);
-    // Mode d'emploi :
-    // Cette méthode renvoie la ville d'arrivée du trajet.
-
-    
-    // Mode d'emploi :
-    // Cette méthode affiche les caractéristiques du trajet.
     
 //-------------------------------------------- Constructeurs - destructeur
     
@@ -54,8 +48,6 @@ public:
 
     // Mode d'emploi : (constructeur 2)
     Statistics(unordered_map<string,int>);
-    
-    // Mode d'emploi : (destructeur)
 
 //------------------------------------------------------------------ PRIVE
 

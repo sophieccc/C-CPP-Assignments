@@ -66,7 +66,7 @@ int main(int argc, char** argv)
     bool success = processLogfile(fileName, startTime, endTime, includeImages, graphFile);
     if(success) {
         Statistics *statsMap=new Statistics(statsInput);
-        statsMap->printTopX(5);
+        statsMap->printTopX(10);
         Graph *graphMap=new Graph(graphInput);
         graphMap->writeGraph(graphFile);
     }

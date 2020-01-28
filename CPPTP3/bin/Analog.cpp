@@ -92,7 +92,7 @@ bool processLogfile(string fileName, int startTime, int endTime, bool includeIma
         return true;
     }
     else {
-        cout << "Bad file input, could not process" << endl;
+        cerr << "Bad file input, could not process" << endl;
         return false;
     }
 }

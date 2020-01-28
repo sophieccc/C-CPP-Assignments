@@ -31,7 +31,7 @@ int main(int argc, char** argv)
 { 
     string fileName = argv[(argc-1)];
     if(argc==1) {
-        printf("No log file name was passed");
+        printf("No log file name was passed\n");
         return 0; 
     }
     string graphFile = "";

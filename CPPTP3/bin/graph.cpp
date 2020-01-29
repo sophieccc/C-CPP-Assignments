@@ -100,7 +100,7 @@ Graph::Graph(const Graph &unGraphe)
 }
 //----- Fin de Graph (constructeur de copie)
 
-Graph::Graph(unordered_map<string,unordered_map<string, int>> inputLinks)
+Graph::Graph(unordered_map<string,unordered_map<string, int> > inputLinks)
 {
 // Algorithme :
 //

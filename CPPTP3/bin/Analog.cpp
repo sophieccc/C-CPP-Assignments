@@ -114,20 +114,17 @@ string updateStatsMap(string input)
 void updateGraphMap(string input, string hitLink) 
 {
     string referrerLink = getReferrerLink(input);
-    if (!isdigit(referrerLink[0]))
-    {
-        if (graphInput.count(hitLink)>0) {
-            if (graphInput.at(hitLink).count(referrerLink)>0) {
-                graphInput.at(hitLink).at(referrerLink)++;
-            }
-            else {
-                graphInput.at(hitLink).insert(pair<string, int>(referrerLink, 1));
-            }
+    if (graphInput.count(hitLink)>0) {
+        if (graphInput.at(hitLink).count(referrerLink)>0) {
+            graphInput.at(hitLink).at(referrerLink)++;
         }
         else {
-            innerMap referrerMap;
-            referrerMap.insert(pair<string, int>(referrerLink, 1));
-            graphInput.insert(pair<string, innerMap>(hitLink, referrerMap));
+            graphInput.at(hitLink).insert(pair<string, int>(referrerLink, 1));
         }
+    }
+    else {
+        innerMap referrerMap;
+        referrerMap.insert(pair<string, int>(referrerLink, 1));
+        graphInput.insert(pair<string, innerMap>(hitLink, referrerMap));
     }
 }        

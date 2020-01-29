@@ -42,9 +42,20 @@ string getDestinationLink(string input) {
 }
 
 string getReferrerLink(string input) {
-  int start = input.find("http://intranet-if.insa-lyon.fr/") + 31;
-  int ending = input.find('\"', start);
-  int linkLength = ending-(start);
+  int start;
+  int end;
+  if(input.find("http://intranet-if.insa-lyon.fr/")!=string::npos) {
+    start = input.find("http://intranet-if.insa-lyon.fr/") + 31;
+  }
+  else if (input.find("http")!=string::npos) {
+    start = input.find("http");
+    
+  }
+  else {
+    return "-";
+  }
+  end = input.find('\"', start);
+  int linkLength = end-(start);
   string referrerLink = input.substr(start, linkLength);
   if(referrerLink.find('?')!=string::npos) {
     referrerLink = referrerLink.substr(0,(referrerLink.find('?')-1));

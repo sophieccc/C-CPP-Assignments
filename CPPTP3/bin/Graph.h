@@ -35,6 +35,8 @@ public:
     // Mode d'emploi :
     // Cette méthode crée un .dot file.
     void writeGraph(string fileName);
+    unordered_map<string,unordered_map<string, int>> links;
+    unordered_map<string,int> nodes;
     
 //-------------------------------------------- Constructeurs - destructeur
     
@@ -54,8 +56,7 @@ protected:
     void fillNodes();
 
 //----------------------------------------------------- Attributs protégés
-    unordered_map<string,unordered_map<string, int>> links;
-    unordered_map<string,int> nodes;
+    
 };
 
 //-------------------------------- Autres définitions dépendantes de <Graph>

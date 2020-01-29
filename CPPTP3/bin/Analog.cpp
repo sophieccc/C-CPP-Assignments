@@ -11,6 +11,8 @@
 #include <iostream> 
 #include <unordered_map> 
 #include <fstream>
+#include <stdlib.h>
+#include <ctype.h>
 
 #include "Statistics.h"
 #include "Graph.h"
@@ -45,7 +47,7 @@ int main(int argc, char** argv)
                 graphFile =  string(argv[++i]);
             }
             else {
-                printf("No graph file name was passed, graph will not be made");
+                cout << "No graph file name was passed, graph will not be made" << endl;;
             }  
         }
         else if (string(argv[i]) == "-e") { 
@@ -58,7 +60,7 @@ int main(int argc, char** argv)
                 endTime = startTime+1;
             }
             else {
-                printf("No hour was given, time will not be accounted for");
+                cout << "No hour was given, time will not be accounted for" << endl;
             }    
         }
     } 
@@ -112,17 +114,20 @@ string updateStatsMap(string input)
 void updateGraphMap(string input, string hitLink) 
 {
     string referrerLink = getReferrerLink(input);
-    if (graphInput.count(hitLink)>0) {
-        if (graphInput.at(hitLink).count(referrerLink)>0) {
-            graphInput.at(hitLink).at(referrerLink)++;
+    if (!isdigit(referrerLink[0]))
+    {
+        if (graphInput.count(hitLink)>0) {
+            if (graphInput.at(hitLink).count(referrerLink)>0) {
+                graphInput.at(hitLink).at(referrerLink)++;
+            }
+            else {
+                graphInput.at(hitLink).insert(pair<string, int>(referrerLink, 1));
+            }
         }
         else {
-            graphInput.at(hitLink).insert(pair<string, int>(referrerLink, 1));
+            innerMap referrerMap;
+            referrerMap.insert(pair<string, int>(referrerLink, 1));
+            graphInput.insert(pair<string, innerMap>(hitLink, referrerMap));
         }
-    }
-    else {
-        innerMap referrerMap;
-        referrerMap.insert(pair<string, int>(referrerLink, 1));
-        graphInput.insert(pair<string, innerMap>(hitLink, referrerMap));
     }
 }        

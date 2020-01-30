@@ -1,1 +1,1 @@
-Ce test permet de verifier le comportement quand aucun fichier log n'est spécifié
+Ce test a pour but de regarder comportement du programme avec la commande -t quand aucune des pages du log ne rentre dansles plages horaires spécifiées.

@@ -28,4 +28,40 @@ liés par un des arêtes indiquant le nombre de hits, suivez les deux étapes su
     -Ensuite, générez votre image à partir de votre fichier .dot en exécutant cette ligne de commande:
     dot -Tpng -o test.png test.dot
 
+RÉCAPITULATIF FORMAT UNIX:
+
+.SH NAME
+	Analog - analyse de fichiers de log apache
+.SH SYNOPSIS
+	Analog [OPTION]... FILE
+.SH DESCRIPTION
+
+	Fournit des statistiques sur des pages extraites d'un fichier log Apache et génère un graphe de synthèse. 
+.SH OPTIONS
+	Par défaut, donne les 10 documents les plus consultés.
+
+.RE
+	-e
+.RS
+		Exclut les documents de type image, css, et javascript
+.RE
+
+	-g FICHIER_GRAPHE
+.RS
+		Produit un graphe au format graphViz des accès entre les documents
+.RE
+
+	-t HEURE
+.RS
+		Exclus toutes les transactions qui ne sont pas dans le créneau horaire [Heure:Heure+1[, heure de la transaction pour l’utilisateur
+	
+
+.SH VALEURS DE RETOUR 
+	0	si l'exécution s’est déroulé normalement
+
+	1	si le programme a rencontré une erreur
+.SH AUTEURS 
+	Ecrit par CROWLEY, EDDAHABI et NASSREDDINE
+
+
 Voilà, c'est tout ! Amusez-vous bien :-)

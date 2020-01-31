@@ -1,1 +1,1 @@
-../../bin/analog ../../Logs/thirteen.log
+../../bin/analog -g thirteen.dot ../../Logs/thirteen.log

@@ -1,1 +1,1 @@
-../../bin/analog -e ../../Logs/two.log
+../../bin/Analog -e ../../Logs/two.log

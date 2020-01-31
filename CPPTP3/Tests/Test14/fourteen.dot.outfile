@@ -1,0 +1,5 @@
+digraph {
+node1 [label="-"];
+node0 [label="/docB.html"];
+node1 -> node0 [label="1"];
+}

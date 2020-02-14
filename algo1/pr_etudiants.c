@@ -252,8 +252,8 @@ int main()
 {
   FILE *fp;
   SMAT *SM;
-
-  fp = fopen( "exemple.dat", "r" );
+  double alpha=0.85;
+  fp = fopen( "genetic.dat", "r" );
   SM = sm_input( fp );
   fclose( fp );
   int i,j,k;
@@ -269,25 +269,29 @@ int main()
   {
     ranks->e[i]=1.0/SM->m;
   }
+  VEC* a=v_get(ranks->dim);
+  for(i=0; i<a->dim; i++)
+  {
+    if (SM->row[i].nnz == 0)
+    {
+      a->e[i] = 1;
+    }
+  }
   VEC* newranks;
-  for (k=0; k<2000; k++)
+  for (k=0; k<100; k++)
   {
     newranks=v_get(ranks->dim);
     for (i=0; i<SM->m; i++)
     {
       SROW curr=SM->row[i];
-      if(curr.nnz!=0)
+      for (j=0; j<curr.nnz; j++)
       {
-        for (j=0; j<curr.nnz; j++)
-        {
-          newranks->e[curr.col[j]]+=ranks->e[i]*(curr.val[j]);
-        }
-      }else{
-        for (j=0; j<curr.nnz; j++)
-        {
-          newranks->e[curr.col[j]]+=ranks->e[i]*1/SM->m;
-        }
+         newranks->e[curr.col[j]]+=ranks->e[i]*(curr.val[j])*alpha;
       }
+    }
+    for(i=0; i<a->dim; i++)
+    {
+      newranks->e[i] += (alpha*(ranks->e[i])*(a->e[i]) + 1 - alpha)/(SM->m) ;
     }
     for (i=0; i<ranks->dim; i++)
     {
@@ -295,9 +299,7 @@ int main()
     }
     v_free(newranks);
   }
-  double alpha=0.85;
   sm_output( stdout, SM );
-  v_output( stdout, ranks );
   sm_free( SM );
   v_free(ranks);
 

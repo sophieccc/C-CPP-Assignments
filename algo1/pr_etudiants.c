@@ -256,7 +256,7 @@ int main()
   fp = fopen( "exemple.dat", "r" );
   SM = sm_input( fp );
   fclose( fp );
-  int i,j;
+  int i,j,k;
   for (i=0; i<SM->n; i++)
   {
     for (j=0; j<SM->row[i].nnz; j++)
@@ -264,9 +264,42 @@ int main()
       SM->row[i].val[j]=SM->row[i].val[j]/SM->row[i].nnz;
     }
   }
+  VEC *ranks=v_get(SM->m);
+  for (i=0; i<ranks->dim; i++)
+  {
+    ranks->e[i]=1.0/SM->m;
+  }
+  VEC* newranks;
+  for (k=0; k<2000; k++)
+  {
+    newranks=v_get(ranks->dim);
+    for (i=0; i<SM->m; i++)
+    {
+      SROW curr=SM->row[i];
+      if(curr.nnz!=0)
+      {
+        for (j=0; j<curr.nnz; j++)
+        {
+          newranks->e[curr.col[j]]+=ranks->e[i]*(curr.val[j]);
+        }
+      }else{
+        for (j=0; j<curr.nnz; j++)
+        {
+          newranks->e[curr.col[j]]+=ranks->e[i]*1/SM->m;
+        }
+      }
+    }
+    for (i=0; i<ranks->dim; i++)
+    {
+      ranks->e[i]=newranks->e[i];
+    }
+    v_free(newranks);
+  }
+  double alpha=0.85;
   sm_output( stdout, SM );
-
+  v_output( stdout, ranks );
   sm_free( SM );
+  v_free(ranks);
 
   return 0;
 }

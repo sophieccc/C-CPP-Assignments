@@ -1,4 +1,7 @@
-Vk = vector of current verex ranks
+/* Exercice 1 : Exprimer sous la forme du produit d’un vecteur par une matrice l’algorithme itératif décrit par la relation de récurrence introduite plus
+haut. Remarquer que l’itération n de l’algorithme correspond à la valeur de Hn. */
+
+Vk = vector of current vertex ranks
 Vk+1 = new vector of vertex ranks
 H = matrice obtenue à partir de M en divisant chaque coefficient M[i][j] par d◦+(i)
 M =  matrice d’adjacence

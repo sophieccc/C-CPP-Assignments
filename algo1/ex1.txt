@@ -1,0 +1,7 @@
+Vk = vector of current verex ranks
+Vk+1 = new vector of vertex ranks
+H = matrice obtenue à partir de M en divisant chaque coefficient M[i][j] par d◦+(i)
+M =  matrice d’adjacence
+
+Vk+1 = (Vk)(H)
+

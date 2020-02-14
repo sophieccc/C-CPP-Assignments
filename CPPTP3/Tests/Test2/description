@@ -1,1 +1,1 @@
-Ce test permet de vérifier l'erreur sur une entrée avec l'option -g sans nom de fichier .dot
+Ce test a pour but de vérifier que le programme ne prend effectivement pas en compte les fichiers de type css, javascript et image lorsqu'on le précise

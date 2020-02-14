@@ -1,1 +1,1 @@
-Ce test permet de verifier le comportement quand aucun fichier log n'est spécifié
+Ce test a pour but de vérifier l'affichage des tops 10 en activant les deux options -t et -e.

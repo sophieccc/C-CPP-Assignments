@@ -1,1 +1,1 @@
-../../bin/analog 
+../../bin/Analog -e -e ../../Logs/twenty.log

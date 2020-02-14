@@ -1,1 +1,1 @@
-../../bin/analog 
+../../bin/Analog -t 18 ../../Logs/nine.log

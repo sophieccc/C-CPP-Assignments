@@ -1,1 +1,1 @@
-Ce test permet de verifier le comportement quand aucun fichier log n'est spécifié
+Ce test a pour but de vérifier que le programme génére bien un graphe affichant toutes les pages visitées sous forme de noeuds reliés par des arrêtes indiquant le nombre de hits.

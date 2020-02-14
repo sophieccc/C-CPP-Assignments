@@ -1,1 +1,1 @@
-../../bin/analog 
+../../bin/analog ../../Logs/sixteen.log -g

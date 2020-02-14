@@ -1,0 +1,67 @@
+Bonjour !
+Bienvenue sur l'application d'analyse de logs Apache réalisée par CROWLEY, EDDAHABI et NASSREDDINE.
+Pour commencer, veuillez d'abord compiler et construire votre exécutable via la commande suivante après vous
+être positionné dans le répertoire bin:
+make Analog
+
+Ensuite, plusieurs options d'analyse s'offrent à vous !
+
+-Pour afficher les 10 pages les plus visitées à partir d'un log "test.log" parmi notre catalogue Logs, il vous
+suffit de lancer la commande suivante:
+./Analog ../../Logs/one.log
+
+-Si vous voulez filtrer ses pages par heure, lancer la commande suivante avec H un entier déterminant l'heure
+de votre choix:
+./Analog -t H ../../Logs/test.log
+
+-Si vous souhaitez trier ces pages et éliminer toutes celles de types css, image ou JavaScript, lancez la 
+commande suivante:
+./Analog -e ../../Logs/test.log
+
+-Si vous souhaitez générer une image d'un graphe représentant toutes les pages de votre fichier log comme noeuds
+liés par un des arêtes indiquant le nombre de hits, suivez les deux étapes suivante:
+    -Dans un premier temps, génrez votre document .dot décrivant le graphe par la commande:
+    ./Analog -g test.dot ../../Logs/test.log 
+    Attention ! N'oubliez pas de spécifier le nom du fichier destination .dot sinon le document ne sera pa généré
+    et ça sera bien dommage vu le temps qu'on a passé dessus !
+
+    -Ensuite, générez votre image à partir de votre fichier .dot en exécutant cette ligne de commande:
+    dot -Tpng -o test.png test.dot
+
+RÉCAPITULATIF FORMAT UNIX:
+
+.SH NAME
+	Analog - analyse de fichiers de log apache
+.SH SYNOPSIS
+	Analog [OPTION]... FILE
+.SH DESCRIPTION
+
+	Fournit des statistiques sur des pages extraites d'un fichier log Apache et génère un graphe de synthèse. 
+.SH OPTIONS
+	Par défaut, donne les 10 documents les plus consultés.
+
+.RE
+	-e
+.RS
+		Exclut les documents de type image, css, et javascript
+.RE
+
+	-g FICHIER_GRAPHE
+.RS
+		Produit un graphe au format graphViz des accès entre les documents
+.RE
+
+	-t HEURE
+.RS
+		Exclus toutes les transactions qui ne sont pas dans le créneau horaire [Heure:Heure+1[, heure de la transaction pour l’utilisateur
+	
+
+.SH VALEURS DE RETOUR 
+	0	si l'exécution s’est déroulé normalement
+
+	1	si le programme a rencontré une erreur
+.SH AUTEURS 
+	Ecrit par CROWLEY, EDDAHABI et NASSREDDINE
+
+
+Voilà, c'est tout ! Amusez-vous bien :-)

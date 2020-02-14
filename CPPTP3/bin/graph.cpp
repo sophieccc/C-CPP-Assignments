@@ -34,22 +34,11 @@ void Graph::writeGraph(string fileName)
     if(file.good())
     {
         file << "digraph {" << endl;
-        for (auto iter=links.begin(); iter!=links.end(); iter++)
+        for(auto it=nodes.begin(); it!=nodes.end();it++)
         {
-            if(nodes.count(iter->first)>0)
+            if(nodes.count(it->first)>0)
             {
-                file <<  "node" << nodes.at(iter->first) << " [label=\"" << iter->first << "\"];" << endl;
-            }
-        }
-
-        for (auto iter=links.begin(); iter!=links.end(); iter++)
-        {
-            for (auto iter2=iter->second.begin(); iter2!=iter->second.end(); iter2++)
-            {  
-                if(nodes.count(iter->first)>0)
-                { 
-                file <<  "node" << nodes.at(iter2->first) << " [label=\"" << iter2->first << "\"];" << endl;
-                }
+                file <<  "node" << it->second << " [label=\"" << it->first << "\"];" << endl;
             }
         }
 
@@ -59,7 +48,7 @@ void Graph::writeGraph(string fileName)
             {
                 if(nodes.count(iter2->first)>=0)
                 {
-                    file << "node" << nodes.at(iter2->first) << " -> " << "node" << nodes.at(iter->first) << " [label=\"" << iter2->second;file << "\"];" << endl;
+                    file << "node" << nodes.at(iter2->first) << " -> " << "node" << nodes.at(iter->first) << " [label=\"" << iter2->second << "\"];" << endl;
                 }
             }
         }
@@ -77,6 +66,7 @@ void Graph::fillNodes()
             nodes.insert(pair<string,int>(iter->first,i));
             i++;
         }
+
     }
     for (auto iter=links.begin(); iter!=links.end(); iter++)
     {
@@ -100,7 +90,7 @@ Graph::Graph(const Graph &unGraphe)
 }
 //----- Fin de Graph (constructeur de copie)
 
-Graph::Graph(unordered_map<string,unordered_map<string, int> > inputLinks)
+Graph::Graph(unordered_map<string,unordered_map<string, int>> inputLinks)
 {
 // Algorithme :
 //

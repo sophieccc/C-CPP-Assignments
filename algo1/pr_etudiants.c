@@ -256,7 +256,14 @@ int main()
   fp = fopen( "exemple.dat", "r" );
   SM = sm_input( fp );
   fclose( fp );
-
+  int i,j;
+  for (i=0; i<SM->n; i++)
+  {
+    for (j=0; j<SM->row[i].nnz; j++)
+    {
+      SM->row[i].val[j]=SM->row[i].val[j]/SM->row[i].nnz;
+    }
+  }
   sm_output( stdout, SM );
 
   sm_free( SM );

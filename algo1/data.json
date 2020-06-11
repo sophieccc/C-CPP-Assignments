@@ -1,0 +1,23 @@
+"type" : "Feature",
+"properties" : {
+"lat" : 45.7873840849558, "available_bike_stands" : NumberInt(7), "gid" : NumberInt(1065),
+"last_update" : "2017/02/02 14:49:23",
+"number" : NumberInt(9013),
+"address2" : "",
+"nmarrond" : NumberInt(13),
+"pole" : "pôle d'activité (Cegid, Infogrammes)", "bike_stands" : NumberInt(20),
+"banking" : NumberInt(0),
+"address" : "Quai Paul Sédallon",
+"lng" : 4.81437377940006, "availabilitycode" : NumberInt(1), "availability" : "Vert",
+"name" : "Sédaillan / Naviguation", "commune" : "Lyon 9 ème",
+"bonus" : "Non",
+"status" : "OPEN",
+"available_bikes" : NumberInt(13), "last_update_fme" : "2017/02/02 14:54:00"
+},
+} }
+"geometry" : {
+    "type" : "Point",
+    "coordinates" : [
+        4.814373779400059,
+        45.787384084955846
+]

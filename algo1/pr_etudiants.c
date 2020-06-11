@@ -299,6 +299,11 @@ int main()
     }
     v_free(newranks);
   }
+  double sum=0.0;
+  for (i=0; i<ranks->dim; i++)
+  {
+    sum+=ranks->e[i];
+  }
   sm_output( stdout, SM );
   sm_free( SM );
   v_free(ranks);
